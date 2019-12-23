@@ -1,0 +1,19 @@
+{
+  "name": "fs",
+  "storage": {
+    "init": {
+      "work_dir": true
+    },
+    "list_dir": {
+      "dir_func": false,
+      "file_func": false
+    },
+    "read": {
+      "offset": false,
+      "size": false
+    },
+    "write": {
+      "size": false
+    }
+  }
+}
