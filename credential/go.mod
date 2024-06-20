@@ -1,4 +1,4 @@
-module github.com/beyondstorage/go-storage/credential
+module github.com/rgglez/go-storage/credential
 
 go 1.16
 

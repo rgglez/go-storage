@@ -1,7 +1,7 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-06-17
-- RFC PR: [beyondstorage/specs#109](https://github.com/beyondstorage/specs/issues/109)
-- Tracking Issue: [beyondstorage/go-storage#603](https://github.com/beyondstorage/go-storage/issues/603)
+- RFC PR: [beyondstorage/specs#109](https://github.com/rgglez/specs/issues/109)
+- Tracking Issue: [beyondstorage/go-storage#603](https://github.com/rgglez/go-storage/issues/603)
 
 # GSP-109: Redesign Features
 
@@ -10,7 +10,7 @@
 
 ## Background
 
-[GSP-87](https://github.com/beyondstorage/specs/pull/87) introduces a new concept `Feature`. However, it's proved to be too complicated that both hard to understand and to implemented.
+[GSP-87](https://github.com/rgglez/specs/pull/87) introduces a new concept `Feature`. However, it's proved to be too complicated that both hard to understand and to implemented.
 
 In GSP-87, we added new struct `ServiceFeatures` and `StorageFeatures`:
 

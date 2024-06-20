@@ -8,10 +8,10 @@ import (
 
 	"github.com/huaweicloud/huaweicloud-sdk-go-obs/obs"
 
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) create(path string, opt pairStorageCreate) (o *types.Object) {
@@ -56,7 +56,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 	// obs DeleteObject is idempotent, so we don't need to check NoSuchKey error.
 	//
 	// References
-	// - [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+	// - [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 	// - https://support.huaweicloud.com/api-obs/obs_04_0085.html#section0
 	_, err = s.client.DeleteObject(input)
 	if err != nil {
@@ -80,7 +80,7 @@ func (s *Storage) list(ctx context.Context, path string, opt pairStorageList) (o
 
 	if !opt.HasListMode {
 		// Support `ListModePrefix` as the default `ListMode`.
-		// ref: [GSP-46](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
+		// ref: [GSP-46](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
 		opt.ListMode = types.ListModePrefix
 	}
 
@@ -268,7 +268,7 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
 	// Since obs supports reader passed in as nil, we do not need to determine the case where the reader is nil and the size is 0.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if r == nil && size != 0 {
 		return 0, fmt.Errorf("reader is nil but size is not 0")
 	}

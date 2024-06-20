@@ -52,6 +52,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Implement uss services.
 
-[v2.2.0]: https://github.com/beyondstorage/go-service-uss/compare/v2.1.0...v2.2.0
-[v2.1.0]: https://github.com/beyondstorage/go-service-uss/compare/v2.0.0...v2.1.0
-[v2.0.0]: https://github.com/beyondstorage/go-service-uss/compare/v1.0.0...v2.0.0
+[v2.2.0]: https://github.com/rgglez/go-service-uss/compare/v2.1.0...v2.2.0
+[v2.1.0]: https://github.com/rgglez/go-service-uss/compare/v2.0.0...v2.1.0
+[v2.0.0]: https://github.com/rgglez/go-service-uss/compare/v1.0.0...v2.0.0

@@ -9,11 +9,11 @@ import (
 	"github.com/baidubce/bce-sdk-go/services/bos"
 	"github.com/baidubce/bce-sdk-go/services/bos/api"
 
-	"github.com/beyondstorage/go-storage/credential"
-	"github.com/beyondstorage/go-storage/endpoint"
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/credential"
+	"github.com/rgglez/go-storage/endpoint"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 // Service is the bos service

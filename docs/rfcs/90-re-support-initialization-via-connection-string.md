@@ -1,7 +1,7 @@
 - Author: xxchan <xxchan22f@gmail.com>
 - Start Date: 2021-06-17
-- RFC PR: [beyondstorage/specs#90](https://github.com/beyondstorage/specs/issues/90)
-- Tracking Issue: [beyondstorage/go-storage#600](https://github.com/beyondstorage/go-storage/issues/600)
+- RFC PR: [beyondstorage/specs#90](https://github.com/rgglez/specs/issues/90)
+- Tracking Issue: [beyondstorage/go-storage#600](https://github.com/rgglez/go-storage/issues/600)
 
 # GSP-90: Re-support Initialization Via Connection String
 
@@ -154,4 +154,4 @@ New additional utility, no break change.
 [GSP-13]: ./13-remove-config-string.md
 [GSP-48]: ./48-service-registry.md
 [GSP-105]: ./105-trim-service-pair-prefix.md
-[go-storage]: https://github.com/beyondstorage/go-storage
+[go-storage]: https://github.com/rgglez/go-storage

@@ -17,11 +17,11 @@ import (
 	s3types "github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/aws/smithy-go/middleware"
 
-	"github.com/beyondstorage/go-storage/credential"
-	"github.com/beyondstorage/go-storage/endpoint"
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/services"
-	typ "github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/credential"
+	"github.com/rgglez/go-storage/endpoint"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/services"
+	typ "github.com/rgglez/go-storage/v5/types"
 )
 
 // Service is the s3 service config.

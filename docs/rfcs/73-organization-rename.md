@@ -1,6 +1,6 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-05-19
-- RFC PR: [beyondstorage/specs#73](https://github.com/beyondstorage/specs/issues/73)
+- RFC PR: [beyondstorage/specs#73](https://github.com/rgglez/specs/issues/73)
 - Tracking Issue: N/A
 
 # GSP-73: Organization Rename
@@ -40,10 +40,10 @@ All services, applications and infrastructure could be affected.
     - Update module name and import paths.
     - Rename `AosError` to `InternalError` and update the implementation.
     - Update README doc.
-    - Bump to `github.com/beyondstorage/go-storage/v4`.
+    - Bump to `github.com/rgglez/go-storage/v4`.
 - go-integration-test:
     - Update module name and import paths.
-    - Bump to `github.com/beyondstorage/go-integration-test/v4`.
+    - Bump to `github.com/rgglez/go-integration-test/v4`.
 - go-service-*:
     - Update the import paths, and the reference links.
     - Update module name and bump to a new major version.

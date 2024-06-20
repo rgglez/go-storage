@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Upgraded
 
 - ci: Upgrade fetch-metadata
-- build(deps): Bump github.com/beyondstorage/go-endpoint to 1.1.0 (#19)
+- build(deps): Bump github.com/rgglez/go-endpoint to 1.1.0 (#19)
 
 ## v0.1.0 - 2021-07-15
 
@@ -38,4 +38,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Implement IPFS Storager, Copier, Mover, Direr.
 
-[v0.2.0]: https://github.com/beyondstorage/go-service-ipfs/compare/v0.1.0...v0.2.0
+[v0.2.0]: https://github.com/rgglez/go-service-ipfs/compare/v0.1.0...v0.2.0

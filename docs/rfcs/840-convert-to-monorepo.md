@@ -1,7 +1,7 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-10-13
-- RFC PR: [beyondstorage/go-storage#840](https://github.com/beyondstorage/go-storage/issues/840)
-- Tracking Issue: [beyondstorage/go-storage#841](https://github.com/beyondstorage/go-storage/issues/841)
+- RFC PR: [beyondstorage/go-storage#840](https://github.com/rgglez/go-storage/issues/840)
+- Tracking Issue: [beyondstorage/go-storage#841](https://github.com/rgglez/go-storage/issues/841)
 
 # GSP-840: Convert to monorepo
 
@@ -75,9 +75,9 @@ go-storage
 
 The module path will be:
 
-- `github.com/beyondstorage/go-storage/v4/types` -> `go.beyondstorage.io/v4/types`
-- `github.com/beyondstorage/go-service-s3/v2` -> `go.beyondstorage.io/services/s3/v2`
-- `github.com/beyondstorage/go-service-gcs/v2` -> `go.beyondstorage.io/services/gcs/v2`
+- `github.com/rgglez/go-storage/v4/types` -> `go.beyondstorage.io/v4/types`
+- `github.com/rgglez/go-service-s3/v2` -> `go.beyondstorage.io/services/s3/v2`
+- `github.com/rgglez/go-service-gcs/v2` -> `go.beyondstorage.io/services/gcs/v2`
 
 ## Rationale
 

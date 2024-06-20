@@ -1,15 +1,15 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-07-04
-- RFC PR: [beyondstorage/specs#134](https://github.com/beyondstorage/specs/pull/134)
-- Tracking Issue: [beyondstorage/go-storage#624](https://github.com/beyondstorage/go-storage/issues/624)
+- RFC PR: [beyondstorage/specs#134](https://github.com/rgglez/specs/pull/134)
+- Tracking Issue: [beyondstorage/go-storage#624](https://github.com/rgglez/go-storage/issues/624)
 
 # GSP-134: Write Behavior Consistency
 
 Previous Discussions:
 
-- [Add detailed behavior about move/copy](https://github.com/beyondstorage/specs/issues/130)
-- [Make write Idempotent](https://github.com/beyondstorage/specs/issues/96)
-- [copy/move doesn't need to support dst path that has an existing path](https://github.com/beyondstorage/go-integration-test/issues/29)
+- [Add detailed behavior about move/copy](https://github.com/rgglez/specs/issues/130)
+- [Make write Idempotent](https://github.com/rgglez/specs/issues/96)
+- [copy/move doesn't need to support dst path that has an existing path](https://github.com/rgglez/go-integration-test/issues/29)
 
 ## Background
 
@@ -107,7 +107,7 @@ For `Copy` and `Move`:
 - If `autorename` is true, `dropbox` will rename the final path with a suffix like `(1)`.
 
 
-In [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md), we make `Delete` idempotent which means without any outsides changes, any `Delete` call on the same path will get the same result. But `Write` is more complex than `Delete` and we cannot reuse the experience from GSP-46 directly:
+In [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md), we make `Delete` idempotent which means without any outsides changes, any `Delete` call on the same path will get the same result. But `Write` is more complex than `Delete` and we cannot reuse the experience from GSP-46 directly:
 
 - `Write` is unlikely to be retried: the underlying `io.Reader` could only be consumed once.
 - Make `Delete` idempotent is simple: we just need to ignore the `ObjectNotExist` error, but it's difficult for `Write`.

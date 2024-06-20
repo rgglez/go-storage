@@ -10,11 +10,11 @@ import (
 
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/pkg/headers"
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/headers"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) commitAppend(ctx context.Context, o *types.Object, opt pairStorageCommitAppend) (err error) {
@@ -78,7 +78,7 @@ func (s *Storage) createAppend(ctx context.Context, path string, opt pairStorage
 	rp := s.getAbsPath(path)
 
 	// oss `append` doesn't support `overwrite`, so we need to check and delete the object if exists.
-	// ref: [GSP-134](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/134-write-behavior-consistency.md)
+	// ref: [GSP-134](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/134-write-behavior-consistency.md)
 	isExist, err := s.bucket.IsObjectExist(rp)
 	if err != nil {
 		return
@@ -224,7 +224,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 		})
 		if err != nil && checkError(err, responseCodeNoSuchUpload) {
 			// Omit `NoSuchUpdate` error here
-			// ref: [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+			// ref: [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 			err = nil
 		}
 		if err != nil {
@@ -245,7 +245,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 	// OSS DeleteObject is idempotent, so we don't need to check NoSuchKey error.
 	//
 	// References
-	// - [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+	// - [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 	// - https://help.aliyun.com/document_detail/31982.html
 	err = s.bucket.DeleteObject(rp)
 	if err != nil {
@@ -257,7 +257,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 func (s *Storage) list(ctx context.Context, path string, opt pairStorageList) (oi *types.ObjectIterator, err error) {
 	if !opt.HasListMode {
 		// Support `ListModePrefix` as the default `ListMode`.
-		// ref: [GSP-654](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
+		// ref: [GSP-654](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
 		opt.ListMode = types.ListModePrefix
 	}
 
@@ -596,7 +596,7 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
 	// Since oss supports reader passed in as nil, we do not need to determine the case where the reader is nil and the size is 0.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if r == nil && size != 0 {
 		return 0, fmt.Errorf("reader is nil but size is not 0")
 	} else {

@@ -45,5 +45,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Implement memory services.
 
-[v0.3.0]: https://github.com/beyondstorage/go-service-memory/compare/v0.2.0...v0.3.0
-[v0.2.0]: https://github.com/beyondstorage/go-service-memory/compare/v0.1.0...v0.2.0 
+[v0.3.0]: https://github.com/rgglez/go-service-memory/compare/v0.2.0...v0.3.0
+[v0.2.0]: https://github.com/rgglez/go-service-memory/compare/v0.1.0...v0.2.0 

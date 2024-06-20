@@ -3,8 +3,8 @@ package ocios
 import (
 	"fmt"
 
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 // Service is the example config.

@@ -1,13 +1,13 @@
 - Author: abyss-w <mad.hatter@foxmail.com>
 - Start Date: 2021-08-11
-- RFC PR: [beyondstorage/go-service-s3#178](https://github.com/beyondstorage/go-service-s3/pull/178)
-- Tracking Issue: [beyondstorage/go-service-s3#144](https://github.com/beyondstorage/go-service-s3/issues/144)
+- RFC PR: [beyondstorage/go-service-s3#178](https://github.com/rgglez/go-service-s3/pull/178)
+- Tracking Issue: [beyondstorage/go-service-s3#144](https://github.com/rgglez/go-service-s3/issues/144)
 
 # RFC-178: Add Virtual Link Support
 
 ## Background
 
-Like the one presented in [GSP-86 Add Create Link Operation](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/86-add-create-link-operation.md), s3 has no native support for symlink. But we can use [user-defined object metadata](https://docs.aws.amazon.com/zh_cn/AmazonS3/latest/userguide/UsingMetadata.html#UserMetadata) to simulate it.
+Like the one presented in [GSP-86 Add Create Link Operation](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/86-add-create-link-operation.md), s3 has no native support for symlink. But we can use [user-defined object metadata](https://docs.aws.amazon.com/zh_cn/AmazonS3/latest/userguide/UsingMetadata.html#UserMetadata) to simulate it.
 
 ## Proposal
 

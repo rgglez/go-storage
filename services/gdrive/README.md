@@ -1,13 +1,13 @@
-[![Services Test Gdrive](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-gdrive.yml/badge.svg)](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-gdrive.yml)
+[![Services Test Gdrive](https://github.com/rgglez/go-storage/actions/workflows/services-test-gdrive.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/services-test-gdrive.yml)
 
 # gdrive
 
-Google Drive service support for [go-storage](https://github.com/beyondstorage/go-storage).
+Google Drive service support for [go-storage](https://github.com/rgglez/go-storage).
 
 ## Install
 
 ```go
-go get github.com/beyondstorage/go-storage/services/gdrive
+go get github.com/rgglez/go-storage/services/gdrive
 ```
 
 ## Usage
@@ -16,8 +16,8 @@ go get github.com/beyondstorage/go-storage/services/gdrive
 import (
 	"log"
 
-	_ "github.com/beyondstorage/go-storage/services/gdrive"
-	"github.com/beyondstorage/go-storage/v5/services"
+	_ "github.com/rgglez/go-storage/services/gdrive"
+	"github.com/rgglez/go-storage/v5/services"
 )
 
 func main() {
@@ -31,5 +31,5 @@ func main() {
 }
 ```
 
-- See more examples in [go-storage-example](https://github.com/beyondstorage/go-storage-example).
+- See more examples in [go-storage-example](https://github.com/rgglez/go-storage-example).
 - Read [more docs](https://beyondstorage.io/docs/go-storage/services/gdrive) about go-service-gdrive.

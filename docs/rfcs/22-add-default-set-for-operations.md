@@ -127,6 +127,6 @@ None
 
 Most of the work would be done by the author of this proposal.
 
-[fs-service]: https://github.com/beyondstorage/go-service-fs
-[storage]: https://github.com/beyondstorage/go-storage
-[proposal: Add default set for operations #170]: https://github.com/beyondstorage/go-storage/issues/170
+[fs-service]: https://github.com/rgglez/go-service-fs
+[storage]: https://github.com/rgglez/go-storage
+[proposal: Add default set for operations #170]: https://github.com/rgglez/go-storage/issues/170

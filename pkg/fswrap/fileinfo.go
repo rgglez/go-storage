@@ -4,7 +4,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 type fileInfoWrapper struct {

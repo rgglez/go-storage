@@ -1,7 +1,7 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-08-27
-- RFC PR: [beyondstorage/go-storage#729](https://github.com/beyondstorage/go-storage/issues/729)
-- Tracking Issue: [beyondstorage/go-storage#731](https://github.com/beyondstorage/go-storage/issues/731)
+- RFC PR: [beyondstorage/go-storage#729](https://github.com/rgglez/go-storage/issues/729)
+- Tracking Issue: [beyondstorage/go-storage#731](https://github.com/rgglez/go-storage/issues/731)
 
 # GSP-729: Redesign HTTP Signer
 

@@ -1,6 +1,6 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-04-26
-- RFC PR: [beyondstorage/specs#44](https://github.com/beyondstorage/specs/issues/44)
+- RFC PR: [beyondstorage/specs#44](https://github.com/rgglez/specs/issues/44)
 - Tracking Issue: N/A
 
 # AOS-44: Add CommitAppend in Appender

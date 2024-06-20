@@ -1,6 +1,6 @@
 - Author: xxchan <xxchan22f@gmail.com>
 - Start Date: 2021-05-07
-- RFC PR: [beyondstorage/specs#47](https://github.com/beyondstorage/specs/issues/47)
+- RFC PR: [beyondstorage/specs#47](https://github.com/rgglez/specs/issues/47)
 - Tracking Issue: N/A
 
 # AOS-47: Additional Error Specification
@@ -292,5 +292,5 @@ The following changes will be made:
   - Return error `struct`s instead of pointers.
 
 [AOS-11]: ./11-error-handling.md
-[go-storage]: https://github.com/beyondstorage/go-storage
-[go-storage/services/error.go]: https://github.com/beyondstorage/go-storage/blob/master/services/error.go
+[go-storage]: https://github.com/rgglez/go-storage
+[go-storage/services/error.go]: https://github.com/rgglez/go-storage/blob/master/services/error.go

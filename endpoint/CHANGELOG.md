@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- feat: Add support for http://example.com (https://github.com/beyondstorage/go-endpoint/pull/17)
+- feat: Add support for http://example.com (https://github.com/rgglez/go-endpoint/pull/17)
 
 ### Changed
 
@@ -38,6 +38,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Add Parse support
 - Add http/https/file protocol support
 
-[Unreleased]: https://github.com/beyondstorage/go-storage/compare/endpoint/v1.2.0...HEAD
-[v1.1.0]: https://github.com/beyondstorage/go-endpoint/compare/v1.0.1...v1.1.0
-[v1.0.1]: https://github.com/beyondstorage/go-endpoint/compare/v1.0.0...v1.0.1
+[Unreleased]: https://github.com/rgglez/go-storage/compare/endpoint/v1.2.0...HEAD
+[v1.1.0]: https://github.com/rgglez/go-endpoint/compare/v1.0.1...v1.1.0
+[v1.0.1]: https://github.com/rgglez/go-endpoint/compare/v1.0.0...v1.0.1

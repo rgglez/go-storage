@@ -1,6 +1,6 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-06-08
-- RFC PR: [beyondstorage/specs#93](https://github.com/beyondstorage/specs/issues/93)
+- RFC PR: [beyondstorage/specs#93](https://github.com/rgglez/specs/issues/93)
 - Tracking Issue: N/A
 
 # GSP-93: Add ObjectMode Pair

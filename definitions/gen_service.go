@@ -108,8 +108,8 @@ func (gs *genService) generateHeader() {
 		AddPath("time").
 		AddPath("errors").
 		AddLine().
-		AddPath("github.com/beyondstorage/go-storage/v5/services").
-		AddPath("github.com/beyondstorage/go-storage/v5/types")
+		AddPath("github.com/rgglez/go-storage/v5/services").
+		AddPath("github.com/rgglez/go-storage/v5/types")
 
 	f.NewVar().
 		AddDecl("_", "types.Storager").

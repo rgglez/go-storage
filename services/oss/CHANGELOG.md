@@ -32,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Upgraded
 
-- build(deps): bump github.com/beyondstorage/go-storage/v4 from 4.3.2 to 4.4.0 (#45)
+- build(deps): bump github.com/rgglez/go-storage/v4 from 4.3.2 to 4.4.0 (#45)
 - build(deps): bump github.com/aliyun/aliyun-oss-go-sdk (#49)
 
 ## [v2.2.0] - 2021-07-21
@@ -113,9 +113,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Implement oss services.
 
-[v2.4.0]: https://github.com/beyondstorage/go-service-oss/compare/v2.3.0...v2.4.0
-[v2.3.0]: https://github.com/beyondstorage/go-service-oss/compare/v2.2.0...v2.3.0
-[v2.2.0]: https://github.com/beyondstorage/go-service-oss/compare/v2.1.0...v2.2.0
-[v2.1.0]: https://github.com/beyondstorage/go-service-oss/compare/v2.0.0...v2.1.0
-[v2.0.0]: https://github.com/beyondstorage/go-service-oss/compare/v1.1.0...v2.0.0
-[v1.1.0]: https://github.com/beyondstorage/go-service-oss/compare/v1.0.0...v1.1.0
+[v2.4.0]: https://github.com/rgglez/go-service-oss/compare/v2.3.0...v2.4.0
+[v2.3.0]: https://github.com/rgglez/go-service-oss/compare/v2.2.0...v2.3.0
+[v2.2.0]: https://github.com/rgglez/go-service-oss/compare/v2.1.0...v2.2.0
+[v2.1.0]: https://github.com/rgglez/go-service-oss/compare/v2.0.0...v2.1.0
+[v2.0.0]: https://github.com/rgglez/go-service-oss/compare/v1.1.0...v2.0.0
+[v1.1.0]: https://github.com/rgglez/go-service-oss/compare/v1.0.0...v1.1.0

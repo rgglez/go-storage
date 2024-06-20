@@ -1,7 +1,7 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-06-17
-- RFC PR: [beyondstorage/specs#111](https://github.com/beyondstorage/specs/issues/111)
-- Tracking Issue: [beyondstorage/go-storage#602](https://github.com/beyondstorage/go-storage/issues/602)
+- RFC PR: [beyondstorage/specs#111](https://github.com/rgglez/specs/issues/111)
+- Tracking Issue: [beyondstorage/go-storage#602](https://github.com/rgglez/go-storage/issues/602)
 
 # GSP-111: Add System Metadata in Storage Metadata
 
@@ -80,5 +80,5 @@ No breaking changes.
 
 [GSP-6]: ./6-normalize-metadata.md
 [GSP-40]: ./40-unify-object-metadata.md
-[Idea: Find a new word to represent Service]: https://github.com/beyondstorage/specs/issues/114
+[Idea: Find a new word to represent Service]: https://github.com/rgglez/specs/issues/114
 [info_storage_meta.toml]: ../definitions/info_storage_meta.toml

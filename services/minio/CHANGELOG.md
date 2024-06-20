@@ -37,4 +37,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Implement MinIO Servicer, Storager, Copier, Reacher.
 
-[v0.2.0]: https://github.com/beyondstorage/go-service-minio/compare/v0.1.0...v0.2.0
+[v0.2.0]: https://github.com/rgglez/go-service-minio/compare/v0.1.0...v0.2.0

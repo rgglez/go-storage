@@ -1,7 +1,7 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-10-27
-- RFC PR: [beyondstorage/go-storage#970](https://github.com/beyondstorage/go-storage/issues/970)
-- Tracking Issue: [beyondstorage/go-storage#975](https://github.com/beyondstorage/go-storage/issues/975)
+- RFC PR: [beyondstorage/go-storage#970](https://github.com/rgglez/go-storage/issues/970)
+- Tracking Issue: [beyondstorage/go-storage#975](https://github.com/rgglez/go-storage/issues/975)
 
 # GSP-970: Service Factory
 
@@ -20,10 +20,10 @@ package main
 import (
    "log"
 
-   "github.com/beyondstorage/go-storage/v5/services"
-   "github.com/beyondstorage/go-storage/v5/types"
+   "github.com/rgglez/go-storage/v5/services"
+   "github.com/rgglez/go-storage/v5/types"
 
-   _ "github.com/beyondstorage/go-storage/services/s3/v3"
+   _ "github.com/rgglez/go-storage/services/s3/v3"
 )
 
 func main() {

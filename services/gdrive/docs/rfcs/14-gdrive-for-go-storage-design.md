@@ -1,13 +1,13 @@
 - Author: Jun jun@junz.org
 - Start Date: 2021-7-18
-- RFC PR: [beyondstorage/go-service-gdrive#14](https://github.com/beyondstorage/go-service-gdrive/issues/14)
-- Tracking Issue: [beyondstorage/go-service-gdrive#15](https://github.com/beyondstorage/go-service-gdrive/issues/15)
+- RFC PR: [beyondstorage/go-service-gdrive#14](https://github.com/rgglez/go-service-gdrive/issues/14)
+- Tracking Issue: [beyondstorage/go-service-gdrive#15](https://github.com/rgglez/go-service-gdrive/issues/15)
 
 # RFC-14: Gdrive for go-storage design
 
 ## Background
 
-Google drive API has so many different notions that differs from `go-storage`, and we have briefly discussed in [Gdrive use FileId to manipulate data instead of file name #11](https://github.com/beyondstorage/go-service-gdrive/issues/11). Now I would like to start a RFC so that we can make all things more clear.
+Google drive API has so many different notions that differs from `go-storage`, and we have briefly discussed in [Gdrive use FileId to manipulate data instead of file name #11](https://github.com/rgglez/go-service-gdrive/issues/11). Now I would like to start a RFC so that we can make all things more clear.
 
 In Google drive API, `FileID` is a critical attribute of a file(or directory). We will use it to manipulate data instead of by path. In fact, path is very trivial in gdrive, and we can create files with the same name in the same location. In other words, path can be duplicate in gdrive. This behavior can cause some problems to our path based API.
 

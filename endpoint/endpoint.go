@@ -47,11 +47,11 @@ func Parse(cfg string) (p Endpoint, err error) {
 	case ProtocolFile:
 		// Handle file paths that contains ":" (often happens on windows platform)
 		//
-		// See issue: https://github.com/beyondstorage/go-endpoint/issues/3
+		// See issue: https://github.com/rgglez/go-endpoint/issues/3
 		path := strings.Join(s[1:], ":")
 		return NewFile(path), nil
 	case ProtocolTCP:
-		//See issue: https://github.com/beyondstorage/go-endpoint/issues/7
+		//See issue: https://github.com/rgglez/go-endpoint/issues/7
 		host, port, err := parseHostPort(s[1:])
 		if err != nil || strings.HasPrefix(host, "/") {
 			return Endpoint{}, &Error{"parse", ErrInvalidValue, s[0], s[1:]}

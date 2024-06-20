@@ -125,4 +125,4 @@ if err != nil {
 }
 ```
 
-[storage]: https://github.com/beyondstorage/go-storage
+[storage]: https://github.com/rgglez/go-storage

@@ -9,9 +9,9 @@ import (
 
 	"google.golang.org/api/drive/v3"
 
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 const directoryMimeType = "application/vnd.google-apps.folder"
@@ -101,7 +101,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 	err = s.service.Files.Delete(fileId).Do()
 
 	// Omit `path_lookup/not_found` error here.
-	// ref: [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+	// ref: [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 	if err != nil && strings.Contains(err.Error(), "404") {
 		err = nil
 	}
@@ -204,7 +204,7 @@ func (s *Storage) nextObjectPage(ctx context.Context, page *types.ObjectPage) (e
 }
 
 // pathToId converts path to fileId, as we discussed in RFC-14.
-// Ref: https://github.com/beyondstorage/go-service-gdrive/blob/master/docs/rfcs/14-gdrive-for-go-storage-design.md
+// Ref: https://github.com/rgglez/go-service-gdrive/blob/master/docs/rfcs/14-gdrive-for-go-storage-design.md
 // Behavior:
 // err represents the error handled in pathToId
 // fileId represents the results: fileId empty means the path is not exist, otherwise it's the fileId of input path
@@ -324,7 +324,7 @@ func (s *Storage) stat(ctx context.Context, path string, opt pairStorageStat) (o
 // If it is, then we upload it, or we will overwrite it.
 func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int64, opt pairStorageWrite) (n int64, err error) {
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if r == nil && size != 0 {
 		return 0, fmt.Errorf("reader is nil but size is not nil")
 	}

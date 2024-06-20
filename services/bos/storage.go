@@ -10,10 +10,10 @@ import (
 	"github.com/baidubce/bce-sdk-go/bce"
 	"github.com/baidubce/bce-sdk-go/services/bos/api"
 
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) create(path string, opt pairStorageCreate) (o *types.Object) {
@@ -53,7 +53,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 		if e, ok := err.(*bce.BceServiceError); ok && e.Code == "NoSuchKey" {
 			// bos DeleteObject is not idempotent, so we need to check object_not_exists error.
 			//
-			// - [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+			// - [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 			// - https://cloud.baidu.com/doc/BOS/s/bkc5tsslq
 			err = nil
 		} else {
@@ -67,7 +67,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 func (s *Storage) list(ctx context.Context, path string, opt pairStorageList) (oi *types.ObjectIterator, err error) {
 	if !opt.HasListMode {
 		// Support `ListModePrefix` as the default `ListMode`.
-		// ref: [GSP-46](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
+		// ref: [GSP-46](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
 		opt.ListMode = types.ListModePrefix
 	}
 
@@ -272,7 +272,7 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 	}
 
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if r == nil && size != 0 {
 		return 0, fmt.Errorf("reader is nil but size is not 0")
 	}

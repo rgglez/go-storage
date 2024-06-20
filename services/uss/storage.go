@@ -8,10 +8,10 @@ import (
 
 	"github.com/upyun/go-sdk/v3/upyun"
 
-	"github.com/beyondstorage/go-storage/v5/pkg/headers"
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/v5/pkg/headers"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 const (
@@ -77,7 +77,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 	err = s.bucket.Delete(config)
 	if err != nil && checkErrorCode(err, responseCodeFileOrDirectoryNotFound) {
 		// Omit `file or directory not found` error here.
-		// ref: [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+		// ref: [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 		err = nil
 	}
 	if err != nil {
@@ -99,7 +99,7 @@ func (s *Storage) list(ctx context.Context, path string, opt pairStorageList) (o
 
 	if !opt.HasListMode {
 		// Support `ListModePrefix` as the default `ListMode`.
-		// ref: [GSP-654](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
+		// ref: [GSP-654](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
 		opt.ListMode = types.ListModePrefix
 	}
 

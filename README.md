@@ -3,15 +3,15 @@
 ## [Website](https://beyondstorage.io) | [Documentation](https://beyondstorage.io/docs/go-storage) | [Community](https://beyondstorage.io/community)
 
 [![Go dev](https://pkg.go.dev/badge/go.beyondstorage.io/v5)](https://pkg.go.dev/go.beyondstorage.io/v5)
-[![License](https://img.shields.io/badge/license-apache%20v2-blue.svg)](https://github.com/beyondstorage/go-storage/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-apache%20v2-blue.svg)](https://github.com/rgglez/go-storage/blob/master/LICENSE)
 
 [![Matrix](https://img.shields.io/matrix/beyondstorage@go-storage:matrix.org.svg?label=go-storage&logo=matrix)](https://matrix.to/#/#beyondstorage@go-storage:matrix.org)
 [![Slack](https://img.shields.io/badge/slack-4A154B?logo=slack)](https://join.slack.com/t/beyond-storage/shared_invite/zt-pf4yk96u-7znnJVYpQvY57C3rRrbDPg)
 [![Telegram](https://img.shields.io/badge/telegram-2CA5E0?logo=telegram)](https://t.me/beyondstorage_go_storage)
 
-[![Build Test](https://github.com/beyondstorage/go-storage/actions/workflows/build-test.yml/badge.svg)](https://github.com/beyondstorage/go-storage/actions/workflows/build-test.yml)
-[![Cross Build](https://github.com/beyondstorage/go-storage/actions/workflows/cross-build.yml/badge.svg)](https://github.com/beyondstorage/go-storage/actions/workflows/cross-build.yml)
-[![Unit Test](https://github.com/beyondstorage/go-storage/actions/workflows/unit-test.yml/badge.svg)](https://github.com/beyondstorage/go-storage/actions/workflows/unit-test.yml)
+[![Build Test](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml)
+[![Cross Build](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml)
+[![Unit Test](https://github.com/rgglez/go-storage/actions/workflows/unit-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/unit-test.yml)
 
 A **vendor-neutral** storage library for Golang.
 
@@ -33,19 +33,19 @@ package main
 import (
     "log"
 
-    "github.com/beyondstorage/go-storage/v5/services"
-    "github.com/beyondstorage/go-storage/v5/types"
+    "github.com/rgglez/go-storage/v5/services"
+    "github.com/rgglez/go-storage/v5/types"
 
     // Add fs support
-    _ "github.com/beyondstorage/go-storage/services/fs/v4"
+    _ "github.com/rgglez/go-storage/services/fs/v4"
     // Add s3 support
-    _ "github.com/beyondstorage/go-storage/services/s3/v3"
+    _ "github.com/rgglez/go-storage/services/s3/v3"
     // Add gcs support
-    _ "github.com/beyondstorage/go-storage/services/gcs/v3"
+    _ "github.com/rgglez/go-storage/services/gcs/v3"
     // Add azblob support
-    _ "github.com/beyondstorage/go-storage/services/azblob/v3"
+    _ "github.com/rgglez/go-storage/services/azblob/v3"
     // More support could be found under BeyondStorage.
-    _ "github.com/beyondstorage/go-storage/services/xxx" 
+    _ "github.com/rgglez/go-storage/services/xxx" 
 )
 
 func main() {
@@ -83,45 +83,45 @@ func main() {
 }
 ```
 
-More examples could be found at [go-storage-example](https://github.com/beyondstorage/go-storage-example).
+More examples could be found at [go-storage-example](https://github.com/rgglez/go-storage-example).
 
 ## Features
 
 ### Widely native services support
 
-**16** stable services that have passed all [integration tests](https://github.com/beyondstorage/go-integration-test).
+**16** stable services that have passed all [integration tests](https://github.com/rgglez/go-integration-test).
 
-- [azblob](https://github.com/beyondstorage/go-service-azblob/): [Azure Blob storage](https://docs.microsoft.com/en-us/azure/storage/blobs/)
-- [bos](https://github.com/beyondstorage/go-service-bos): [Baidu Object Storage](https://cloud.baidu.com/product/bos.html)
-- [cos](https://github.com/beyondstorage/go-service-cos/): [Tencent Cloud Object Storage](https://cloud.tencent.com/product/cos)
-- [dropbox](https://github.com/beyondstorage/go-service-dropbox/): [Dropbox](https://www.dropbox.com)
-- [fs](https://github.com/beyondstorage/go-service-fs/): Local file system
-- [ftp](https://github.com/beyondstorage/go-service-ftp/): FTP
-- [gcs](https://github.com/beyondstorage/go-service-gcs/): [Google Cloud Storage](https://cloud.google.com/storage/)
-- [gdrive](https://github.com/beyondstorage/go-service-gdrive): [Google Drive](https://www.google.com/drive/)
-- [ipfs](https://github.com/beyondstorage/go-service-ipfs): [InterPlanetary File System](https://ipfs.io)
-- [kodo](https://github.com/beyondstorage/go-service-kodo/): [qiniu kodo](https://www.qiniu.com/products/kodo)
-- [memory](https://github.com/beyondstorage/go-service-memory): data that only in memory
-- [minio](https://github.com/beyondstorage/go-service-minio): [MinIO](https://min.io)
-- [obs](https://github.com/beyondstorage/go-service-obs): [Huawei Object Storage Service](https://www.huaweicloud.com/product/obs.html)
-- [oss](https://github.com/beyondstorage/go-service-oss/): [Aliyun Object Storage](https://www.aliyun.com/product/oss)
-- [qingstor](https://github.com/beyondstorage/go-service-qingstor/): [QingStor Object Storage](https://www.qingcloud.com/products/qingstor/)
-- [s3](https://github.com/beyondstorage/go-service-s3/): [Amazon S3](https://aws.amazon.com/s3/)
+- [azblob](https://github.com/rgglez/go-service-azblob/): [Azure Blob storage](https://docs.microsoft.com/en-us/azure/storage/blobs/)
+- [bos](https://github.com/rgglez/go-service-bos): [Baidu Object Storage](https://cloud.baidu.com/product/bos.html)
+- [cos](https://github.com/rgglez/go-service-cos/): [Tencent Cloud Object Storage](https://cloud.tencent.com/product/cos)
+- [dropbox](https://github.com/rgglez/go-service-dropbox/): [Dropbox](https://www.dropbox.com)
+- [fs](https://github.com/rgglez/go-service-fs/): Local file system
+- [ftp](https://github.com/rgglez/go-service-ftp/): FTP
+- [gcs](https://github.com/rgglez/go-service-gcs/): [Google Cloud Storage](https://cloud.google.com/storage/)
+- [gdrive](https://github.com/rgglez/go-service-gdrive): [Google Drive](https://www.google.com/drive/)
+- [ipfs](https://github.com/rgglez/go-service-ipfs): [InterPlanetary File System](https://ipfs.io)
+- [kodo](https://github.com/rgglez/go-service-kodo/): [qiniu kodo](https://www.qiniu.com/products/kodo)
+- [memory](https://github.com/rgglez/go-service-memory): data that only in memory
+- [minio](https://github.com/rgglez/go-service-minio): [MinIO](https://min.io)
+- [obs](https://github.com/rgglez/go-service-obs): [Huawei Object Storage Service](https://www.huaweicloud.com/product/obs.html)
+- [oss](https://github.com/rgglez/go-service-oss/): [Aliyun Object Storage](https://www.aliyun.com/product/oss)
+- [qingstor](https://github.com/rgglez/go-service-qingstor/): [QingStor Object Storage](https://www.qingcloud.com/products/qingstor/)
+- [s3](https://github.com/rgglez/go-service-s3/): [Amazon S3](https://aws.amazon.com/s3/)
 
-**3** beta services that implemented required functions, but not passed [integration tests](https://github.com/beyondstorage/go-integration-test).
+**3** beta services that implemented required functions, but not passed [integration tests](https://github.com/rgglez/go-integration-test).
 
-- [hdfs](https://github.com/beyondstorage/go-service-hdfs): [Hadoop Distributed File System](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html#Introduction)
-- [tar](https://github.com/beyondstorage/go-service-tar): tar files
-- [uss](https://github.com/beyondstorage/go-service-uss/): [UPYUN Storage Service](https://www.upyun.com/products/file-storage)
+- [hdfs](https://github.com/rgglez/go-service-hdfs): [Hadoop Distributed File System](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html#Introduction)
+- [tar](https://github.com/rgglez/go-service-tar): tar files
+- [uss](https://github.com/rgglez/go-service-uss/): [UPYUN Storage Service](https://www.upyun.com/products/file-storage)
 
 **4** alpha services that still under development.
 
-- [onedrive](https://github.com/beyondstorage/go-service-onedrive): [Microsoft OneDrive](https://www.microsoft.com/en-ww/microsoft-365/onedrive/online-cloud-storage)
-- [storj](https://github.com/beyondstorage/go-service-storj): [StorJ](https://www.storj.io/)
-- [webdav](https://github.com/beyondstorage/go-service-webdav): [WebDAV](http://www.webdav.org/)
-- [zip](https://github.com/beyondstorage/go-service-zip): zip files
+- [onedrive](https://github.com/rgglez/go-service-onedrive): [Microsoft OneDrive](https://www.microsoft.com/en-ww/microsoft-365/onedrive/online-cloud-storage)
+- [storj](https://github.com/rgglez/go-service-storj): [StorJ](https://www.storj.io/)
+- [webdav](https://github.com/rgglez/go-service-webdav): [WebDAV](http://www.webdav.org/)
+- [zip](https://github.com/rgglez/go-service-zip): zip files
 
-More service ideas could be found at [Service Integration Tracking](https://github.com/beyondstorage/go-storage/issues/536).
+More service ideas could be found at [Service Integration Tracking](https://github.com/rgglez/go-storage/issues/536).
 
 ### Complete and easily extensible interface
 
@@ -237,7 +237,7 @@ Global object metadata
 
 - `id`: unique key in service
 - `name`: relative path towards service's work dir
-- `mode`: object mode can be a combination of `read`, `dir`, `part` and [more](https://github.com/beyondstorage/go-storage/blob/master/types/object.go#L11) 
+- `mode`: object mode can be a combination of `read`, `dir`, `part` and [more](https://github.com/rgglez/go-storage/blob/master/types/object.go#L11) 
 - `etag`: entity tag as defined in [rfc2616](https://tools.ietf.org/html/rfc2616#section-14.19)
 - `content-length`: object's content size.
 - `content-md5`: md5 digest as defined in [rfc2616](https://tools.ietf.org/html/rfc2616#section-14.15)
@@ -259,7 +259,7 @@ _ = om.ServerSideEncryptionCustomerAlgorithm // this object's sse algorithm
 
 ### Strong Typing Everywhere
 
-Self maintained codegen [definitions](https://github.com/beyondstorage/go-storage/tree/master/cmd/definitions) helps to generate all our APIs, pairs and metadata.
+Self maintained codegen [definitions](https://github.com/rgglez/go-storage/tree/master/cmd/definitions) helps to generate all our APIs, pairs and metadata.
 
 Generated pairs which can be used as API optional arguments.
 

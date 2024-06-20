@@ -1,7 +1,7 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-06-21
-- RFC PR: [beyondstorage/specs#117](https://github.com/beyondstorage/specs/issues/117)
-- Tracking Issue: [beyondstorage/go-storage#604](https://github.com/beyondstorage/go-storage/issues/604)
+- RFC PR: [beyondstorage/specs#117](https://github.com/rgglez/specs/issues/117)
+- Tracking Issue: [beyondstorage/go-storage#604](https://github.com/rgglez/go-storage/issues/604)
 
 # GSP-117: Rename Service to System as the Opposite to Global
 
@@ -47,6 +47,6 @@ All API call that used object system metadata could be affected. We could migrat
 - Update comments about `Service Pair`, `Service Info` and so on in site.
 
 
-[go-storage]: https://github.com/beyondstorage/go-storage
-[specs]: https://github.com/beyondstorage/specs
-[Idea: Find a new word to represent Service]: https://github.com/beyondstorage/specs/issues/114
+[go-storage]: https://github.com/rgglez/go-storage
+[specs]: https://github.com/rgglez/specs
+[Idea: Find a new word to represent Service]: https://github.com/rgglez/specs/issues/114

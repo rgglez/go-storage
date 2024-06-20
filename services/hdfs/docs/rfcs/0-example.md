@@ -1,15 +1,15 @@
 - Author: (fill me in with `name <mail>`, e.g., bokket [bokkett@gmail.com](mailto:bokkett@gmail.com))
 - Start Date: (fill me in with today's date, YYYY-MM-DD)
-- RFC PR: [beyondstorage/go-service-hdfs#0](https://github.com/beyondstorage/go-service-hdfs/issues/0)
-- Tracking Issue: [beyondstorage/go-service-hdfs#0](https://github.com/beyondstorage/go-service-hdfs/issues/0)
+- RFC PR: [beyondstorage/go-service-hdfs#0](https://github.com/rgglez/go-service-hdfs/issues/0)
+- Tracking Issue: [beyondstorage/go-service-hdfs#0](https://github.com/rgglez/go-service-hdfs/issues/0)
 
 # RFC-0:
 
 - Updates: (delete this part if not applicable)
-  - [RFC-20](https://github.com/beyondstorage/go-service-hdfs/blob/master/docs/rfcs/20-abc): Deletes something
+  - [RFC-20](https://github.com/rgglez/go-service-hdfs/blob/master/docs/rfcs/20-abc): Deletes something
 - Updated By: (delete this part if not applicable)
-  - [RFC-10](https://github.com/beyondstorage/go-service-hdfs/blob/master/docs/rfcs/10-do-be-do-be-do): Adds something
-  - [RFC-1000](https://github.com/beyondstorage/go-service-hdfs/blob/master/docs/rfcs/1000-lalala): Deprecates this RFC
+  - [RFC-10](https://github.com/rgglez/go-service-hdfs/blob/master/docs/rfcs/10-do-be-do-be-do): Adds something
+  - [RFC-1000](https://github.com/rgglez/go-service-hdfs/blob/master/docs/rfcs/1000-lalala): Deprecates this RFC
 
 ## Background
 

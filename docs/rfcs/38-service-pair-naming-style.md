@@ -1,6 +1,6 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-04-21
-- RFC PR: [beyondstorage/specs#38](https://github.com/beyondstorage/specs/issues/38)
+- RFC PR: [beyondstorage/specs#38](https://github.com/rgglez/specs/issues/38)
 - Tracking Issue: N/A
 
 # AOS-38: Service Pair Naming Style

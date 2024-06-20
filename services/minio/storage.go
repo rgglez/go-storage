@@ -8,10 +8,10 @@ import (
 
 	"github.com/minio/minio-go/v7"
 
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 const defaultListObjectBufferSize = 100
@@ -162,7 +162,7 @@ func (s *Storage) stat(ctx context.Context, path string, opt pairStorageStat) (o
 
 func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int64, opt pairStorageWrite) (n int64, err error) {
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if r == nil && size != 0 {
 		return 0, fmt.Errorf("reader is nil but size is not 0")
 	}

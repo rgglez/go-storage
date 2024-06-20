@@ -32,7 +32,7 @@ test:
 	go tool cover -html="coverage.txt" -o "coverage.html"
 
 integration_test:
-	# Storj is much slower than we expected: https://github.com/beyondstorage/go-storage/issues/958
+	# Storj is much slower than we expected: https://github.com/rgglez/go-storage/issues/958
 	# 10 minutes is not enough for storj to finish our test.
 	# So we increase timeout to 30m.
 	go test -race -count=1 -covermode=atomic -v -timeout=30m ./tests

@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- feat: Add support for Write Empty File Behavior (https://github.com/beyondstorage/go-service-azblob/pull/54)
+- feat: Add support for Write Empty File Behavior (https://github.com/rgglez/go-service-azblob/pull/54)
 
 ### Changed
 
@@ -98,8 +98,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Implement azblob services.
 
-[v2.3.0]: https://github.com/beyondstorage/go-service-azblob/compare/v2.2.0...v2.3.0
-[v2.2.0]: https://github.com/beyondstorage/go-service-azblob/compare/v2.1.0...v2.2.0
-[v2.1.0]: https://github.com/beyondstorage/go-service-azblob/compare/v2.0.0...v2.1.0
-[v2.0.0]: https://github.com/beyondstorage/go-service-azblob/compare/v1.1.0...v2.0.0
-[v1.1.0]: https://github.com/beyondstorage/go-service-azblob/compare/v1.0.0...v1.1.0
+[v2.3.0]: https://github.com/rgglez/go-service-azblob/compare/v2.2.0...v2.3.0
+[v2.2.0]: https://github.com/rgglez/go-service-azblob/compare/v2.1.0...v2.2.0
+[v2.1.0]: https://github.com/rgglez/go-service-azblob/compare/v2.0.0...v2.1.0
+[v2.0.0]: https://github.com/rgglez/go-service-azblob/compare/v1.1.0...v2.0.0
+[v1.1.0]: https://github.com/rgglez/go-service-azblob/compare/v1.0.0...v1.1.0

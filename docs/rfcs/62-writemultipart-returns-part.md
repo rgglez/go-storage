@@ -1,6 +1,6 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-05-11
-- RFC PR: [beyondstorage/specs#62](https://github.com/beyondstorage/specs/issues/62)
+- RFC PR: [beyondstorage/specs#62](https://github.com/rgglez/specs/issues/62)
 - Tracking Issue: N/A
 
 # AOS-62: WriteMultipart Returns Part
@@ -60,9 +60,9 @@ This is a breaking change, we should
 
 ## Implementation
 
-- Update [speces](https://github.com/beyondstorage/specs/)
+- Update [speces](https://github.com/rgglez/specs/)
   - Add `Part` to the return value of `WriteMultipart`.
-- Update [go-storage](https://github.com/beyondstorage/go-storage)
-- Update [go-integration-test](https://github.com/beyondstorage/go-integration-test)
+- Update [go-storage](https://github.com/rgglez/go-storage)
+- Update [go-integration-test](https://github.com/rgglez/go-integration-test)
   - Add the argument ETag in `CompletePart` test case.
 - Make sure all services implement `WriteMultipart` and `CompleteMultipart` correctly.

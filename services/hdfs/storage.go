@@ -53,7 +53,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 	err = s.hdfs.Remove(rp)
 	if err != nil && errors.Is(err, os.ErrNotExist) {
 		// Omit `file not exist` error here
-		// ref: [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+		// ref: [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 		err = nil
 	}
 	return err
@@ -179,7 +179,7 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 
 		if err != nil && errors.Is(err, os.ErrNotExist) {
 			// Omit `file not exist` error here
-			// ref: [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+			// ref: [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 			err = nil
 		}
 	}

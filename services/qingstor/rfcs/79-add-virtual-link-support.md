@@ -1,7 +1,7 @@
 - Author: abyss-w <mad.hatter@foxmail.com>
 - Start Date: 2021-08-16
-- RFC PR: [beyondstorage/go-service-qingstor#79](https://github.com/beyondstorage/go-service-qingstor/pull/79)
-- Tracking Issue: [beyondstorage/go-service-qingstor#64](https://github.com/beyondstorage/go-service-qingstor/issues/64)
+- RFC PR: [beyondstorage/go-service-qingstor#79](https://github.com/rgglez/go-service-qingstor/pull/79)
+- Tracking Issue: [beyondstorage/go-service-qingstor#64](https://github.com/rgglez/go-service-qingstor/issues/64)
 
 # RFC-79: Add Virtual Link Support
 

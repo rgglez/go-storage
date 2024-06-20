@@ -4,10 +4,10 @@ import (
 	"os"
 	"testing"
 
-	azblob "github.com/beyondstorage/go-storage/services/azblob/v3"
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/types"
 	"github.com/google/uuid"
+	azblob "github.com/rgglez/go-storage/services/azblob/v3"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func setupTest(t *testing.T) types.Storager {

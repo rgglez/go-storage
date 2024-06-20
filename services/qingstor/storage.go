@@ -193,7 +193,7 @@ func (s *Storage) createLink(ctx context.Context, path string, target string, op
 
 	input := &service.PutObjectInput{
 		// As qingstor does not support symlink, we can only use user-defined metadata to simulate it.
-		// ref: https://github.com/beyondstorage/go-service-qingstor/blob/master/rfcs/79-add-virtual-link-support.md
+		// ref: https://github.com/rgglez/go-service-qingstor/blob/master/rfcs/79-add-virtual-link-support.md
 		XQSMetaData: &map[string]string{
 			metadataLinkTargetHeader: rt,
 		},
@@ -252,7 +252,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 		// QingStor AbortMultipartUpload is idempotent, so we don't need to check upload_not_exists error.
 		//
 		// References
-		// - [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+		// - [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 		// - https://docs.qingcloud.com/qingstor/api/object/multipart/abort_multipart_upload.html
 		_, err = s.bucket.AbortMultipartUploadWithContext(ctx, rp, &service.AbortMultipartUploadInput{
 			UploadID: service.String(opt.MultipartID),
@@ -274,7 +274,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 
 	// QingStor DeleteObject is idempotent, so we don't need to check object_not_exists error.
 	//
-	// - [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+	// - [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 	// - https://docs.qingcloud.com/qingstor/api/object/delete
 	_, err = s.bucket.DeleteObjectWithContext(ctx, rp)
 	if err != nil {
@@ -298,7 +298,7 @@ func (s *Storage) list(ctx context.Context, path string, opt pairStorageList) (o
 
 	if !opt.HasListMode {
 		// Support `ListModePrefix` as the default `ListMode`.
-		// ref: [GSP-654](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
+		// ref: [GSP-654](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
 		opt.ListMode = types.ListModePrefix
 	}
 
@@ -697,7 +697,7 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 	}
 
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if r == nil && size != 0 {
 		return 0, fmt.Errorf("reader is nil but size is not 0")
 	}

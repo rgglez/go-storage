@@ -1,7 +1,7 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-08-26
-- RFC PR: [beyondstorage/go-storage#725](https://github.com/beyondstorage/go-storage/issues/725)
-- Tracking Issue: [beyondstorage/go-storage#727](https://github.com/beyondstorage/go-storage/issues/727)
+- RFC PR: [beyondstorage/go-storage#725](https://github.com/rgglez/go-storage/issues/725)
+- Tracking Issue: [beyondstorage/go-storage#727](https://github.com/rgglez/go-storage/issues/727)
 
 # GSP-725: Add Defaultable Property for Pair
 
@@ -13,7 +13,7 @@
 In [GSP-700], we introduced `defaultable` field in `namespace` to specify defaultable pair and generate default pairs for them to support default pairs configuration.
 
 After introducing defaultable pairs for namespace:
-- We need to maintain a pairs map in namespace described in [Pair map for namespace](https://github.com/beyondstorage/go-storage/issues/711). There will be cross-association between `service`, `namespace` and `pair`.
+- We need to maintain a pairs map in namespace described in [Pair map for namespace](https://github.com/rgglez/go-storage/issues/711). There will be cross-association between `service`, `namespace` and `pair`.
 - All the generated default paris are system pairs. For global pairs, shared values are only valid inside the service. Users need to assign default values separately for each service during initialization instead of using a unified function conveniently.
 
 ## Proposal

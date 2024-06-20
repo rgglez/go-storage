@@ -8,7 +8,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/beyondstorage/go-storage/v5/pkg/randbytes"
+	"github.com/rgglez/go-storage/v5/pkg/randbytes"
 )
 
 type storageStatSuite struct {

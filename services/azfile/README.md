@@ -1,11 +1,11 @@
-[![Services Test Azfile](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-azfile.yml/badge.svg)](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-azfile.yml)
+[![Services Test Azfile](https://github.com/rgglez/go-storage/actions/workflows/services-test-azfile.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/services-test-azfile.yml)
 
 # azfile
 
-[Azure Files](https://azure.microsoft.com/en-us/services/storage/files/) service support for [go-storage](https://github.com/beyondstorage/go-storage)
+[Azure Files](https://azure.microsoft.com/en-us/services/storage/files/) service support for [go-storage](https://github.com/rgglez/go-storage)
 
 ## Install
 
 ```go
-go get github.com/beyondstorage/go-storage/services/azfile
+go get github.com/rgglez/go-storage/services/azfile
 ```

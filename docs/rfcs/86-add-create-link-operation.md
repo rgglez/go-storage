@@ -1,7 +1,7 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-06-08
-- RFC PR: [beyondstorage/specs#86](https://github.com/beyondstorage/specs/pull/86)
-- Tracking Issue: [beyondstorage/go-storage#611](https://github.com/beyondstorage/go-storage/issues/611)
+- RFC PR: [beyondstorage/specs#86](https://github.com/rgglez/specs/pull/86)
+- Tracking Issue: [beyondstorage/go-storage#611](https://github.com/rgglez/go-storage/issues/611)
 
 # GSP-86: Add Create Link Operation
 
@@ -12,7 +12,7 @@
 
 We have `ModeLink` for Object which means this Object is a link which targets to another Object. A link object could be returned in `Stat` or `List`. But there is no way to create a link object.
 
-As discussed in [Link / Symlink support](https://github.com/beyondstorage/specs/issues/85), link related support is very different in different services:
+As discussed in [Link / Symlink support](https://github.com/rgglez/specs/issues/85), link related support is very different in different services:
 
 - fs: Native support for hardlink and symlink
 - oss: Native [Symlink](https://help.aliyun.com/document_detail/45126.html) API

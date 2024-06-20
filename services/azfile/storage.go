@@ -11,9 +11,9 @@ import (
 
 	"github.com/Azure/azure-storage-file-go/azfile"
 
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) create(path string, opt pairStorageCreate) (o *types.Object) {
@@ -78,7 +78,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 		// azfile Delete is not idempotent, so we need to check file not found error.
 		//
 		// References
-		// - [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+		// - [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 		// - https://docs.microsoft.com/en-us/rest/api/storageservices/delete-file2#remarks
 		if checkError(err, fileNotFound) {
 			err = nil
@@ -301,7 +301,7 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 	}
 
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if r == nil && size == 0 {
 		r = strings.NewReader("")
 	} else if r == nil && size != 0 {

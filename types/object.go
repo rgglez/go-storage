@@ -22,9 +22,9 @@ import (
 // - ModeDir | ModeLink: Think about a symlink to dir.
 // - ModeAppend | ModeRead: file in fs could be both read and append.
 //
-// Reference
+// # Reference
 //
-// - GSP-25: https://github.com/beyondstorage/specs/blob/master/rfcs/25-object-mode.md
+// - GSP-25: https://github.com/rgglez/specs/blob/master/rfcs/25-object-mode.md
 // - Core Concept Object: https://beyondstorage.io/docs/go-storage/internal/core-concept#object
 type ObjectMode uint32
 

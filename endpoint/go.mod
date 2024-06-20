@@ -1,4 +1,4 @@
-module github.com/beyondstorage/go-storageo/endpoint
+module github.com/rgglez/go-storageo/endpoint
 
 go 1.16
 

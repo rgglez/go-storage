@@ -4,11 +4,11 @@ import (
 	"os"
 	"testing"
 
-	onedrive "github.com/beyondstorage/go-storage/services/onedrive"
 	"github.com/google/uuid"
+	onedrive "github.com/rgglez/go-storage/services/onedrive"
 
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/types"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func setupTest(t *testing.T) types.Storager {

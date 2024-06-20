@@ -3,7 +3,7 @@ package cos
 import (
 	"context"
 
-	typ "github.com/beyondstorage/go-storage/v5/types"
+	typ "github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Service) create(ctx context.Context, name string, opt pairServiceCreate) (store typ.Storager, err error) {

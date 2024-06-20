@@ -1,7 +1,7 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-08-16
-- RFC PR: [beyondstorage/go-storage#706](https://github.com/beyondstorage/go-storage/issues/706)
-- Tracking Issue: [beyondstorage/go-storage#707](https://github.com/beyondstorage/go-storage/issues/707)
+- RFC PR: [beyondstorage/go-storage#706](https://github.com/rgglez/go-storage/issues/706)
+- Tracking Issue: [beyondstorage/go-storage#707](https://github.com/rgglez/go-storage/issues/707)
 
 # GSP-706: Support HTTP Signer
 
@@ -10,7 +10,7 @@
 
 Previous discussion:
 
-- [Allow generate signed url for upload objects](https://github.com/beyondstorage/go-storage/issues/646)
+- [Allow generate signed url for upload objects](https://github.com/rgglez/go-storage/issues/646)
 
 ## Background
 

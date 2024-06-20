@@ -1,6 +1,6 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-04-23
-- RFC PR: [beyondstorage/specs#41](https://github.com/beyondstorage/specs/issues/41)
+- RFC PR: [beyondstorage/specs#41](https://github.com/rgglez/specs/issues/41)
 - Tracking Issue: N/A
 
 # AOS-41: Turn Pair Expire into Duration

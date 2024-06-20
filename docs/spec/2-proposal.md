@@ -27,8 +27,8 @@ Proposal will have metadata at the beginning.
 ```markdown
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2019-11-15
-- RFC PR: [beyondstorage/specs#100](https://github.com/beyondstorage/specs/issues/100)
-- Tracking Issue: [beyondstorage/go-storage#100](https://github.com/beyondstorage/go-storage/issues/100)
+- RFC PR: [beyondstorage/specs#100](https://github.com/rgglez/specs/issues/100)
+- Tracking Issue: [beyondstorage/go-storage#100](https://github.com/rgglez/go-storage/issues/100)
 
 # GSP-0: <proposal name>
 

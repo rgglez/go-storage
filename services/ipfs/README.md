@@ -1,13 +1,13 @@
-[![Services Test Ipfs](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-ipfs.yml/badge.svg)](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-ipfs.yml)
+[![Services Test Ipfs](https://github.com/rgglez/go-storage/actions/workflows/services-test-ipfs.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/services-test-ipfs.yml)
 
 # ipfs
 
-[InterPlanetary File System(IPFS)](https://ipfs.io/) support for [go-storage](https://github.com/beyondstorage/go-storage).
+[InterPlanetary File System(IPFS)](https://ipfs.io/) support for [go-storage](https://github.com/rgglez/go-storage).
 
 ## Install
 
 ```go
-go get github.com/beyondstorage/go-storage/services/ipfs
+go get github.com/rgglez/go-storage/services/ipfs
 ```
 
 ## Usage
@@ -16,8 +16,8 @@ go get github.com/beyondstorage/go-storage/services/ipfs
 import (
 	"log"
 
-	_ "github.com/beyondstorage/go-storage/services/ipfs"
-	"github.com/beyondstorage/go-storage/v5/services"
+	_ "github.com/rgglez/go-storage/services/ipfs"
+	"github.com/rgglez/go-storage/v5/services"
 )
 
 func main() {
@@ -31,5 +31,5 @@ func main() {
 }
 ```
 
-- See more examples in [go-storage-example](https://github.com/beyondstorage/go-storage-example).
+- See more examples in [go-storage-example](https://github.com/rgglez/go-storage-example).
 - Read [more docs](https://beyondstorage.io/docs/go-storage/services/ipfs) about go-service-ipfs.

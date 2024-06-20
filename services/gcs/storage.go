@@ -11,10 +11,10 @@ import (
 	gs "cloud.google.com/go/storage"
 	"google.golang.org/api/iterator"
 
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) create(path string, opt pairStorageCreate) (o *types.Object) {
@@ -74,7 +74,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 	err = s.bucket.Object(rp).Delete(ctx)
 	if err != nil && errors.Is(err, gs.ErrObjectNotExist) {
 		// Omit `ErrObjectNotExist` error here.
-		// ref: [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+		// ref: [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 		err = nil
 	}
 	if err != nil {
@@ -86,7 +86,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 func (s *Storage) list(ctx context.Context, path string, opt pairStorageList) (oi *types.ObjectIterator, err error) {
 	if !opt.HasListMode {
 		// Support `ListModePrefix` as the default `ListMode`.
-		// ref: [GSP-654](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
+		// ref: [GSP-654](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
 		opt.ListMode = types.ListModePrefix
 	}
 
@@ -239,7 +239,7 @@ func (s *Storage) stat(ctx context.Context, path string, opt pairStorageStat) (o
 
 func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int64, opt pairStorageWrite) (n int64, err error) {
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if r == nil && size == 0 {
 		r = bytes.NewReader([]byte{})
 	} else if r == nil && size != 0 {

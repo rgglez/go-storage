@@ -1,8 +1,8 @@
 package main
 
 import (
-	def "github.com/beyondstorage/go-storage/v5/definitions"
-	"github.com/beyondstorage/go-storage/v5/types"
+	def "github.com/rgglez/go-storage/v5/definitions"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 var Metadata = def.Metadata{

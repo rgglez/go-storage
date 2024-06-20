@@ -1,11 +1,11 @@
 - Author: zu1k <i@lgf.im>
 - Start Date: 2021-07-15
-- RFC PR: [beyondstorage/go-service-ipfs#13](https://github.com/beyondstorage/go-service-ipfs/pull/13)
-- Tracking Issue: [beyondstorage/go-service-ipfs#14](https://github.com/beyondstorage/go-service-ipfs/issues/14)
+- RFC PR: [beyondstorage/go-service-ipfs#13](https://github.com/rgglez/go-service-ipfs/pull/13)
+- Tracking Issue: [beyondstorage/go-service-ipfs#14](https://github.com/rgglez/go-service-ipfs/issues/14)
 
 # RFC-13: Add Gateway Pair
 
-Releated issue: [beyondstorage/go-service-ipfs#5](https://github.com/beyondstorage/go-service-ipfs/issues/5)
+Releated issue: [beyondstorage/go-service-ipfs#5](https://github.com/rgglez/go-service-ipfs/issues/5)
 
 ## Background
 
@@ -38,7 +38,7 @@ Type: file
 I propose to add a pair to let the user specify the `gateway`.
 
 - The `type` of `gateway` should be `String`
-- The `format` of `gateway` should follow [go-endpoint](https://github.com/beyondstorage/go-endpoint/blob/master/README.md)
+- The `format` of `gateway` should follow [go-endpoint](https://github.com/rgglez/go-endpoint/blob/master/README.md)
 - The `value` of `gateway` should be parsed into `HTTP` or `HTTPS`
 - Now we use `gateway` only in `Reach` operation
 

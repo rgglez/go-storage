@@ -1,6 +1,6 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-05-08
-- RFC PR: [beyondstorage/specs#49](https://github.com/beyondstorage/specs/issues/49)
+- RFC PR: [beyondstorage/specs#49](https://github.com/rgglez/specs/issues/49)
 - Tracking Issue: N/A
 
 # AOS-49: Add CreateDir Operation
@@ -12,7 +12,7 @@
 
 Applications need the ability to create a directory. For now, our support is a bit wired.
 
-In [fs](https://github.com/beyondstorage/go-service-fs), we support `CreateDir` by dirty hack:
+In [fs](https://github.com/rgglez/go-service-fs), we support `CreateDir` by dirty hack:
 
 ```go
 if s.isDirPath(rp) {

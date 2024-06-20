@@ -5,7 +5,7 @@ import (
 
 	"github.com/minio/minio-go/v7"
 
-	"github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Service) create(ctx context.Context, name string, opt pairServiceCreate) (store types.Storager, err error) {

@@ -1,13 +1,13 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-07-08
-- RFC PR: [beyondstorage/specs#139](https://github.com/beyondstorage/specs/issues/139)
-- Tracking Issue: [beyondstorage/go-storage#627](https://github.com/beyondstorage/go-storage/issues/627)
+- RFC PR: [beyondstorage/specs#139](https://github.com/rgglez/specs/issues/139)
+- Tracking Issue: [beyondstorage/go-storage#627](https://github.com/rgglez/go-storage/issues/627)
 
 # GSP-139: Split Specs
 
 Previous Discussion:
 
-- [Move specs back into go-storage](https://github.com/beyondstorage/specs/issues/138)
+- [Move specs back into go-storage](https://github.com/rgglez/specs/issues/138)
 
 ## Background
 
@@ -15,7 +15,7 @@ Previous Discussion:
 
 [specs] is also used as `go-storage`'s RFCs center: we store our approved RFCs in `/rfcs` and `/specs`. In [specs] issues, we discuss ideas before sending formal RFCs.
 
-However, with the growth of the community of BeyondStorage, [specs] lead to more and more confusion. [specs] looks like RFC centers for BeyondStorage, but only been used for `go-storage`. [beyond-tp](https://github.com/beyondstorage/beyond-tp) has its own RFCs storage.
+However, with the growth of the community of BeyondStorage, [specs] lead to more and more confusion. [specs] looks like RFC centers for BeyondStorage, but only been used for `go-storage`. [beyond-tp](https://github.com/rgglez/beyond-tp) has its own RFCs storage.
 
 After [GSP-128: Community Organization](./128-community-organization.md), the problem become more serious.
 
@@ -86,4 +86,4 @@ To not break our links to existing proposals, we will:
 
 See [Compatibility](#Compatibility).
 
-[specs]: https://github.com/beyondstorage/specs
+[specs]: https://github.com/rgglez/specs

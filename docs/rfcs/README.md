@@ -23,7 +23,7 @@ We use GitHub pull request number as the GSP number.
 For historic reasons:
 
 - GSP-1 to GSP-25 numbered by auto-increment id.
-- GSP-38 to GSP-139 numbered by PR numbers in [specs](https://github.com/beyondstorage/specs).
+- GSP-38 to GSP-139 numbered by PR numbers in [specs](https://github.com/rgglez/specs).
 - New proposals after GSP-139 will numbered by PR number in this repo (changed by [GSP-139](./139-split-specs.md)).
 
 ## Process

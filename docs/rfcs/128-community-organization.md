@@ -1,7 +1,7 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-06-29
-- RFC PR: [beyondstorage/specs#128](https://github.com/beyondstorage/specs/pull/128)
-- Tracking Issue: [beyondstorage/go-storage#0](https://github.com/beyondstorage/go-storage/issues/0)
+- RFC PR: [beyondstorage/specs#128](https://github.com/rgglez/specs/pull/128)
+- Tracking Issue: [beyondstorage/go-storage#0](https://github.com/rgglez/go-storage/issues/0)
 
 # GSP-128: Community Organization
 

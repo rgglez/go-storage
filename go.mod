@@ -1,4 +1,4 @@
-module github.com/beyondstorage/go-storage/v5
+module github.com/rgglez/go-storage/v5
 
 go 1.16
 

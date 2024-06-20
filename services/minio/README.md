@@ -1,15 +1,15 @@
-[![Services Test Minio](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-minio.yml/badge.svg)](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-minio.yml)
+[![Services Test Minio](https://github.com/rgglez/go-storage/actions/workflows/services-test-minio.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/services-test-minio.yml)
 
 # minio
 
 [MinIO](https://min.io/) is an open source cloud-native high-performance object storage service. 
-This project will use minio's native SDK to implement [go-storage](https://github.com/beyondstorage/go-storage/), 
+This project will use minio's native SDK to implement [go-storage](https://github.com/rgglez/go-storage/), 
 enabling users to manipulate data on minio servers through a unified interface.
 
 ## Install
 
 ```go
-go get github.com/beyondstorage/go-storage/services/minio
+go get github.com/rgglez/go-storage/services/minio
 ```
 
 ## Usage
@@ -18,8 +18,8 @@ go get github.com/beyondstorage/go-storage/services/minio
 import (
 	"log"
 
-	_ "github.com/beyondstorage/go-storage/services/minio"
-	"github.com/beyondstorage/go-storage/v5/services"
+	_ "github.com/rgglez/go-storage/services/minio"
+	"github.com/rgglez/go-storage/v5/services"
 )
 
 func main() {
@@ -33,5 +33,5 @@ func main() {
 }
 ```
 
-- See more examples in [go-storage-example](https://github.com/beyondstorage/go-storage-example).
+- See more examples in [go-storage-example](https://github.com/rgglez/go-storage-example).
 - Read [more docs](https://beyondstorage.io/docs/go-storage/services/minio) about go-service-minio.

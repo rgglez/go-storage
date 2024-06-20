@@ -72,7 +72,7 @@ func TestIssue68(t *testing.T) {
 
 // This test case intends to reproduce issue #68.
 //
-// ref: https://github.com/beyondstorage/go-service-fs/issues/68
+// ref: https://github.com/rgglez/go-service-fs/issues/68
 func testIssue68(t *testing.T, numbers int) {
 	tmpDir := t.TempDir()
 

@@ -188,7 +188,7 @@ Since this release, we will use `go.beyondstorage.io/v5` as new module name.
 
 ### Deprecated
 
-- pkg/endpoint: Deprecated by github.com/beyondstorage/go-endpoint (#595)
+- pkg/endpoint: Deprecated by github.com/rgglez/go-endpoint (#595)
 - services: Related fields `ServiceFeatures` and `StorageFeatures` have been deprecated (#606)
 - services: `GetObjectMetadata` has been deprecated by `GetObjectSystemMetadata` (#608)
 
@@ -712,42 +712,42 @@ Since this release, we will use `go.beyondstorage.io/v5` as new module name.
 - Add pair based option and metadata support.
 - Add qingstor services.
 
-[Unreleased]: https://github.com/beyondstorage/go-storage/compare/v5.0.0...HEAD
-[v5.0.0]: https://github.com/beyondstorage/go-storage/compare/v4.8.0...v5.0.0
-[v4.8.0]: https://github.com/beyondstorage/go-storage/compare/v4.7.0...v4.8.0
-[v4.7.0]: https://github.com/beyondstorage/go-storage/compare/v4.6.0...v4.7.0
-[v4.6.0]: https://github.com/beyondstorage/go-storage/compare/v4.5.0...v4.6.0
-[v4.5.0]: https://github.com/beyondstorage/go-storage/compare/v4.4.0...v4.5.0
-[v4.4.0]: https://github.com/beyondstorage/go-storage/compare/v4.3.2...v4.4.0
-[v4.3.2]: https://github.com/beyondstorage/go-storage/compare/v4.3.1...v4.3.2
-[v4.3.1]: https://github.com/beyondstorage/go-storage/compare/v4.3.0...v4.3.1
-[v4.3.0]: https://github.com/beyondstorage/go-storage/compare/v4.2.0...v4.3.0
-[v4.2.0]: https://github.com/beyondstorage/go-storage/compare/v4.1.0...v4.2.0
-[v4.1.0]: https://github.com/beyondstorage/go-storage/compare/v4.0.0...v4.1.0
-[v4.0.0]: https://github.com/beyondstorage/go-storage/compare/v3.6.0...v4.0.0
-[v3.6.0]: https://github.com/beyondstorage/go-storage/compare/v3.5.0...v3.6.0
-[v3.5.0]: https://github.com/beyondstorage/go-storage/compare/v3.4.2...v3.5.0
-[v3.4.2]: https://github.com/beyondstorage/go-storage/compare/v3.4.1...v3.4.2
-[v3.4.1]: https://github.com/beyondstorage/go-storage/compare/v3.4.0...v3.4.1
-[v3.4.0]: https://github.com/beyondstorage/go-storage/compare/v3.3.0...v3.4.0
-[v3.3.0]: https://github.com/beyondstorage/go-storage/compare/v3.2.0...v3.3.0
-[v3.2.0]: https://github.com/beyondstorage/go-storage/compare/v3.1.0...v3.2.0
-[v3.1.0]: https://github.com/beyondstorage/go-storage/compare/v3.0.0...v3.1.0
-[v3.0.0]: https://github.com/beyondstorage/go-storage/compare/v2.0.0...v3.0.0
-[v2.0.0]: https://github.com/beyondstorage/go-storage/compare/v2.0.0-beta...v2.0.0
-[v2.0.0-beta]: https://github.com/beyondstorage/go-storage/compare/v2.0.0-alpha.1...v2.0.0-beta
-[v2.0.0-alpha.1]: https://github.com/beyondstorage/go-storage/compare/v1.2.1...v2.0.0-alpha.1
-[v1.2.1]: https://github.com/beyondstorage/go-storage/compare/v1.2.0...v1.2.1
-[v1.2.0]: https://github.com/beyondstorage/go-storage/compare/v1.1.0...v1.2.0
-[v1.1.0]: https://github.com/beyondstorage/go-storage/compare/v1.0.0...v1.1.0
-[v1.0.0]: https://github.com/beyondstorage/go-storage/compare/v0.9.0...v1.0.0
-[v0.9.0]: https://github.com/beyondstorage/go-storage/compare/v0.8.0...v0.9.0
-[v0.8.0]: https://github.com/beyondstorage/go-storage/compare/v0.7.2...v0.8.0
-[v0.7.2]: https://github.com/beyondstorage/go-storage/compare/v0.7.1...v0.7.2
-[v0.7.1]: https://github.com/beyondstorage/go-storage/compare/v0.7.0...v0.7.1
-[v0.7.0]: https://github.com/beyondstorage/go-storage/compare/v0.6.0...v0.7.0
-[v0.6.0]: https://github.com/beyondstorage/go-storage/compare/v0.5.0...v0.6.0
-[v0.5.0]: https://github.com/beyondstorage/go-storage/compare/v0.4.0...v0.5.0
-[v0.4.0]: https://github.com/beyondstorage/go-storage/compare/v0.3.0...v0.4.0
-[v0.3.0]: https://github.com/beyondstorage/go-storage/compare/v0.2.0...v0.3.0
-[v0.2.0]: https://github.com/beyondstorage/go-storage/compare/v0.1.0...v0.2.0
+[Unreleased]: https://github.com/rgglez/go-storage/compare/v5.0.0...HEAD
+[v5.0.0]: https://github.com/rgglez/go-storage/compare/v4.8.0...v5.0.0
+[v4.8.0]: https://github.com/rgglez/go-storage/compare/v4.7.0...v4.8.0
+[v4.7.0]: https://github.com/rgglez/go-storage/compare/v4.6.0...v4.7.0
+[v4.6.0]: https://github.com/rgglez/go-storage/compare/v4.5.0...v4.6.0
+[v4.5.0]: https://github.com/rgglez/go-storage/compare/v4.4.0...v4.5.0
+[v4.4.0]: https://github.com/rgglez/go-storage/compare/v4.3.2...v4.4.0
+[v4.3.2]: https://github.com/rgglez/go-storage/compare/v4.3.1...v4.3.2
+[v4.3.1]: https://github.com/rgglez/go-storage/compare/v4.3.0...v4.3.1
+[v4.3.0]: https://github.com/rgglez/go-storage/compare/v4.2.0...v4.3.0
+[v4.2.0]: https://github.com/rgglez/go-storage/compare/v4.1.0...v4.2.0
+[v4.1.0]: https://github.com/rgglez/go-storage/compare/v4.0.0...v4.1.0
+[v4.0.0]: https://github.com/rgglez/go-storage/compare/v3.6.0...v4.0.0
+[v3.6.0]: https://github.com/rgglez/go-storage/compare/v3.5.0...v3.6.0
+[v3.5.0]: https://github.com/rgglez/go-storage/compare/v3.4.2...v3.5.0
+[v3.4.2]: https://github.com/rgglez/go-storage/compare/v3.4.1...v3.4.2
+[v3.4.1]: https://github.com/rgglez/go-storage/compare/v3.4.0...v3.4.1
+[v3.4.0]: https://github.com/rgglez/go-storage/compare/v3.3.0...v3.4.0
+[v3.3.0]: https://github.com/rgglez/go-storage/compare/v3.2.0...v3.3.0
+[v3.2.0]: https://github.com/rgglez/go-storage/compare/v3.1.0...v3.2.0
+[v3.1.0]: https://github.com/rgglez/go-storage/compare/v3.0.0...v3.1.0
+[v3.0.0]: https://github.com/rgglez/go-storage/compare/v2.0.0...v3.0.0
+[v2.0.0]: https://github.com/rgglez/go-storage/compare/v2.0.0-beta...v2.0.0
+[v2.0.0-beta]: https://github.com/rgglez/go-storage/compare/v2.0.0-alpha.1...v2.0.0-beta
+[v2.0.0-alpha.1]: https://github.com/rgglez/go-storage/compare/v1.2.1...v2.0.0-alpha.1
+[v1.2.1]: https://github.com/rgglez/go-storage/compare/v1.2.0...v1.2.1
+[v1.2.0]: https://github.com/rgglez/go-storage/compare/v1.1.0...v1.2.0
+[v1.1.0]: https://github.com/rgglez/go-storage/compare/v1.0.0...v1.1.0
+[v1.0.0]: https://github.com/rgglez/go-storage/compare/v0.9.0...v1.0.0
+[v0.9.0]: https://github.com/rgglez/go-storage/compare/v0.8.0...v0.9.0
+[v0.8.0]: https://github.com/rgglez/go-storage/compare/v0.7.2...v0.8.0
+[v0.7.2]: https://github.com/rgglez/go-storage/compare/v0.7.1...v0.7.2
+[v0.7.1]: https://github.com/rgglez/go-storage/compare/v0.7.0...v0.7.1
+[v0.7.0]: https://github.com/rgglez/go-storage/compare/v0.6.0...v0.7.0
+[v0.6.0]: https://github.com/rgglez/go-storage/compare/v0.5.0...v0.6.0
+[v0.5.0]: https://github.com/rgglez/go-storage/compare/v0.4.0...v0.5.0
+[v0.4.0]: https://github.com/rgglez/go-storage/compare/v0.3.0...v0.4.0
+[v0.3.0]: https://github.com/rgglez/go-storage/compare/v0.2.0...v0.3.0
+[v0.2.0]: https://github.com/rgglez/go-storage/compare/v0.1.0...v0.2.0

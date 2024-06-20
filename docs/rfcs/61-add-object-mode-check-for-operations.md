@@ -1,6 +1,6 @@
 - Author: Prnyself <lanceren@yunify.com>
 - Start Date: 2021-05-11
-- RFC PR: [beyondstorage/specs#61](https://github.com/beyondstorage/specs/issues/61)
+- RFC PR: [beyondstorage/specs#61](https://github.com/rgglez/specs/issues/61)
 - Tracking Issue: N/A
 
 # AOS-61: Add object mode check for operations
@@ -38,7 +38,7 @@ for certain operation, so we should add object mode check and return `ObjectMode
 ### Current Practice
 
 The check is implemented by service in the actual method call. 
-For example, in [go-service-qingstor](https://github.com/beyondstorage/go-service-qingstor/blob/master/storage.go#L534):
+For example, in [go-service-qingstor](https://github.com/rgglez/go-service-qingstor/blob/master/storage.go#L534):
 ```go
 func (s *Storage) writeAppend(ctx context.Context, o *Object, r io.Reader, size int64, opt pairStorageWriteAppend) (n int64, err error) {
     if !o.Mode.IsAppend() {
@@ -243,4 +243,4 @@ Most of the work would be done by the author of this proposal, including:
 
 [AOS-25]: ./25-object-mode.md
 [AOS-47]: ./47-additional-error-specification.md
-[go-storage]: https://github.com/beyondstorage/go-storage
+[go-storage]: https://github.com/rgglez/go-storage

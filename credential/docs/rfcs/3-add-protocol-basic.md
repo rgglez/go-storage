@@ -1,7 +1,7 @@
 - Author: npofsi <npofsi@outlook.com>
 - Start Date: 2021-08-02
-- RFC PR: https://github.com/beyondstorage/go-credential/pull/3
-- Tracking Issue: [beyondstorage/go-credential#1](https://github.com/beyondstorage/go-credential/issues/1)
+- RFC PR: https://github.com/rgglez/go-credential/pull/3
+- Tracking Issue: [beyondstorage/go-credential#1](https://github.com/rgglez/go-credential/issues/1)
 
 # RFC-3: Add protocol basic
 

@@ -30,4 +30,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Implement HDFS Storager, Mover, Direr.
 
-[v0.2.1]: https://github.com/beyondstorage/go-service-hdfs/compare/v0.2.0...v0.2.1
+[v0.2.1]: https://github.com/rgglez/go-service-hdfs/compare/v0.2.0...v0.2.1

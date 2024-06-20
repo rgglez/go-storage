@@ -1,6 +1,6 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-05-06
-- RFC PR: [beyondstorage/specs#46](https://github.com/beyondstorage/specs/issues/46)
+- RFC PR: [beyondstorage/specs#46](https://github.com/rgglez/specs/issues/46)
 - Tracking Issue: N/A
 
 # AOS-46: Idempotent Storager Delete Operation
@@ -62,7 +62,7 @@ For `fs` and `dropbox`: `Delete` will not return `ObjectNotExist` anymore.
 
 ## Implementation
 
-- Update [go-integration-test](https://github.com/beyondstorage/go-integration-test)
+- Update [go-integration-test](https://github.com/rgglez/go-integration-test)
   - Add a case that delete an object twice, and should not meet error.
 - Make sure all service implement delete correctly.
 

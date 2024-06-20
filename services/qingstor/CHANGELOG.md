@@ -148,9 +148,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Implement qingstor services.
 
-[v3.3.0]: https://github.com/beyondstorage/go-service-qingstor/compare/v3.2.0...v3.3.0
-[v3.2.0]: https://github.com/beyondstorage/go-service-qingstor/compare/v3.1.0...v3.2.0
-[v3.1.0]: https://github.com/beyondstorage/go-service-qingstor/compare/v3.0.0...v3.1.0
-[v3.0.0]: https://github.com/beyondstorage/go-service-qingstor/compare/v2.1.0...v3.0.0
-[v2.1.0]: https://github.com/beyondstorage/go-service-qingstor/compare/v2.0.0...v2.1.0
-[v2.0.0]: https://github.com/beyondstorage/go-service-qingstor/compare/v1.0.0...v2.0.0
+[v3.3.0]: https://github.com/rgglez/go-service-qingstor/compare/v3.2.0...v3.3.0
+[v3.2.0]: https://github.com/rgglez/go-service-qingstor/compare/v3.1.0...v3.2.0
+[v3.1.0]: https://github.com/rgglez/go-service-qingstor/compare/v3.0.0...v3.1.0
+[v3.0.0]: https://github.com/rgglez/go-service-qingstor/compare/v2.1.0...v3.0.0
+[v2.1.0]: https://github.com/rgglez/go-service-qingstor/compare/v2.0.0...v2.1.0
+[v2.0.0]: https://github.com/rgglez/go-service-qingstor/compare/v1.0.0...v2.0.0

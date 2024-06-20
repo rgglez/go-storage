@@ -1,7 +1,7 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-06-09
-- RFC PR: [beyondstorage/specs#97](https://github.com/beyondstorage/specs/issues/97)
-- Tracking Issue: [beyondstorage/go-storage#599](https://github.com/beyondstorage/go-storage/issues/599)
+- RFC PR: [beyondstorage/specs#97](https://github.com/rgglez/specs/issues/97)
+- Tracking Issue: [beyondstorage/go-storage#599](https://github.com/rgglez/go-storage/issues/599)
 
 # GSP-97: Add Restrictions In Storage Metadata
 
@@ -145,6 +145,6 @@ This change will not break services and users. We could migrate as follows:
   - Check `size` for write related operations and return `ErrRestrictionDissatisfied` when `size` out of limit.
 
 
-[go-storage]: https://github.com/beyondstorage/go-storage
+[go-storage]: https://github.com/rgglez/go-storage
 [info_storage_meta.toml]: ../definitions/info_storage_meta.toml
 [info_object_meta.toml]: ../definitions/info_object_meta.toml

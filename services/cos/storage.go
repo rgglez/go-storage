@@ -11,11 +11,11 @@ import (
 
 	"github.com/tencentyun/cos-go-sdk-v5"
 
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/pkg/headers"
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/headers"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) completeMultipart(ctx context.Context, o *types.Object, parts []*types.Part, opt pairStorageCompleteMultipart) (err error) {
@@ -154,7 +154,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 		_, err = s.object.AbortMultipartUpload(ctx, rp, opt.MultipartID)
 		if err != nil && checkError(err, responseCodeNoSuchUpload) {
 			// Omit `NoSuchUpload` error here.
-			// ref: [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+			// ref: [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 			err = nil
 		}
 		if err != nil {
@@ -175,7 +175,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 	_, err = s.object.Delete(ctx, rp)
 	if err != nil && checkError(err, responseCodeNoSuchKey) {
 		// Omit `NoSuchKey` error here.
-		// ref: [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+		// ref: [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 		err = nil
 	}
 	if err != nil {
@@ -188,7 +188,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 func (s *Storage) list(ctx context.Context, path string, opt pairStorageList) (oi *types.ObjectIterator, err error) {
 	if !opt.HasListMode {
 		// Support `ListModePrefix` as the default `ListMode`.
-		// ref: [GSP-46](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
+		// ref: [GSP-46](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
 		opt.ListMode = types.ListModePrefix
 	}
 
@@ -516,7 +516,7 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 	}
 
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if r == nil && size == 0 {
 		r = bytes.NewReader([]byte{})
 	} else if r == nil && size != 0 {

@@ -1,7 +1,7 @@
 - Author: Joey-1445601153 <github.com/Joey-1445601153>
 - Start Date: 2021-10-12
-- RFC PR: [beyondstorage/go-storage#839](https://github.com/beyondstorage/go-storage/issues/839)
-- Tracking Issue: [beyondstorage/go-storage#852](https://github.com/beyondstorage/go-storage/issues/852)
+- RFC PR: [beyondstorage/go-storage#839](https://github.com/rgglez/go-storage/issues/839)
+- Tracking Issue: [beyondstorage/go-storage#852](https://github.com/rgglez/go-storage/issues/852)
 
 # GSP-839: Add Support for Content-Disposition
 

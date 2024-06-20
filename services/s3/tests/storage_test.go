@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/beyondstorage/go-storage/v5/tests"
+	"github.com/rgglez/go-storage/v5/tests"
 )
 
 func TestStorage(t *testing.T) {
@@ -49,7 +49,7 @@ func TestHTTPSigner(t *testing.T) {
 	// tests.TestMultipartHTTPSigner(t, setupTest(t)) is not supported
 }
 
-// https://github.com/beyondstorage/go-storage/issues/741
+// https://github.com/rgglez/go-storage/issues/741
 func TestIssue741(t *testing.T) {
 	if os.Getenv("STORAGE_S3_INTEGRATION_TEST") != "on" {
 		t.Skipf("STORAGE_S3_INTEGRATION_TEST is not 'on', skipped")

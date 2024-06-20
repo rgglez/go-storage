@@ -1,7 +1,7 @@
 - Author: abyss-w <mad.hatter@foxmail.com>
 - Start Date: 2021-09-26
-- RFC PR: [beyondstorage/go-storage#826](https://github.com/beyondstorage/go-storage/pull/826)
-- Tracking Issue: [beyondstorage/go-storage#827](https://github.com/beyondstorage/go-storage/issues/827)
+- RFC PR: [beyondstorage/go-storage#826](https://github.com/rgglez/go-storage/pull/826)
+- Tracking Issue: [beyondstorage/go-storage#827](https://github.com/rgglez/go-storage/issues/827)
 
 # GSP-826: Add Multipart HTTP Signer Support
 
@@ -14,7 +14,7 @@ Previous discussion:
 
 # Background
 
-In [GSP-729](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/729-redesign-http-signer.md), we split out the `HTTPSigner` proposed in [GSP-706](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/706-support-http-signer.md). We had the following problems in the implementation of GSP-706:
+In [GSP-729](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/729-redesign-http-signer.md), we split out the `HTTPSigner` proposed in [GSP-706](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/706-support-http-signer.md). We had the following problems in the implementation of GSP-706:
 
 - There's no appropriate way to pass in some parameters for some operations like [How to pass partIndex into QuerySignHTTP for WriteMultipart](https://forum.beyondstorage.io/t/how-to-pass-partindex-into-querysignhttp-for-writemultipart/192).
 - `CreateMultipart` needs to support Expires parameter.
@@ -39,7 +39,7 @@ type MultipartHTTPSigner interface {
   - `io.Reader` typed parameter for writeMultipart operations SHOULD be removed.
   - Other parameters SHOULD be consistent.
 
-Also I propose to support `delete` in `StorageHTTPSigner`(Proposed in [GSP-729](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/729-redesign-http-signer.md#proposal)).
+Also I propose to support `delete` in `StorageHTTPSigner`(Proposed in [GSP-729](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/729-redesign-http-signer.md#proposal)).
 
 ```go
 type StorageHTTPSigner interface {
@@ -58,7 +58,7 @@ From service side:
 
 ## Rationale
 
-Rationale is mentioned in the [GSP-729](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/729-redesign-http-signer.md#rationale).
+Rationale is mentioned in the [GSP-729](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/729-redesign-http-signer.md#rationale).
 
 ## Compatibility
 

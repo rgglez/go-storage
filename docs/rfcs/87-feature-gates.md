@@ -1,6 +1,6 @@
 - Author: Xuanwo <github@xuanwo.io>
 - Start Date: 2021-05-30
-- RFC PR: [beyondstorage/specs#87](https://github.com/beyondstorage/specs/issues/87)
+- RFC PR: [beyondstorage/specs#87](https://github.com/rgglez/specs/issues/87)
 - Tracking Issue: N/A
 
 # GSP-87: Feature Gates
@@ -20,9 +20,9 @@ In [GSP-16], we introduced loose mode which is a global flag that controls the b
 - If `loose` is on: This error will be ignored.
 - If `loose` is off: Storager returns a compatibility-related error.
 
-However, we removed `loose` in [GSP-20] because we can't figure out [error could be returned too early while in loose mode](https://github.com/beyondstorage/go-storage/issues/233). And loose is so general that it affects nearly all behavior of Storager.
+However, we removed `loose` in [GSP-20] because we can't figure out [error could be returned too early while in loose mode](https://github.com/rgglez/go-storage/issues/233). And loose is so general that it affects nearly all behavior of Storager.
 
-In [types: Implement pair policy](https://github.com/beyondstorage/go-storage/pull/453), we try to figure out this problem by introducing `PairPolicy`.
+In [types: Implement pair policy](https://github.com/rgglez/go-storage/pull/453), we try to figure out this problem by introducing `PairPolicy`.
 
 `PairPolicy` controls the behavior of pairs:
 
@@ -170,5 +170,5 @@ virtual = ["content_md5"]
 
 [GSP-16]: ./16-loose-mode.md
 [GSP-20]: ./20-remove-loose-mode.md
-[GSP-86]: https://github.com/beyondstorage/specs/pull/86
-[go-storage]: https://github.com/beyondstorage/go-storage
+[GSP-86]: https://github.com/rgglez/specs/pull/86
+[go-storage]: https://github.com/rgglez/go-storage

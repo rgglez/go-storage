@@ -30,4 +30,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Implement FTP storager.
 
-[v0.2.0]: https://github.com/beyondstorage/go-service-ftp/compare/v0.1.0...v0.2.0
+[v0.2.0]: https://github.com/rgglez/go-service-ftp/compare/v0.1.0...v0.2.0

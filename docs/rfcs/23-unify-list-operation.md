@@ -150,4 +150,4 @@ List related APIs could be changed.
 
 Most of the work would be done by the author of this proposal.
 
-[go-storage]: https://github.com/beyondstorage/go-storage
+[go-storage]: https://github.com/rgglez/go-storage

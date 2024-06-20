@@ -178,11 +178,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Implement s3 services.
 
-[v2.5.0]: https://github.com/beyondstorage/go-service-s3/compare/v2.4.0...v2.5.0
-[v2.4.0]: https://github.com/beyondstorage/go-service-s3/compare/v2.3.0...v2.4.0
-[v2.3.0]: https://github.com/beyondstorage/go-service-s3/compare/v2.2.0...v2.3.0
-[v2.2.0]: https://github.com/beyondstorage/go-service-s3/compare/v2.1.0...v2.2.0
-[v2.1.0]: https://github.com/beyondstorage/go-service-s3/compare/v2.0.0...v2.1.0
-[v2.0.0]: https://github.com/beyondstorage/go-service-s3/compare/v1.2.0...v2.0.0
-[v1.2.0]: https://github.com/beyondstorage/go-service-s3/compare/v1.1.0...v1.2.0
-[v1.1.0]: https://github.com/beyondstorage/go-service-s3/compare/v1.0.0...v1.1.0
+[v2.5.0]: https://github.com/rgglez/go-service-s3/compare/v2.4.0...v2.5.0
+[v2.4.0]: https://github.com/rgglez/go-service-s3/compare/v2.3.0...v2.4.0
+[v2.3.0]: https://github.com/rgglez/go-service-s3/compare/v2.2.0...v2.3.0
+[v2.2.0]: https://github.com/rgglez/go-service-s3/compare/v2.1.0...v2.2.0
+[v2.1.0]: https://github.com/rgglez/go-service-s3/compare/v2.0.0...v2.1.0
+[v2.0.0]: https://github.com/rgglez/go-service-s3/compare/v1.2.0...v2.0.0
+[v1.2.0]: https://github.com/rgglez/go-service-s3/compare/v1.1.0...v1.2.0
+[v1.1.0]: https://github.com/rgglez/go-service-s3/compare/v1.0.0...v1.1.0

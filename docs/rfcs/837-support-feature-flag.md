@@ -1,7 +1,7 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-10-11
-- RFC PR: [beyondstorage/go-storage#837](https://github.com/beyondstorage/go-storage/issues/837)
-- Tracking Issue: [beyondstorage/go-storage#966](https://github.com/beyondstorage/go-storage/issues/966)
+- RFC PR: [beyondstorage/go-storage#837](https://github.com/rgglez/go-storage/issues/837)
+- Tracking Issue: [beyondstorage/go-storage#966](https://github.com/rgglez/go-storage/issues/966)
 
 # GSP-837: Support Feature Flag
 

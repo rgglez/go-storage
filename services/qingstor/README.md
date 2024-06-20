@@ -1,8 +1,8 @@
-[![Services Test Qingstor](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-qingstor.yml/badge.svg)](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-qingstor.yml)
+[![Services Test Qingstor](https://github.com/rgglez/go-storage/actions/workflows/services-test-qingstor.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/services-test-qingstor.yml)
 
 # qingstor
 
-[QingStor Object Storage](https://www.qingcloud.com/products/objectstorage/) service support for [go-storage](https://github.com/beyondstorage/go-storage).
+[QingStor Object Storage](https://www.qingcloud.com/products/objectstorage/) service support for [go-storage](https://github.com/rgglez/go-storage).
 
 ## Install
 
@@ -31,5 +31,5 @@ func main() {
 }
 ```
 
-- See more examples in [go-storage-example](https://github.com/beyondstorage/go-storage-example).
+- See more examples in [go-storage-example](https://github.com/rgglez/go-storage-example).
 - Read [more docs](https://beyondstorage.io/docs/go-storage/services/qingstor) about go-service-qingstor.

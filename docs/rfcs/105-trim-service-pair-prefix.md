@@ -1,13 +1,13 @@
 - Author: xxchan <xxchan22f@gmail.com>
 - Start Date: 2021-06-15
-- RFC PR: [beyondstorage/specs#105](https://github.com/beyondstorage/specs/issues/105)
-- Tracking Issue: [beyondstorage/go-storage#598](https://github.com/beyondstorage/go-storage/pull/598)
+- RFC PR: [beyondstorage/specs#105](https://github.com/rgglez/specs/issues/105)
+- Tracking Issue: [beyondstorage/go-storage#598](https://github.com/rgglez/go-storage/pull/598)
 
 # GSP-105: Trim Service Pair Prefix
 
 - Updated By:
   - [GSP-117](./117-rename-service-to-system-as-the-opposite-to-global.md): Rename `service pair` to `system pair`
-  - [#720](https://github.com/beyondstorage/go-storage/pull/720): Generation fails when a service pair has the same name with a global pair.
+  - [#720](https://github.com/rgglez/go-storage/pull/720): Generation fails when a service pair has the same name with a global pair.
 
 ## Background
 
@@ -117,4 +117,4 @@ Only internal implementation is changed, and it won't break users.
 
 ## Implementation
 
-See https://github.com/beyondstorage/go-storage/pull/598
+See https://github.com/rgglez/go-storage/pull/598

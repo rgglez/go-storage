@@ -13,10 +13,10 @@ import (
 	"github.com/google/uuid"
 	. "github.com/smartystreets/goconvey/convey"
 
-	"github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/pkg/randbytes"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/randbytes"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func TestStorageHTTPSignerRead(t *testing.T, store types.Storager) {

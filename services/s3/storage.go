@@ -14,10 +14,10 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	s3types "github.com/aws/aws-sdk-go-v2/service/s3/types"
 
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) completeMultipart(ctx context.Context, o *types.Object, parts []*types.Part, opt pairStorageCompleteMultipart) (err error) {
@@ -123,7 +123,7 @@ func (s *Storage) createLink(ctx context.Context, path string, target string, op
 		Bucket: aws.String(s.name),
 		Key:    aws.String(rp),
 		// As s3 does not support symlink, we can only use user-defined metadata to simulate it.
-		// ref: https://github.com/beyondstorage/go-service-s3/blob/master/rfcs/178-add-virtual-link-support.md
+		// ref: https://github.com/rgglez/go-service-s3/blob/master/rfcs/178-add-virtual-link-support.md
 		Metadata: map[string]string{
 			metadataLinkTargetHeader: rt,
 		},
@@ -218,7 +218,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 			// AWS S3 is inconsistent in its behavior, it returns 204 No Content within 24 hours and returns 404 Not Found after 24hours.
 			// Minio is consistent in its behavior, it always returns 404 Not Found.
 			// ref: https://github.com/minio/minio/discussions/13495
-			// ref: [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+			// ref: [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 			e := &s3types.NoSuchUpload{}
 			if errors.As(err, &e) {
 				err = nil
@@ -238,7 +238,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 	// S3 DeleteObject is idempotent, so we don't need to check NoSuchKey error.
 	//
 	// References
-	// - [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+	// - [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 	// - https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
 	_, err = s.service.DeleteObject(ctx, input)
 	if err != nil {
@@ -250,7 +250,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 func (s *Storage) list(ctx context.Context, path string, opt pairStorageList) (oi *types.ObjectIterator, err error) {
 	if !opt.HasListMode {
 		// Support `ListModePrefix` as the default `ListMode`.
-		// ref: [GSP-46](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
+		// ref: [GSP-46](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
 		opt.ListMode = types.ListModePrefix
 	}
 
@@ -698,7 +698,7 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 	}
 
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if (r == nil && size == 0) || (r != nil && size == 0) {
 		r = bytes.NewReader([]byte{})
 	} else if r == nil && size != 0 {

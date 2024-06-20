@@ -1,7 +1,7 @@
 - Author: xxchan <xxchan22f@gmail.com>
 - Start Date: 2021-06-22
-- RFC PR: [beyondstorage/specs#118](https://github.com/beyondstorage/specs/issues/118)
-- Tracking Issue: [beyondstorage/specs#121](https://github.com/beyondstorage/specs/issues/121)
+- RFC PR: [beyondstorage/specs#118](https://github.com/rgglez/specs/issues/118)
+- Tracking Issue: [beyondstorage/specs#121](https://github.com/rgglez/specs/issues/121)
 
 # GSP-118: Update RFC Format and Process
 
@@ -11,7 +11,7 @@
 ## Background
 
 Early discussion:
-- [beyondstorage/specs#110](https://github.com/beyondstorage/specs/issues/110)
+- [beyondstorage/specs#110](https://github.com/rgglez/specs/issues/110)
 
 The current proposal process and format is specified by [GSP-17](./17-proposal-process.md) and [spec/2-proposal](../spec/2-proposal.md).
 

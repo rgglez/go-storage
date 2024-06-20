@@ -1,14 +1,14 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-09-08
-- RFC PR: [beyondstorage/go-storage#749](https://github.com/beyondstorage/go-storage/pull/749)
-- Tracking Issue: [beyondstorage/go-storage#758](https://github.com/beyondstorage/go-storage/issues/758)
+- RFC PR: [beyondstorage/go-storage#749](https://github.com/rgglez/go-storage/pull/749)
+- Tracking Issue: [beyondstorage/go-storage#758](https://github.com/rgglez/go-storage/issues/758)
 
 # GSP-749: Unify Path Behavior
 
 Previous Discussion:
 
 - [Specify the behavior of Path](https://forum.beyondstorage.io/t/topic/195)
-- [OS-specific path separator problem](https://github.com/beyondstorage/go-service-ftp/issues/22)
+- [OS-specific path separator problem](https://github.com/rgglez/go-service-ftp/issues/22)
 
 ## Background
 
@@ -134,7 +134,7 @@ func (s *Storage) stat(ctx context.Context, path string, opt pairStorageStat) (o
   
 ### How to be compatible with file system on Windows?
 
-Exception rules could be described in the RFC of the corresponding service. Path behavior for local file system is defined [here](https://github.com/beyondstorage/go-service-fs/pull/78).
+Exception rules could be described in the RFC of the corresponding service. Path behavior for local file system is defined [here](https://github.com/rgglez/go-service-fs/pull/78).
 
 ## Compatibility
 

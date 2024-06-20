@@ -1,7 +1,7 @@
 package main
 
 import (
-	def "github.com/beyondstorage/go-storage/v5/definitions"
+	def "github.com/rgglez/go-storage/v5/definitions"
 )
 
 //go:generate go run .

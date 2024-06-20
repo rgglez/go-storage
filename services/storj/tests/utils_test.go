@@ -6,9 +6,9 @@ import (
 
 	"github.com/google/uuid"
 
-	storj "github.com/beyondstorage/go-storage/services/storj"
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/types"
+	storj "github.com/rgglez/go-storage/services/storj"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func setupTest(t *testing.T) types.Storager {

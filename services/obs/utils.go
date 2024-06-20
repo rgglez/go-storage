@@ -6,11 +6,11 @@ import (
 
 	"github.com/huaweicloud/huaweicloud-sdk-go-obs/obs"
 
-	"github.com/beyondstorage/go-storage/credential"
-	"github.com/beyondstorage/go-storage/endpoint"
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/credential"
+	"github.com/rgglez/go-storage/endpoint"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 type Service struct {

@@ -11,15 +11,15 @@ import (
 
 	ipfs "github.com/ipfs/go-ipfs-api"
 
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 // The src of `ipfs files cp` supports both `IPFS-path` and `MFS-path`
 // After `s.getAbsPath(src)`, if the absolute path matches `IPFS-path`, it will take precedence
 // This means that if the `workDir` is `/ipfs/`, there is a high probability that an error will be returned
-// See https://github.com/beyondstorage/specs/pull/134#discussion_r663594807 for more details
+// See https://github.com/rgglez/specs/pull/134#discussion_r663594807 for more details
 func (s *Storage) copy(ctx context.Context, src string, dst string, opt pairStorageCopy) (err error) {
 	dst = s.getAbsPath(dst)
 	stat, err := s.ipfs.FilesStat(ctx, dst)
@@ -66,7 +66,7 @@ func (s *Storage) createDir(ctx context.Context, path string, opt pairStorageCre
 }
 
 // GSP-46: Idempotent Storager Delete Operation
-// ref: https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md
+// ref: https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md
 func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete) (err error) {
 	err = s.ipfs.FilesRm(ctx, s.getAbsPath(path), true)
 	return

@@ -11,10 +11,10 @@ import (
 
 	qs "github.com/qiniu/go-sdk/v7/storage"
 
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/pkg/iowrap"
-	"github.com/beyondstorage/go-storage/v5/services"
-	"github.com/beyondstorage/go-storage/v5/types"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) create(path string, opt pairStorageCreate) (o *types.Object) {
@@ -50,7 +50,7 @@ func (s *Storage) createDir(ctx context.Context, path string, opt pairStorageCre
 	rp += "/"
 
 	// kodo `put` doesn't support `overwrite`, so we need to check whether the dir exists.
-	// ref: [GSP-134](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/134-write-behavior-consistency.md)
+	// ref: [GSP-134](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/134-write-behavior-consistency.md)
 	fi, err := s.bucket.Stat(s.name, rp)
 	if err == nil {
 		// The dir is exist.
@@ -100,7 +100,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 		// Omit `612`(resource to be deleted dose not exist) error code here
 		//
 		// References
-		// - [GSP-46](https://github.com/beyondstorage/specs/blob/master/rfcs/46-idempotent-delete.md)
+		// - [GSP-46](https://github.com/rgglez/specs/blob/master/rfcs/46-idempotent-delete.md)
 		// - https://developer.qiniu.com/kodo/1257/delete
 		err = nil
 	}
@@ -113,7 +113,7 @@ func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete
 func (s *Storage) list(ctx context.Context, path string, opt pairStorageList) (oi *types.ObjectIterator, err error) {
 	if !opt.HasListMode {
 		// Support `ListModePrefix` as the default `ListMode`.
-		// ref: [GSP-654](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
+		// ref: [GSP-654](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/654-unify-list-behavior.md)
 		opt.ListMode = types.ListModePrefix
 	}
 
@@ -317,7 +317,7 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 	rp := s.getAbsPath(path)
 
 	// According to GSP-751, we should allow the user to pass in a nil io.Reader.
-	// ref: https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
+	// ref: https://github.com/rgglez/go-storage/blob/master/docs/rfcs/751-write-empty-file-behavior.md
 	if r == nil && size == 0 {
 		r = bytes.NewReader([]byte{})
 	} else if r == nil && size != 0 {
@@ -327,7 +327,7 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 	}
 
 	// kodo `put` doesn't support `overwrite`, so we need to check and delete the object if exists.
-	// ref: [GSP-134](https://github.com/beyondstorage/go-storage/blob/master/docs/rfcs/134-write-behavior-consistency.md)
+	// ref: [GSP-134](https://github.com/rgglez/go-storage/blob/master/docs/rfcs/134-write-behavior-consistency.md)
 	_, err = s.bucket.Stat(s.name, rp)
 	if err == nil {
 		err = s.bucket.Delete(s.name, rp)

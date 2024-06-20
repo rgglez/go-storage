@@ -1,7 +1,7 @@
 - Author: JinnyYi <github.com/JinnyYi>
 - Start Date: 2021-08-03
-- RFC PR: [beyondstorage/go-storage#700](https://github.com/beyondstorage/go-storage/issues/700)
-- Tracking Issue: [beyondstorage/go-storage#704](https://github.com/beyondstorage/go-storage/issues/704)
+- RFC PR: [beyondstorage/go-storage#700](https://github.com/rgglez/go-storage/issues/700)
+- Tracking Issue: [beyondstorage/go-storage#704](https://github.com/rgglez/go-storage/issues/704)
 
 # GSP-700: Config Features and DefaultPairs via Connection String
 
@@ -10,7 +10,7 @@
 
 Previous discussion:
 
-- [Connection string needs to support config StorageFeatures and DefaultPairs](https://github.com/beyondstorage/go-storage/issues/680)
+- [Connection string needs to support config StorageFeatures and DefaultPairs](https://github.com/rgglez/go-storage/issues/680)
 
 ## Background
 
@@ -176,4 +176,4 @@ No break changes.
 - Implement service code generate in [go-storage] definitions.
 
 [GSP-90: Re-support Initialization Via Connection String]: ./90-re-support-initialization-via-connection-string.md
-[go-storage]: https://github.com/beyondstorage/go-storage
+[go-storage]: https://github.com/rgglez/go-storage

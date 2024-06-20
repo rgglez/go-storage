@@ -1,13 +1,13 @@
-[![Services Test Bos](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-bos.yml/badge.svg)](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-bos.yml)
+[![Services Test Bos](https://github.com/rgglez/go-storage/actions/workflows/services-test-bos.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/services-test-bos.yml)
 
 # bos
 
-BOS(Baidu Object Storage) service support for [go-storage](https://github.com/beyondstorage/go-storage).
+BOS(Baidu Object Storage) service support for [go-storage](https://github.com/rgglez/go-storage).
 
 ## Install
 
 ```go
-go get github.com/beyondstorage/go-storage/services/bos/v2
+go get github.com/rgglez/go-storage/services/bos/v2
 ```
 
 ## Usage
@@ -16,8 +16,8 @@ go get github.com/beyondstorage/go-storage/services/bos/v2
 import (
 	"log"
 
-	_ "github.com/beyondstorage/go-storage/services/bos/v2"
-	"github.com/beyondstorage/go-storage/v5/services"
+	_ "github.com/rgglez/go-storage/services/bos/v2"
+	"github.com/rgglez/go-storage/v5/services"
 )
 
 func main() {
@@ -31,5 +31,5 @@ func main() {
 }
 ```
 
-- See more examples in [go-storage-example](https://github.com/beyondstorage/go-storage-example).
+- See more examples in [go-storage-example](https://github.com/rgglez/go-storage-example).
 - Read [more docs](https://beyondstorage.io/docs/go-storage/services/bos) about go-service-bos.

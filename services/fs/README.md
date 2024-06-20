@@ -1,8 +1,8 @@
-[![Services Test Fs](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-fs.yml/badge.svg)](https://github.com/beyondstorage/go-storage/actions/workflows/services-test-fs.yml)
+[![Services Test Fs](https://github.com/rgglez/go-storage/actions/workflows/services-test-fs.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/services-test-fs.yml)
 
 # fs
 
-Local file system service support for [go-storage](https://github.com/beyondstorage/go-storage).
+Local file system service support for [go-storage](https://github.com/rgglez/go-storage).
 
 ## Install
 
@@ -31,5 +31,5 @@ func main() {
 }
 ```
 
-- See more examples in [go-storage-example](https://github.com/beyondstorage/go-storage-example).
+- See more examples in [go-storage-example](https://github.com/rgglez/go-storage-example).
 - Read [more docs](https://beyondstorage.io/docs/go-storage/services/fs) about go-service-fs.

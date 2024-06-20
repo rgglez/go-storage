@@ -1,17 +1,19 @@
 package oss
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 
-	"github.com/beyondstorage/go-storage/credential"
-	"github.com/beyondstorage/go-storage/endpoint"
-	ps "github.com/beyondstorage/go-storage/v5/pairs"
-	"github.com/beyondstorage/go-storage/v5/services"
-	typ "github.com/beyondstorage/go-storage/v5/types"
+	"github.com/rgglez/go-storage/credential"
+	"github.com/rgglez/go-storage/endpoint"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/services"
+	typ "github.com/rgglez/go-storage/v5/types"
 )
 
 // Service is the aliyun oss *Service config.
@@ -110,10 +112,19 @@ func (f *Factory) newService() (srv *Service, err error) {
 	if err != nil {
 		return nil, err
 	}
-	if cp.Protocol() != credential.ProtocolHmac {
+
+	var ak, sk, at string
+	switch cp.Protocol() {
+	case credential.ProtocolHmac:
+		ak, sk = cp.Hmac()
+	case credential.ProtocolEnv:
+		ak, sk, at, err = findEnvCredentials()
+		if err != nil {
+			return nil, err
+		}
+	default:
 		return nil, services.PairUnsupportedError{Pair: ps.WithCredential(f.Credential)}
 	}
-	ak, sk := cp.Hmac()
 
 	ep, err := endpoint.Parse(f.Endpoint)
 	if err != nil {
@@ -132,6 +143,9 @@ func (f *Factory) newService() (srv *Service, err error) {
 
 	var copts []oss.ClientOption
 	copts = append(copts, oss.HTTPClient(&http.Client{}))
+	if at != "" {
+		copts = append(copts, oss.SecurityToken(at))
+	}
 
 	srv.service, err = oss.New(url, ak, sk, copts...)
 	if err != nil {
@@ -150,6 +164,25 @@ const (
 	StorageClassIA       = "IA"
 	StorageClassArchive  = "Archive"
 )
+
+func findEnvCredentials() (string, string, string, error) {
+	var accessId, accessKey, accessToken string
+	var ok bool
+
+	if accessId, ok = os.LookupEnv("ALIBABA_CLOUD_ACCESS_KEY_ID"); ok == false {
+		return "", "", "", errors.New("enviroment variable not set")
+	}
+
+	if accessKey, ok = os.LookupEnv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"); ok == false {
+		return "", "", "", errors.New("enviroment variable not set")
+	}
+
+	if accessToken, ok = os.LookupEnv("ALIBABA_CLOUD_SECURITY_TOKEN"); ok == false {
+		return "", "", "", errors.New("enviroment variable not set")
+	}
+
+	return accessId, accessKey, accessToken, nil
+}
 
 func formatError(err error) error {
 	if _, ok := err.(services.InternalError); ok {
