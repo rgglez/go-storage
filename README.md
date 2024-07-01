@@ -1,5 +1,11 @@
 # go-storage
 
+**Notice: the original project seems to be dead. This is a fork in which I
+have added the "env" protocol for Aliyun OSS, so the library can authenticate
+using [STS](https://www.alibabacloud.com/help/en/ram/product-overview/what-is-sts).**
+
+The automatic tests seem to be broken.
+
 ## [Website](https://beyondstorage.io) | [Documentation](https://beyondstorage.io/docs/go-storage) | [Community](https://beyondstorage.io/community)
 
 [![Go dev](https://pkg.go.dev/badge/go.beyondstorage.io/v5)](https://pkg.go.dev/go.beyondstorage.io/v5)
