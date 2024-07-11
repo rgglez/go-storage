@@ -6,8 +6,9 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	"github.com/aws/smithy-go"
 	"strings"
+
+	"github.com/aws/smithy-go"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	signerv4 "github.com/aws/aws-sdk-go-v2/aws/signer/v4"
@@ -307,7 +308,7 @@ func (s *Storage) formatFileObject(v s3types.Object) (o *typ.Object, err error) 
 	// If you want to get the exact object mode, please use `stat`
 	o.Mode |= typ.ModeRead
 
-	o.SetContentLength(v.Size)
+	o.SetContentLength(*v.Size)
 	o.SetLastModified(aws.ToTime(v.LastModified))
 
 	if v.ETag != nil {
@@ -395,7 +396,7 @@ func (s *Storage) formatPutObjectInput(path string, size int64, opt pairStorageW
 	input = &s3.PutObjectInput{
 		Bucket:        aws.String(s.name),
 		Key:           aws.String(rp),
-		ContentLength: size,
+		ContentLength: &size,
 	}
 
 	if opt.HasContentMd5 {
@@ -408,7 +409,7 @@ func (s *Storage) formatPutObjectInput(path string, size int64, opt pairStorageW
 		input.ExpectedBucketOwner = &opt.ExpectedBucketOwner
 	}
 	if opt.HasServerSideEncryptionBucketKeyEnabled {
-		input.BucketKeyEnabled = opt.ServerSideEncryptionBucketKeyEnabled
+		input.BucketKeyEnabled = &opt.ServerSideEncryptionBucketKeyEnabled
 	}
 	if opt.HasServerSideEncryptionCustomerAlgorithm {
 		input.SSECustomerAlgorithm, input.SSECustomerKey, input.SSECustomerKeyMD5, err = calculateEncryptionHeaders(opt.ServerSideEncryptionCustomerAlgorithm, opt.ServerSideEncryptionCustomerKey)
@@ -479,7 +480,7 @@ func (s *Storage) formatCreateMultipartUploadInput(path string, opt pairStorageC
 	}
 
 	if opt.HasServerSideEncryptionBucketKeyEnabled {
-		input.BucketKeyEnabled = opt.ServerSideEncryptionBucketKeyEnabled
+		input.BucketKeyEnabled = &opt.ServerSideEncryptionBucketKeyEnabled
 	}
 	if opt.HasExpectedBucketOwner {
 		input.ExpectedBucketOwner = &opt.ExpectedBucketOwner
@@ -507,11 +508,12 @@ func (s *Storage) formatCreateMultipartUploadInput(path string, opt pairStorageC
 func (s *Storage) formatCompleteMultipartUploadInput(o *typ.Object, parts []*typ.Part, opt pairStorageCompleteMultipart) (input *s3.CompleteMultipartUploadInput) {
 	upload := &s3types.CompletedMultipartUpload{}
 	for _, v := range parts {
+		partNumber := int32(v.Index + 1)
 		upload.Parts = append(upload.Parts, s3types.CompletedPart{
 			ETag: aws.String(v.ETag),
 			// For users the `PartNumber` is zero-based. But for S3, the effective `PartNumber` is [1, 10000].
 			// Set PartNumber=v.Index+1 here to ensure pass in an effective `PartNumber` for `CompletedPart`.
-			PartNumber: int32(v.Index + 1),
+			PartNumber: &partNumber,
 		})
 	}
 
@@ -530,15 +532,16 @@ func (s *Storage) formatCompleteMultipartUploadInput(o *typ.Object, parts []*typ
 }
 
 func (s *Storage) formatUploadPartInput(o *typ.Object, size int64, index int, opt pairStorageWriteMultipart) (input *s3.UploadPartInput, err error) {
+	partNumber := int32(index + 1)
 	input = &s3.UploadPartInput{
 		Bucket: &s.name,
 		// For S3, the `PartNumber` is [1, 10000]. But for users, the `PartNumber` is zero-based.
 		// Set PartNumber=index+1 here to ensure pass in an effective `PartNumber` for `UploadPart`.
 		// ref: https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html
-		PartNumber:    int32(index + 1),
+		PartNumber:    &partNumber,
 		Key:           aws.String(o.ID),
 		UploadId:      aws.String(o.MustGetMultipartID()),
-		ContentLength: size,
+		ContentLength: &size,
 	}
 	if opt.HasExpectedBucketOwner {
 		input.ExpectedBucketOwner = &opt.ExpectedBucketOwner

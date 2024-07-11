@@ -71,10 +71,11 @@ func (s *Storage) createDir(ctx context.Context, path string, opt pairStorageCre
 	//ref: https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html
 	rp += "/"
 
+	contentLength := int64(0)
 	input := &s3.PutObjectInput{
 		Bucket:        aws.String(s.name),
 		Key:           aws.String(rp),
-		ContentLength: int64(0),
+		ContentLength: &contentLength,
 	}
 	if opt.HasStorageClass {
 		input.StorageClass = s3types.StorageClass(opt.StorageClass)
@@ -106,7 +107,7 @@ func (s *Storage) createDir(ctx context.Context, path string, opt pairStorageCre
 	if v := aws.ToString(output.SSECustomerKeyMD5); v != "" {
 		sm.ServerSideEncryptionCustomerKeyMd5 = v
 	}
-	sm.ServerSideEncryptionBucketKeyEnabled = output.BucketKeyEnabled
+	sm.ServerSideEncryptionBucketKeyEnabled = *output.BucketKeyEnabled
 	o.SetSystemMetadata(sm)
 
 	return o, nil
@@ -162,7 +163,7 @@ func (s *Storage) createLink(ctx context.Context, path string, target string, op
 	if v := aws.ToString(output.SSECustomerKeyMD5); v != "" {
 		sm.ServerSideEncryptionCustomerKeyMd5 = v
 	}
-	sm.ServerSideEncryptionBucketKeyEnabled = output.BucketKeyEnabled
+	sm.ServerSideEncryptionBucketKeyEnabled = *output.BucketKeyEnabled
 
 	o.SetSystemMetadata(sm)
 
@@ -201,7 +202,7 @@ func (s *Storage) createMultipart(ctx context.Context, path string, opt pairStor
 	if v := aws.ToString(output.SSECustomerKeyMD5); v != "" {
 		sm.ServerSideEncryptionCustomerKeyMd5 = v
 	}
-	sm.ServerSideEncryptionBucketKeyEnabled = output.BucketKeyEnabled
+	sm.ServerSideEncryptionBucketKeyEnabled = *output.BucketKeyEnabled
 
 	o.SetSystemMetadata(sm)
 	return o, nil
@@ -316,10 +317,11 @@ func (s *Storage) metadata(opt pairStorageMetadata) (meta *types.StorageMeta) {
 func (s *Storage) nextObjectPageByDir(ctx context.Context, page *types.ObjectPage) error {
 	input := page.Status.(*objectPageStatus)
 
+	maxKeys := int32(input.maxKeys)
 	listInput := &s3.ListObjectsV2Input{
 		Bucket:            &s.name,
 		Delimiter:         &input.delimiter,
-		MaxKeys:           int32(input.maxKeys),
+		MaxKeys:           &maxKeys,
 		ContinuationToken: input.getServiceContinuationToken(),
 		Prefix:            &input.prefix,
 	}
@@ -349,7 +351,7 @@ func (s *Storage) nextObjectPageByDir(ctx context.Context, page *types.ObjectPag
 		page.Data = append(page.Data, o)
 	}
 
-	if !output.IsTruncated {
+	if !*output.IsTruncated {
 		return types.IterateDone
 	}
 
@@ -360,9 +362,10 @@ func (s *Storage) nextObjectPageByDir(ctx context.Context, page *types.ObjectPag
 func (s *Storage) nextObjectPageByPrefix(ctx context.Context, page *types.ObjectPage) error {
 	input := page.Status.(*objectPageStatus)
 
+	maxKeys := int32(input.maxKeys)
 	listInput := &s3.ListObjectsV2Input{
 		Bucket:            &s.name,
-		MaxKeys:           int32(input.maxKeys),
+		MaxKeys:           &maxKeys,
 		ContinuationToken: input.getServiceContinuationToken(),
 		Prefix:            &input.prefix,
 	}
@@ -382,7 +385,7 @@ func (s *Storage) nextObjectPageByPrefix(ctx context.Context, page *types.Object
 
 		page.Data = append(page.Data, o)
 	}
-	if !output.IsTruncated {
+	if !*output.IsTruncated {
 		return types.IterateDone
 	}
 	input.continuationToken = aws.ToString(output.NextContinuationToken)
@@ -391,10 +394,11 @@ func (s *Storage) nextObjectPageByPrefix(ctx context.Context, page *types.Object
 
 func (s *Storage) nextPartObjectPageByPrefix(ctx context.Context, page *types.ObjectPage) error {
 	input := page.Status.(*objectPageStatus)
+	maxKeys := int32(input.maxKeys)
 	listInput := &s3.ListMultipartUploadsInput{
 		Bucket:         &s.name,
 		KeyMarker:      &input.keyMarker,
-		MaxUploads:     int32(input.maxKeys),
+		MaxUploads:     &maxKeys,
 		Prefix:         &input.prefix,
 		UploadIdMarker: &input.uploadIdMarker,
 	}
@@ -415,7 +419,7 @@ func (s *Storage) nextPartObjectPageByPrefix(ctx context.Context, page *types.Ob
 
 		page.Data = append(page.Data, o)
 	}
-	if !output.IsTruncated {
+	if !*output.IsTruncated {
 		return types.IterateDone
 	}
 	input.keyMarker = aws.ToString(output.KeyMarker)
@@ -425,10 +429,11 @@ func (s *Storage) nextPartObjectPageByPrefix(ctx context.Context, page *types.Ob
 
 func (s *Storage) nextPartPage(ctx context.Context, page *types.PartPage) error {
 	input := page.Status.(*partPageStatus)
+	maxKeys := int32(input.maxParts)
 	listInput := &s3.ListPartsInput{
 		Bucket:           &s.name,
 		Key:              &input.key,
-		MaxParts:         int32(input.maxParts),
+		MaxParts:         &maxKeys,
 		PartNumberMarker: &input.partNumberMarker,
 		UploadId:         &input.uploadId,
 	}
@@ -444,14 +449,14 @@ func (s *Storage) nextPartPage(ctx context.Context, page *types.PartPage) error 
 		p := &types.Part{
 			// The returned `PartNumber` is [1, 10000].
 			// Set Index=*v.PartNumber-1 here to make the `PartNumber` zero-based for user.
-			Index: int(v.PartNumber) - 1,
-			Size:  v.Size,
+			Index: int(*v.PartNumber) - 1,
+			Size:  *v.Size,
 			ETag:  aws.ToString(v.ETag),
 		}
 
 		page.Data = append(page.Data, p)
 	}
-	if !output.IsTruncated {
+	if !*output.IsTruncated {
 		return types.IterateDone
 	}
 	input.partNumberMarker = aws.ToString(output.NextPartNumberMarker)
@@ -660,7 +665,7 @@ func (s *Storage) stat(ctx context.Context, path string, opt pairStorageStat) (o
 			o.Mode |= types.ModeRead
 		}
 	}
-	o.SetContentLength(output.ContentLength)
+	o.SetContentLength(*output.ContentLength)
 	o.SetLastModified(aws.ToTime(output.LastModified))
 	if output.ContentType != nil {
 		o.SetContentType(*output.ContentType)
@@ -684,7 +689,7 @@ func (s *Storage) stat(ctx context.Context, path string, opt pairStorageStat) (o
 	if v := aws.ToString(output.SSECustomerKeyMD5); v != "" {
 		sm.ServerSideEncryptionCustomerKeyMd5 = v
 	}
-	sm.ServerSideEncryptionBucketKeyEnabled = output.BucketKeyEnabled
+	sm.ServerSideEncryptionBucketKeyEnabled = *output.BucketKeyEnabled
 
 	o.SetSystemMetadata(sm)
 
@@ -738,15 +743,16 @@ func (s *Storage) writeMultipart(ctx context.Context, o *types.Object, r io.Read
 		r = iowrap.CallbackReader(r, opt.IoCallback)
 	}
 
+	partNumber := (int32(index + 1))
 	input := &s3.UploadPartInput{
 		Bucket: &s.name,
 		// For S3, the `PartNumber` is [1, 10000]. But for users, the `PartNumber` is zero-based.
 		// Set PartNumber=index+1 here to ensure pass in an effective `PartNumber` for `UploadPart`.
 		// ref: https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html
-		PartNumber:    (int32(index + 1)),
+		PartNumber:    &partNumber,
 		Key:           aws.String(o.ID),
 		UploadId:      aws.String(o.MustGetMultipartID()),
-		ContentLength: size,
+		ContentLength: &size,
 		Body:          iowrap.SizedReadSeekCloser(r, size),
 	}
 	if opt.HasExpectedBucketOwner {

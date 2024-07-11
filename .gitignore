@@ -23,3 +23,6 @@ coverage.*
 # Jetbrain IDE
 .idea
 *.iml
+
+# Patch files
+*.patch
