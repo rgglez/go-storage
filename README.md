@@ -6,14 +6,10 @@ using [STS](https://www.alibabacloud.com/help/en/ram/product-overview/what-is-st
 
 The automatic tests seem to be broken here.
 
-## [Website](https://beyondstorage.io) | [Documentation](https://beyondstorage.io/docs/go-storage) | [Community](https://beyondstorage.io/community)
+TODO: FIX so many things.
 
 [![Go dev](https://pkg.go.dev/badge/go.beyondstorage.io/v5)](https://pkg.go.dev/go.beyondstorage.io/v5)
 [![License](https://img.shields.io/badge/license-apache%20v2-blue.svg)](https://github.com/rgglez/go-storage/blob/master/LICENSE)
-
-[![Matrix](https://img.shields.io/matrix/beyondstorage@go-storage:matrix.org.svg?label=go-storage&logo=matrix)](https://matrix.to/#/#beyondstorage@go-storage:matrix.org)
-[![Slack](https://img.shields.io/badge/slack-4A154B?logo=slack)](https://join.slack.com/t/beyond-storage/shared_invite/zt-pf4yk96u-7znnJVYpQvY57C3rRrbDPg)
-[![Telegram](https://img.shields.io/badge/telegram-2CA5E0?logo=telegram)](https://t.me/beyondstorage_go_storage)
 
 [![Build Test](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml)
 [![Cross Build](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml)
@@ -317,9 +313,3 @@ func NewS3SseC(key []byte) (types.Storager, error) {
     return s3.NewStorager(..., s3.WithDefaultStoragePairs(defaultPairs))
 }
 ```
-
-## Sponsor
-
-<a href="https://vercel.com?utm_source=beyondstorage&utm_campaign=oss">
-    <img src="./docs/images/vercel.svg">
-</a>
