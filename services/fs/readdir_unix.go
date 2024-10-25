@@ -10,7 +10,7 @@ import (
 	"path"
 	"path/filepath"
 
-	typ "go.beyondstorage.io/v5/types"
+	typ "github.com/rgglez/go-storage/v5/types"
 )
 
 // Available value for Dirent Type
