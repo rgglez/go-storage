@@ -5,12 +5,13 @@ package fs
 
 import (
 	"context"
-	"golang.org/x/sys/unix"
 	"os"
 	"path"
 	"path/filepath"
 
-	typ "go.beyondstorage.io/v5/types"
+	"golang.org/x/sys/unix"
+
+	typ "github.com/rgglez/go-storage/v5/types"
 )
 
 // Available value for Dirent Type

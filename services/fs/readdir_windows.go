@@ -8,7 +8,7 @@ import (
 
 	"golang.org/x/sys/windows"
 
-	typ "go.beyondstorage.io/v5/types"
+	typ "github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) listDirNext(ctx context.Context, page *typ.ObjectPage) (err error) {

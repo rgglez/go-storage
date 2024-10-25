@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
-	. "go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/pkg/httpclient"
-	"go.beyondstorage.io/v5/services"
-	. "go.beyondstorage.io/v5/types"
+	. "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/httpclient"
+	"github.com/rgglez/go-storage/v5/services"
+	. "github.com/rgglez/go-storage/v5/types"
 )
 
 var (

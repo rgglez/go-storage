@@ -3,4 +3,4 @@
 
 package fs
 
-import _ "go.beyondstorage.io/v5/cmd/definitions"
+import _ "github.com/rgglez/go-storage/v5/cmd/definitions"

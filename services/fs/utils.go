@@ -6,8 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"go.beyondstorage.io/v5/services"
-	typ "go.beyondstorage.io/v5/types"
+	"github.com/rgglez/go-storage/v5/services"
+	typ "github.com/rgglez/go-storage/v5/types"
 )
 
 // Std{in/out/err} support

@@ -11,9 +11,9 @@ import (
 
 	"github.com/qingstor/go-mime"
 
-	"go.beyondstorage.io/v5/pkg/iowrap"
-	"go.beyondstorage.io/v5/services"
-	"go.beyondstorage.io/v5/types"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) delete(ctx context.Context, path string, opt pairStorageDelete) (err error) {

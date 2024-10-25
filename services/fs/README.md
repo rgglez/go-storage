@@ -7,7 +7,7 @@ Local file system service support for [go-storage](https://github.com/rgglez/go-
 ## Install
 
 ```go
-go get go.beyondstorage.io/services/fs/v4
+go get github.com/rgglez/go-storage/services/fs/v4
 ```
 
 ## Usage
@@ -16,8 +16,8 @@ go get go.beyondstorage.io/services/fs/v4
 import (
 	"log"
 
-	_ "go.beyondstorage.io/services/fs/v4"
-	"go.beyondstorage.io/v5/services"
+	_ "github.com/rgglez/go-storage/services/fs/v4"
+	"github.com/rgglez/go-storage/v5/services"
 )
 
 func main() {
