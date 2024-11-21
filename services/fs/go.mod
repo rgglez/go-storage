@@ -1,4 +1,4 @@
-module github.com/rgglez/go-storage/services/fs/v4
+module fs
 
 go 1.16
 
