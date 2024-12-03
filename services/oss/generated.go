@@ -1187,7 +1187,7 @@ func (s *Storage) parsePairStorageQuerySignHTTPRead(opts []types.Pair) (pairStor
 	}
 	return signed_url, nilreturn result, nil
 }
-func (s *Storage) QuerySignHTTPRead(path string, expire time.Duration, pairs ...types.Pair) (string, error)
+func (s *Storage) QuerySignHTTPRead(path string, expire time.Duration, pairs ...types.Pair) (string, error) {
 //(req *http.Request, err error) {
 	signed_url, err := s.bucket.SignURL(path, oss.GET, expire)
 	if err != nil {
