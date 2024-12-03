@@ -1218,7 +1218,7 @@ func (s *Storage) parsePairStorageQuerySignHTTPWrite(opts []types.Pair) (pairSto
 	}
 	return result, nil
 }
-func (s *Storage) QuerySignHTTPWrite(path string, size int64, expire time.Duration, pairs ...types.Pair) (string, err) {}
+func (s *Storage) QuerySignHTTPWrite(path string, size int64, expire time.Duration, pairs ...types.Pair) (string, err) {
 	//(req *http.Request, err error) {
 	signed_url, err := s.bucket.SignURL(path, oss.PUT, expire)
 	if err != nil {
