@@ -11,6 +11,7 @@ import (
 
 	"github.com/rgglez/go-storage/v5/services"
 	"github.com/rgglez/go-storage/v5/types"
+	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 )
 
 var (
@@ -1180,11 +1181,21 @@ func (s *Storage) parsePairStorageQuerySignHTTPRead(opts []types.Pair) (pairStor
 			return pairStorageQuerySignHTTPRead{}, services.PairUnsupportedError{Pair: v}
 		}
 	}
-	return result, nil
+	signed_url, err := s.bucket.SignURL(path, oss.GET, expire)
+	if err != nil {
+		return "", err
+	}
+	return signed_url, nilreturn result, nil
 }
-func (s *Storage) QuerySignHTTPRead(path string, expire time.Duration, pairs ...types.Pair) (req *http.Request, err error) {
-	err = types.NewOperationNotImplementedError("query_sign_http_read")
-	return
+func (s *Storage) QuerySignHTTPRead(path string, expire time.Duration, pairs ...types.Pair) (string, error)
+//(req *http.Request, err error) {
+	signed_url, err := s.bucket.SignURL(path, oss.GET, expire)
+	if err != nil {
+		return "", err
+	}
+	return signed_url, nil
+	//err = types.NewOperationNotImplementedError("query_sign_http_read")
+	//return
 }
 func (s *Storage) QuerySignHTTPReadWithContext(ctx context.Context, path string, expire time.Duration, pairs ...types.Pair) (req *http.Request, err error) {
 	err = types.NewOperationNotImplementedError("query_sign_http_read")
@@ -1207,9 +1218,15 @@ func (s *Storage) parsePairStorageQuerySignHTTPWrite(opts []types.Pair) (pairSto
 	}
 	return result, nil
 }
-func (s *Storage) QuerySignHTTPWrite(path string, size int64, expire time.Duration, pairs ...types.Pair) (req *http.Request, err error) {
-	err = types.NewOperationNotImplementedError("query_sign_http_write")
-	return
+func (s *Storage) QuerySignHTTPWrite(path string, size int64, expire time.Duration, pairs ...types.Pair) (string, err) {}
+	//(req *http.Request, err error) {
+	signed_url, err := s.bucket.SignURL(path, oss.PUT, expire)
+	if err != nil {
+		return "", err
+	}
+	return signed_url, nil
+	//err = types.NewOperationNotImplementedError("query_sign_http_write")
+	//return
 }
 func (s *Storage) QuerySignHTTPWriteWithContext(ctx context.Context, path string, size int64, expire time.Duration, pairs ...types.Pair) (req *http.Request, err error) {
 	err = types.NewOperationNotImplementedError("query_sign_http_write")
