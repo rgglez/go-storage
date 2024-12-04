@@ -1184,7 +1184,7 @@ func (s *Storage) parsePairStorageQuerySignHTTPRead(opts []types.Pair) (pairStor
 	return result, nil
 }
 func (s *Storage) QuerySignHTTPRead(path string, expire time.Duration, pairs ...types.Pair) (req *http.Request, err error) {
-	signed_url, err := s.bucket.SignURL(path, "", int64(expire))
+	signed_url, err := s.bucket.SignURL(path, "GET", int64(expire))
 	if err != nil {
 		return nil, err
 	}
@@ -1225,7 +1225,7 @@ func (s *Storage) QuerySignHTTPWrite(path string, size int64, expire time.Durati
 	if err != nil {
 		return nil, err
 	}
-	req, err = http.NewRequest("GET", signed_url, nil)
+	req, err = http.NewRequest("PUT", signed_url, nil)
 	if err != nil {
 		return nil, err
 	}	
