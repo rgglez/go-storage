@@ -1,2 +1,0 @@
-# Ignore bindata changes
-cmd/definitions/bindata/bindata.go -diff
