@@ -15,7 +15,7 @@ A **vendor-neutral** storage library for Golang.
 
 The [original project](https://github.com/beyondstorage/go-storage) seems to be [dead](https://github.com/beyondstorage/go-storage/issues/1382) and [broken](https://github.com/beyondstorage/go-storage/issues/1263). This is a fork in which I
 have added the "env" protocol for Aliyun OSS, so the library can authenticate
-using [STS](https://www.alibabacloud.com/help/en/ram/product-overview/what-is-sts).**
+using [STS](https://www.alibabacloud.com/help/en/ram/product-overview/what-is-sts). Then I have fixed more things.
 
 The automatic tests seem to be broken here.
 
