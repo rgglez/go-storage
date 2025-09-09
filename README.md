@@ -1,25 +1,29 @@
 # go-storage
 
-**Notice: the [original project](https://github.com/beyondstorage/go-storage) seems to be [dead](https://github.com/beyondstorage/go-storage/issues/1382) and [broken](https://github.com/beyondstorage/go-storage/issues/1263). This is a fork in which I
+[![Go dev](https://pkg.go.dev/badge/go.beyondstorage.io/v5)](https://pkg.go.dev/go.beyondstorage.io/v5)
+[![License](https://img.shields.io/badge/license-apache%20v2-blue.svg)](https://github.com/rgglez/go-storage/blob/master/LICENSE)
+[![Build Test](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml)
+[![Cross Build](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml)
+[![Unit Test](https://github.com/rgglez/go-storage/actions/workflows/unit-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/unit-test.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/rgglez/go-storage)](https://goreportcard.com/report/github.com/rgglez/go-storage)
+![GitHub stars](https://img.shields.io/github/stars/rgglez/go-storage?style=social)
+![GitHub forks](https://img.shields.io/github/forks/rgglez/go-storage?style=social)
+
+A **vendor-neutral** storage library for Golang.
+
+## About this fork
+
+The [original project](https://github.com/beyondstorage/go-storage) seems to be [dead](https://github.com/beyondstorage/go-storage/issues/1382) and [broken](https://github.com/beyondstorage/go-storage/issues/1263). This is a fork in which I
 have added the "env" protocol for Aliyun OSS, so the library can authenticate
 using [STS](https://www.alibabacloud.com/help/en/ram/product-overview/what-is-sts).**
 
 The automatic tests seem to be broken here.
 
-TODO: FIX so many things.
-
-[![Go dev](https://pkg.go.dev/badge/go.beyondstorage.io/v5)](https://pkg.go.dev/go.beyondstorage.io/v5)
-[![License](https://img.shields.io/badge/license-apache%20v2-blue.svg)](https://github.com/rgglez/go-storage/blob/master/LICENSE)
-
-[![Build Test](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml)
-[![Cross Build](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml)
-[![Unit Test](https://github.com/rgglez/go-storage/actions/workflows/unit-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/unit-test.yml)
-
-A **vendor-neutral** storage library for Golang.
+**TODO**: FIX many things.
 
 ## Vision
 
-**Write once, run on every storage service.**
+Write once, run on every storage service.
 
 ## Goal
 
