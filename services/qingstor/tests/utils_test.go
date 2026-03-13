@@ -6,9 +6,9 @@ import (
 
 	"github.com/google/uuid"
 
-	"go.beyondstorage.io/services/qingstor/v4"
-	ps "go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/types"
+	"github.com/rgglez/go-storage/services/qingstor/v4"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func setupTest(t *testing.T) types.Storager {
@@ -19,10 +19,8 @@ func setupTest(t *testing.T) types.Storager {
 		ps.WithEndpoint(os.Getenv("STORAGE_QINGSTOR_ENDPOINT")),
 		ps.WithName(os.Getenv("STORAGE_QINGSTOR_NAME")),
 		ps.WithWorkDir("/"+uuid.New().String()+"/"),
-		qingstor.WithStorageFeatures(qingstor.StorageFeatures{
-			VirtualDir:  true,
-			VirtualLink: true,
-		}),
+		ps.WithEnableVirtualDir(),
+		ps.WithEnableVirtualLink(),
 	)
 	if err != nil {
 		t.Errorf("new storager: %v", err)

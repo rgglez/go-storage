@@ -17,17 +17,18 @@ import (
 	qserror "github.com/qingstor/qingstor-sdk-go/v4/request/errors"
 	"github.com/qingstor/qingstor-sdk-go/v4/service"
 
-	"go.beyondstorage.io/credential"
-	"go.beyondstorage.io/endpoint"
-	ps "go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/pkg/headers"
-	"go.beyondstorage.io/v5/pkg/httpclient"
-	"go.beyondstorage.io/v5/services"
-	typ "go.beyondstorage.io/v5/types"
+	"github.com/rgglez/go-storage/credential"
+	"github.com/rgglez/go-storage/endpoint"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/headers"
+	"github.com/rgglez/go-storage/v5/pkg/httpclient"
+	"github.com/rgglez/go-storage/v5/services"
+	typ "github.com/rgglez/go-storage/v5/types"
 )
 
 // Service is the qingstor service config.
 type Service struct {
+	f       Factory
 	config  *qsconfig.Config
 	service iface.Service
 
@@ -49,6 +50,7 @@ func (s *Service) String() string {
 
 // Storage is the qingstor object storage client.
 type Storage struct {
+	f          Factory
 	bucket     iface.Bucket
 	config     *qsconfig.Config
 	properties *service.Properties
@@ -81,40 +83,64 @@ func (s *Storage) String() string {
 
 // New will create both Servicer and Storager.
 func New(pairs ...typ.Pair) (typ.Servicer, typ.Storager, error) {
-	return newServicerAndStorager(pairs...)
+	f := Factory{}
+	err := f.WithPairs(pairs...)
+	if err != nil {
+		return nil, nil, err
+	}
+	srv, err := f.NewServicer()
+	if err != nil {
+		return nil, nil, err
+	}
+	sto, err := f.NewStorager()
+	if err != nil {
+		return nil, nil, err
+	}
+	return srv, sto, nil
 }
 
 // NewServicer will create Servicer only.
 func NewServicer(pairs ...typ.Pair) (typ.Servicer, error) {
-	return newServicer(pairs...)
+	f := Factory{}
+	err := f.WithPairs(pairs...)
+	if err != nil {
+		return nil, err
+	}
+	return f.NewServicer()
 }
 
 // NewStorager will create Storager only.
 func NewStorager(pairs ...typ.Pair) (typ.Storager, error) {
-	_, store, err := newServicerAndStorager(pairs...)
-	return store, err
-}
-
-func newServicer(pairs ...typ.Pair) (srv *Service, err error) {
-	defer func() {
-		if err != nil {
-			err = services.InitError{Op: "new_servicer", Type: Type, Err: formatError(err), Pairs: pairs}
-		}
-	}()
-
-	opt, err := parsePairServiceNew(pairs)
+	f := Factory{}
+	err := f.WithPairs(pairs...)
 	if err != nil {
 		return nil, err
 	}
+	return f.newStorage()
+}
+
+func (f *Factory) newService() (srv *Service, err error) {
+	defer func() {
+		if err != nil {
+			err = services.InitError{Op: "new_servicer", Type: Type, Err: formatError(err)}
+		}
+	}()
+
+	if f.Credential == "" {
+		return nil, services.ErrRestrictionDissatisfied
+	}
+
+	client := httpclient.New(f.HTTPClientOptions)
 
 	srv = &Service{
-		client: httpclient.New(opt.HTTPClientOptions),
+		f:      *f,
+		client: client,
 	}
 
 	var cfg *qsconfig.Config
 
 	// Set config's credential.
-	cp, err := credential.Parse(opt.Credential)
+	cp, err := credential.Parse(f.Credential)
 	if err != nil {
 		return nil, err
 	}
@@ -125,12 +151,12 @@ func newServicer(pairs ...typ.Pair) (srv *Service, err error) {
 			return nil, err
 		}
 	default:
-		return nil, services.PairUnsupportedError{Pair: ps.WithCredential(opt.Credential)}
+		return nil, services.PairUnsupportedError{Pair: ps.WithCredential(f.Credential)}
 	}
 
 	// Set config's endpoint
-	if opt.HasEndpoint {
-		ep, err := endpoint.Parse(opt.Endpoint)
+	if f.Endpoint != "" {
+		ep, err := endpoint.Parse(f.Endpoint)
 		if err != nil {
 			return nil, err
 		}
@@ -141,38 +167,18 @@ func newServicer(pairs ...typ.Pair) (srv *Service, err error) {
 		case endpoint.ProtocolHTTP:
 			_, cfg.Host, cfg.Port = ep.HTTP()
 		default:
-			return nil, services.PairUnsupportedError{Pair: ps.WithEndpoint(opt.Endpoint)}
+			return nil, services.PairUnsupportedError{Pair: ps.WithEndpoint(f.Endpoint)}
 		}
 
 		cfg.Protocol = ep.Protocol()
 	}
 	// Set config's http client
-	cfg.Connection = srv.client
+	cfg.Connection = client
 
 	srv.config = cfg
+	srv.features = f.serviceFeatures()
 	srv.service, _ = service.Init(cfg)
 
-	if opt.HasDefaultServicePairs {
-		srv.defaultPairs = opt.DefaultServicePairs
-	}
-	if opt.HasServiceFeatures {
-		srv.features = opt.ServiceFeatures
-	}
-	return
-}
-
-// New will create a new qingstor service.
-func newServicerAndStorager(pairs ...typ.Pair) (srv *Service, store *Storage, err error) {
-	srv, err = newServicer(pairs...)
-	if err != nil {
-		return
-	}
-
-	store, err = srv.newStorage(pairs...)
-	if err != nil {
-		err = services.InitError{Op: "new_storager", Type: Type, Err: formatError(err), Pairs: pairs}
-		return
-	}
 	return
 }
 
@@ -257,60 +263,57 @@ const (
 	StorageClassStandardIA = "STANDARD_IA"
 )
 
-func (s *Service) newStorage(pairs ...typ.Pair) (store *Storage, err error) {
-	opt, err := parsePairStorageNew(pairs)
+func (f *Factory) newStorage() (store *Storage, err error) {
+	s, err := f.newService()
 	if err != nil {
-		return
+		return nil, services.InitError{Op: "new_storager", Type: Type, Err: formatError(err)}
+	}
+	return s.newStorageFromFactory(*f)
+}
+
+// newStorageFromFactory creates a Storage using an existing Service and Factory config.
+// This is extracted to allow unit tests to inject mock service implementations.
+func (s *Service) newStorageFromFactory(f Factory) (store *Storage, err error) {
+	workDir := "/"
+	if f.WorkDir != "" {
+		// WorkDir should be an abs path, start and ends with "/"
+		if !isWorkDirValid(f.WorkDir) {
+			return nil, services.InitError{Op: "new_storager", Type: Type, Err: ErrWorkDirInvalid}
+		}
+		workDir = f.WorkDir
 	}
 
-	// WorkDir should be an abs path, start and ends with "/"
-	if opt.HasWorkDir && !isWorkDirValid(opt.WorkDir) {
-		err = ErrWorkDirInvalid
-		return
-	}
-	// set work dir into root path if no work dir passed
-	if !opt.HasWorkDir {
-		opt.WorkDir = "/"
+	if !IsBucketNameValid(f.Name) {
+		return nil, services.InitError{Op: "new_storager", Type: Type, Err: ErrBucketNameInvalid}
 	}
 
-	if !IsBucketNameValid(opt.Name) {
-		err = ErrBucketNameInvalid
-		return
-	}
-
-	// Detect location automatically
-	if !opt.HasLocation {
-		opt.Location, err = s.detectLocation(opt.Name)
+	location := f.Location
+	if location == "" {
+		location, err = s.detectLocation(f.Name)
 		if err != nil {
-			return
+			return nil, err
 		}
 	}
 
-	bucket, err := s.service.Bucket(opt.Name, opt.Location)
+	bucket, err := s.service.Bucket(f.Name, location)
 	if err != nil {
-		return
+		return nil, err
 	}
 
 	st := &Storage{
+		f:          f,
 		bucket:     bucket,
 		config:     bucket.Config,
 		properties: bucket.Properties,
 
-		workDir: "/",
+		workDir:  workDir,
+		features: f.storageFeatures(),
 	}
 
-	if opt.HasDisableURICleaning {
-		st.config.DisableURICleaning = opt.DisableURICleaning
+	if f.DisableURICleaning {
+		st.config.DisableURICleaning = f.DisableURICleaning
 	}
-	if opt.HasDefaultStoragePairs {
-		st.defaultPairs = opt.DefaultStoragePairs
-	}
-	if opt.HasStorageFeatures {
-		st.features = opt.StorageFeatures
-	}
-	if opt.HasWorkDir {
-		st.workDir = opt.WorkDir
-	}
+
 	return st, nil
 }
 

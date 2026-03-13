@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"go.beyondstorage.io/v5/services"
+	"github.com/rgglez/go-storage/v5/services"
 )
 
 func TestFormatOsError(t *testing.T) {

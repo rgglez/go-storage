@@ -13,16 +13,16 @@ jobs:
 
     strategy:
       matrix:
-        go: [ "1.16", "1.17" ]
+        go: [ "1.25" ]
 
     steps:
       - name: Set up Go 1.x
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build
         run: GOOS=js GOARCH=wasm go build ./...
@@ -33,18 +33,18 @@ jobs:
 
     strategy:
       matrix:
-        go: [ "1.16", "1.17" ]
+        go: [ "1.25" ]
         # Since go 1.15, 386 support for darwin has been dropped.
         os: [ ubuntu-latest, windows-latest ]
 
     steps:
       - name: Set up Go 1.x
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build
         run: GOARCH=386 go build ./...
@@ -55,18 +55,18 @@ jobs:
 
     strategy:
       matrix:
-        go: [ "1.16", "1.17" ]
+        go: [ "1.25" ]
         # Since go 1.15, arm support for darwin has been dropped.
         os: [ ubuntu-latest, windows-latest ]
 
     steps:
       - name: Set up Go 1.x
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build
         run: GOARCH=arm go build ./...
@@ -77,17 +77,17 @@ jobs:
 
     strategy:
       matrix:
-        go: [ "1.16", "1.17" ]
+        go: [ "1.25" ]
         os: [ ubuntu-latest, windows-latest, macos-latest ]
 
     steps:
       - name: Set up Go 1.x
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build
         run: GOARCH=arm64 go build ./...

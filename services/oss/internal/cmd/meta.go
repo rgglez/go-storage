@@ -48,6 +48,8 @@ var Metadata = def.Metadata{
 			List:              true,
 			ListMultipart:     true,
 			Metadata:          true,
+			QuerySignHTTPRead:  true,
+			QuerySignHTTPWrite: true,
 			Read:              true,
 			Stat:              true,
 			Write:             true,

@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"net/http"
 	"strconv"
 	"strings"
 	"time"
@@ -657,6 +658,30 @@ func (s *Storage) writeAppend(ctx context.Context, o *types.Object, r io.Reader,
 	o.SetAppendOffset(offset)
 
 	return size, err
+}
+
+func (s *Storage) querySignHTTPRead(ctx context.Context, path string, expire time.Duration, opt pairStorageQuerySignHTTPRead) (req *http.Request, err error) {
+	rp := s.getAbsPath(path)
+	signedURL, err := s.bucket.SignURL(rp, oss.HTTPGet, int64(expire.Seconds()))
+	if err != nil {
+		return
+	}
+	req, err = http.NewRequest("GET", signedURL, nil)
+	return
+}
+
+func (s *Storage) querySignHTTPWrite(ctx context.Context, path string, size int64, expire time.Duration, opt pairStorageQuerySignHTTPWrite) (req *http.Request, err error) {
+	rp := s.getAbsPath(path)
+	signedURL, err := s.bucket.SignURL(rp, oss.HTTPPut, int64(expire.Seconds()))
+	if err != nil {
+		return
+	}
+	req, err = http.NewRequest("PUT", signedURL, nil)
+	if err != nil {
+		return
+	}
+	req.ContentLength = size
+	return
 }
 
 func (s *Storage) writeMultipart(ctx context.Context, o *types.Object, r io.Reader, size int64, index int, opt pairStorageWriteMultipart) (n int64, part *types.Part, err error) {

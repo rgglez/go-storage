@@ -14,10 +14,10 @@ import (
 	"github.com/qingstor/qingstor-sdk-go/v4/service"
 	"github.com/stretchr/testify/assert"
 
-	"go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/pkg/randbytes"
-	"go.beyondstorage.io/v5/services"
-	"go.beyondstorage.io/v5/types"
+	"github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/randbytes"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func TestStorage_String(t *testing.T) {

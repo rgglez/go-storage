@@ -23,16 +23,16 @@ jobs:
 
     strategy:
       matrix:
-        go: [ "1.16", "1.17" ]
+        go: [ "1.25" ]
 
     steps:
       - name: Set up Go 1.x
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Download ftpserver release
         uses: robinraju/release-downloader@v1.2
@@ -67,7 +67,7 @@ jobs:
 
     strategy:
       matrix:
-        go: [ "1.16", "1.17" ]
+        go: [ "1.25" ]
         os: [ ubuntu-latest ]
 
     services:
@@ -87,12 +87,12 @@ jobs:
 
     steps:
       - name: Set up Go 1.x
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build
         run: make build

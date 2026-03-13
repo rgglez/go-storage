@@ -11,10 +11,10 @@ import (
 	"github.com/pengsrc/go-shared/convert"
 	"github.com/qingstor/qingstor-sdk-go/v4/service"
 
-	ps "go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/pkg/iowrap"
-	"go.beyondstorage.io/v5/services"
-	"go.beyondstorage.io/v5/types"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/pkg/iowrap"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Storage) commitAppend(ctx context.Context, o *types.Object, opt pairStorageCommitAppend) (err error) {

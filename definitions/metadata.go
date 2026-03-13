@@ -3,6 +3,9 @@ package definitions
 type Metadata struct {
 	Name string
 
+	// Imports lists additional package import paths needed by custom pair types.
+	Imports []string
+
 	Pairs   []Pair
 	Infos   []Info
 	Factory []Pair

@@ -31,7 +31,21 @@ func (l *LimitedReadCloser) Close() error {
 }
 
 // SectionReadCloser will return a sectioned hasCall closer.
+//
+// n must be >= 0; a negative value is clamped to 0, which makes the reader
+// immediately return io.EOF on the first Read call. This preserves the
+// original contract of the function: n < 0 means "empty section".
+//
+// Note: prior to Go 1.22, passing n = -1 to io.NewSectionReader produced an
+// internal limit of -1 (int64 underflow), which happened to satisfy the
+// off >= limit check and returned io.EOF immediately. Go 1.22 changed
+// io.SectionReader so that a negative n no longer underflows the limit,
+// causing it to call ReadAt instead. The explicit clamp below restores the
+// pre-1.22 behaviour without relying on overflow arithmetic.
 func SectionReadCloser(r ReadAtCloser, off, n int64) *SectionedReadCloser {
+	if n < 0 {
+		n = 0
+	}
 	return &SectionedReadCloser{r, io.NewSectionReader(r, off, n)}
 }
 

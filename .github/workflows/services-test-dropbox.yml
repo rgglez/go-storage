@@ -26,11 +26,11 @@ jobs:
         # Remove 1.15 test so that we only have one running tests for dropbox.
         # This will be helpful for resolving rate limit problem.
         # ref: https://github.com/rgglez/go-storage/issues/893
-        go: [ "1.17" ]
+        go: [ "1.25" ]
 
     steps:
       - name: Set up Go 1.x
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
 
@@ -40,7 +40,7 @@ jobs:
           STORAGE_DROPBOX_CREDENTIAL: op://Engineering/Dropbox/testing/credential
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Test
         env:

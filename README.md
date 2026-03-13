@@ -1,6 +1,6 @@
 # go-storage
 
-[![Go dev](https://pkg.go.dev/badge/go.beyondstorage.io/v5)](https://pkg.go.dev/go.beyondstorage.io/v5)
+[![Go dev](https://pkg.go.dev/badge/github.com/rgglez/go-storage/v5)](https://pkg.go.dev/gitub.com/v5)
 [![License](https://img.shields.io/badge/license-apache%20v2-blue.svg)](https://github.com/rgglez/go-storage/blob/master/LICENSE)
 [![Build Test](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml)
 [![Cross Build](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml)
@@ -11,121 +11,136 @@
 
 A **vendor-neutral** storage library for Golang.
 
+## Table of Contents
+
+- [About this fork](#about-this-fork)
+- [Vision](#vision)
+- [Goals](#goals)
+- [Documentation](#documentation)
+  - [`docs/README/` - Project documents](#docsreadme--project-documents)
+  - [`docs/rfcs/` - Request for Comments](#docsrfcs--request-for-comments)
+  - [`docs/spec/` - Specifications](#docsspec--specifications)
+- [Makefile](#makefile)
+- [Features](#features)
+  - [Widely native services support](#widely-native-services-support)
+  - [Complete and easily extensible interface](#complete-and-easily-extensible-interface)
+  - [Comprehensive metadata](#comprehensive-metadata)
+  - [Strong Typing Everywhere](#strong-typing-everywhere)
+  - [Server-Side Encrypt](#server-side-encrypt)
+- [License](#license)
+
+
 ## About this fork
 
-The [original project](https://github.com/beyondstorage/go-storage) seems to be [dead](https://github.com/beyondstorage/go-storage/issues/1382) and [broken](https://github.com/beyondstorage/go-storage/issues/1263). This is a fork in which I
-have added the "env" protocol for Aliyun OSS, so the library can authenticate
-using [STS](https://www.alibabacloud.com/help/en/ram/product-overview/what-is-sts). Then I have fixed more things.
-
-The automatic tests seem to be broken here.
-
-**TODO**: FIX many things.
+The [original project](https://github.com/beyondstorage/go-storage) seems to be [dead](https://github.com/beyondstorage/go-storage/issues/1382) and [broken](https://github.com/beyondstorage/go-storage/issues/1263). My changes are listed in the [CHANGELOG.md](docs/CHANGELOG.md) file
 
 ## Vision
 
 Write once, run on every storage service.
 
-## Goal
+## Goals
 
 - Vendor agnostic
 - Production ready
 - High performance
 
-## Examples
+## Documentation
 
-```go
-package main
+### `docs/README/` — Project documents
 
-import (
-    "log"
+| File | Description |
+|------|-------------|
+| [ARCHITECTURE.md](docs/README/ARCHITECTURE.md) | Detailed architecture overview: package structure, interfaces, code generation pipeline, pair system, iterator pattern, and how to implement a new service. **Recommended reading before contributing.** |
+| [CONTRIBUTING.md](docs/README/CONTRIBUTING.md) | Contribution guidelines: how to report bugs, submit patches, implement new services, or propose API changes. |
+| [TAGS_AND_SUBMODULES.md](docs/README/TAGS_AND_SUBMODULES.md) | How to create and push Go module tags for sub-modules in this monorepo. |
+| [CHANGELOG.md](docs/README/CHANGELOG.md) | History of changes and releases. |
+| [CODE_OF_CONDUCT.md](docs/README/CODE_OF_CONDUCT.md) | Community code of conduct. |
 
-    "github.com/rgglez/go-storage/v5/services"
-    "github.com/rgglez/go-storage/v5/types"
+### `docs/rfcs/` — Request for Comments
 
-    // Add fs support
-    _ "github.com/rgglez/go-storage/services/fs/v4"
-    // Add s3 support
-    _ "github.com/rgglez/go-storage/services/s3/v3"
-    // Add gcs support
-    _ "github.com/rgglez/go-storage/services/gcs/v3"
-    // Add azblob support
-    _ "github.com/rgglez/go-storage/services/azblob/v3"
-    // More support could be found under BeyondStorage.
-    _ "github.com/rgglez/go-storage/services/xxx" 
-)
+Design decision records covering the evolution of the library. Each RFC is numbered and describes the motivation, proposal, and rationale behind a change. Notable examples:
 
-func main() {
-    // Init a Storager from connection string. 
-    store, err := services.NewStoragerFromString("s3://bucket_name/path/to/workdir")
-    if err != nil {
-        log.Fatalf("service init failed: %v", err)
-    }
+| RFC | Topic |
+|-----|-------|
+| [RFC-1](docs/rfcs/1-unify-storager-behavior.md) | Unify Storager behavior |
+| [RFC-11](docs/rfcs/11-error-handling.md) | Error handling design |
+| [RFC-25](docs/rfcs/25-object-mode.md) | Object mode bitflags |
+| [RFC-48](docs/rfcs/48-service-registry.md) | Service registry pattern |
+| [RFC-700](docs/rfcs/700-config-features-and-defaultpairs-via-connection-string.md) | Connection string configuration |
+| [RFC-840](docs/rfcs/840-convert-to-monorepo.md) | Conversion to monorepo |
+| [RFC-970](docs/rfcs/970-service-factory.md) | Service factory design |
 
-    // Write data from io.Reader into hello.txt
-    n, err := store.Write("hello.txt", r, length)
+The full list of RFCs is in [`docs/rfcs/`](docs/rfcs/).
 
-    // Read data from hello.txt to io.Writer
-    n, err := store.Read("hello.txt", w)
+### `docs/spec/` — Specifications
 
-    // Stat hello.txt to check existence or get its metadata
-    o, err := store.Stat("hello.txt")
+Behavioral specifications that services must conform to:
 
-    // Use object's functions to get metadata
-    length, ok := o.GetContentLength()
-    
-    // List will create an iterator of object under path.
-    it, err := store.List("path")
-    
-    for {
-    	// Use iterator.Next to retrieve next object until we meet IterateDone.
-    	o, err := it.Next()
-    	if errors.Is(err, types.IterateDone) {
-    		break
-        }
-    }
+| File | Description |
+|------|-------------|
+| [spec/1-error-handling.md](docs/spec/1-error-handling.md) | Error handling specification |
+| [spec/2-proposal.md](docs/spec/2-proposal.md) | Proposal process specification |
 
-    // Delete hello.txt
-    err = store.Delete("hello.txt")
-}
-```
+## Makefile
 
-More examples could be found at [go-storage-example](https://github.com/rgglez/go-storage-example).
+The root [Makefile](Makefile) provides the following targets:
+
+| Target | Description |
+|--------|-------------|
+| `make help` | Lists available targets with a short description. |
+| `make check` | Runs static analysis (alias for `vet`). |
+| `make vet` | Runs `go vet ./...` to report suspicious constructs. |
+| `make format` | Formats all Go source files in-place with `gofmt`. |
+| `make generate` | Runs `go generate ./...` to regenerate all code-generated files, then formats them. |
+| `make build` | Full build for the current module: runs `tidy`, `generate`, `format`, `check`, and `go build ./...`. |
+| `make build-all` | Iterates over every `go.mod` in the monorepo and runs `make build` in each sub-module directory. |
+| `make test` | Runs the unit test suite with race detection and produces `coverage.txt` and `coverage.html` reports. |
+| `make test-all` | Iterates over every `go.mod` in the monorepo and runs `make test` in each sub-module directory. |
+| `make tidy` | Runs `go mod tidy` and `go mod verify` for the current module. |
+| `make tidy-all` | Iterates over every `go.mod` in the monorepo and runs `make tidy` in each sub-module directory. |
+| `make clean` | Deletes all `generated.go` files across the repository. |
 
 ## Features
 
 ### Widely native services support
 
-**16** stable services that have passed all [integration tests](https://github.com/rgglez/go-integration-test).
+All services live in this monorepo under [`services/`](services/). Each service is an independent Go module so you only pay the dependency cost for the backends you actually use.
 
-- [azblob](https://github.com/rgglez/go-service-azblob/): [Azure Blob storage](https://docs.microsoft.com/en-us/azure/storage/blobs/)
-- [bos](https://github.com/rgglez/go-service-bos): [Baidu Object Storage](https://cloud.baidu.com/product/bos.html)
-- [cos](https://github.com/rgglez/go-service-cos/): [Tencent Cloud Object Storage](https://cloud.tencent.com/product/cos)
-- [dropbox](https://github.com/rgglez/go-service-dropbox/): [Dropbox](https://www.dropbox.com)
-- [fs](https://github.com/rgglez/go-service-fs/): Local file system
-- [ftp](https://github.com/rgglez/go-service-ftp/): FTP
-- [gcs](https://github.com/rgglez/go-service-gcs/): [Google Cloud Storage](https://cloud.google.com/storage/)
-- [gdrive](https://github.com/rgglez/go-service-gdrive): [Google Drive](https://www.google.com/drive/)
-- [ipfs](https://github.com/rgglez/go-service-ipfs): [InterPlanetary File System](https://ipfs.io)
-- [kodo](https://github.com/rgglez/go-service-kodo/): [qiniu kodo](https://www.qiniu.com/products/kodo)
-- [memory](https://github.com/rgglez/go-service-memory): data that only in memory
-- [minio](https://github.com/rgglez/go-service-minio): [MinIO](https://min.io)
-- [obs](https://github.com/rgglez/go-service-obs): [Huawei Object Storage Service](https://www.huaweicloud.com/product/obs.html)
-- [oss](https://github.com/rgglez/go-service-oss/): [Aliyun Object Storage](https://www.aliyun.com/product/oss)
-- [qingstor](https://github.com/rgglez/go-service-qingstor/): [QingStor Object Storage](https://www.qingcloud.com/products/qingstor/)
-- [s3](https://github.com/rgglez/go-service-s3/): [Amazon S3](https://aws.amazon.com/s3/)
+**18** stable services:
 
-**3** beta services that implemented required functions, but not passed [integration tests](https://github.com/rgglez/go-integration-test).
+- [azblob](services/azblob/): [Azure Blob storage](https://docs.microsoft.com/en-us/azure/storage/blobs/)
+- [azfile](services/azfile/): [Azure File Storage](https://azure.microsoft.com/en-us/products/storage/files/)
+- [bos](services/bos/): [Baidu Object Storage](https://cloud.baidu.com/product/bos.html)
+- [cos](services/cos/): [Tencent Cloud Object Storage](https://cloud.tencent.com/product/cos)
+- [dropbox](services/dropbox/): [Dropbox](https://www.dropbox.com)
+- [fs](services/fs/): Local file system
+- [ftp](services/ftp/): FTP
+- [gcs](services/gcs/): [Google Cloud Storage](https://cloud.google.com/storage/)
+- [gdrive](services/gdrive/): [Google Drive](https://www.google.com/drive/)
+- [ipfs](services/ipfs/): [InterPlanetary File System](https://ipfs.io)
+- [kodo](services/kodo/): [Qiniu Kodo](https://www.qiniu.com/products/kodo)
+- [memory](services/memory/): In-memory storage (testing / ephemeral data)
+- [minio](services/minio/): [MinIO](https://min.io)
+- [obs](services/obs/): [Huawei Object Storage Service](https://www.huaweicloud.com/product/obs.html)
+- [ocios](services/ocios/): [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage/)
+- [oss](services/oss/): [Aliyun Object Storage](https://www.aliyun.com/product/oss)
+- [qingstor](services/qingstor/): [QingStor Object Storage](https://www.qingcloud.com/products/qingstor/)
+- [s3](services/s3/): [Amazon S3](https://aws.amazon.com/s3/)
 
-- [hdfs](https://github.com/rgglez/go-service-hdfs): [Hadoop Distributed File System](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html#Introduction)
-- [tar](https://github.com/rgglez/go-service-tar): tar files
-- [uss](https://github.com/rgglez/go-service-uss/): [UPYUN Storage Service](https://www.upyun.com/products/file-storage)
+**5** beta services (implemented but not fully integration-tested):
 
-**4** alpha services that still under development.
+- [cephfs](services/cephfs/): [Ceph Filesystem](https://docs.ceph.com/en/latest/cephfs/)
+- [hdfs](services/hdfs/): [Hadoop Distributed File System](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)
+- [tar](services/tar/): tar archive files
+- [us3](services/us3/): [UCloud Object Storage](https://www.ucloud.cn/site/product/ufile.html)
+- [uss](services/uss/): [UPYUN Storage Service](https://www.upyun.com/products/file-storage)
 
-- [onedrive](https://github.com/rgglez/go-service-onedrive): [Microsoft OneDrive](https://www.microsoft.com/en-ww/microsoft-365/onedrive/online-cloud-storage)
-- [storj](https://github.com/rgglez/go-service-storj): [StorJ](https://www.storj.io/)
-- [webdav](https://github.com/rgglez/go-service-webdav): [WebDAV](http://www.webdav.org/)
-- [zip](https://github.com/rgglez/go-service-zip): zip files
+**4** alpha services (still under development):
+
+- [onedrive](services/onedrive/): [Microsoft OneDrive](https://www.microsoft.com/en-ww/microsoft-365/onedrive/online-cloud-storage)
+- [storj](services/storj/): [Storj](https://www.storj.io/)
+- [webdav](services/webdav/): [WebDAV](http://www.webdav.org/)
+- [zip](services/zip/): zip archive files
 
 More service ideas could be found at [Service Integration Tracking](https://github.com/rgglez/go-storage/issues/536).
 
@@ -167,7 +182,7 @@ it, err := store.List("path")
 for {
 	o, err := it.Next()
 	if err != nil && errors.Is(err, types.IterateDone) {
-        // the list is over 
+        // the list is over
     }
     length, ok := o.GetContentLength() // get the object content length.
 }
@@ -243,7 +258,7 @@ Global object metadata
 
 - `id`: unique key in service
 - `name`: relative path towards service's work dir
-- `mode`: object mode can be a combination of `read`, `dir`, `part` and [more](https://github.com/rgglez/go-storage/blob/master/types/object.go#L11) 
+- `mode`: object mode can be a combination of `read`, `dir`, `part` and [more](https://github.com/rgglez/go-storage/blob/master/types/object.go#L11)
 - `etag`: entity tag as defined in [rfc2616](https://tools.ietf.org/html/rfc2616#section-14.19)
 - `content-length`: object's content size.
 - `content-md5`: md5 digest as defined in [rfc2616](https://tools.ietf.org/html/rfc2616#section-14.15)
@@ -265,7 +280,7 @@ _ = om.ServerSideEncryptionCustomerAlgorithm // this object's sse algorithm
 
 ### Strong Typing Everywhere
 
-Self maintained codegen [definitions](https://github.com/rgglez/go-storage/tree/master/cmd/definitions) helps to generate all our APIs, pairs and metadata.
+Self maintained codegen ([`definitions/`](definitions/)) helps to generate all our APIs, pairs and metadata.
 
 Generated pairs which can be used as API optional arguments.
 
@@ -283,11 +298,11 @@ Generated object metadata which can be used to get content md5 from object.
 ```go
 func (o *Object) GetContentMd5() (string, bool) {
     o.stat()
-    
+
     if o.bit&objectIndexContentMd5 != 0 {
         return o.contentMd5, true
     }
-    
+
     return "", false
 }
 ```
@@ -313,7 +328,27 @@ func NewS3SseC(key []byte) (types.Storager, error) {
             // Required, your AES-256 key, a 32-byte binary value
             s3.WithServerSideEncryptionCustomerKey(key),
         }}
-    
+
     return s3.NewStorager(..., s3.WithDefaultStoragePairs(defaultPairs))
 }
+```
+
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).
+
+```
+Copyright The go-storage Authors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```

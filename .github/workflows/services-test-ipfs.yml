@@ -23,17 +23,17 @@ jobs:
 
     strategy:
       matrix:
-        go: [ "1.16", "1.17" ]
+        go: [ "1.25" ]
         ipfs: [ "0.8", "0.9" ]
 
     steps:
       - name: Set up Go 1.x
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up IPFS ${{ matrix.ipfs }}
         uses: ibnesayeed/setup-ipfs@8f99e662ba25be9a1158fffdeea57e9024468bfd

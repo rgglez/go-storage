@@ -5,10 +5,10 @@ import (
 	"testing"
 
 	"github.com/google/uuid"
-	"go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/types"
+	"github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/types"
 
-	hdfs "go.beyondstorage.io/services/hdfs"
+	hdfs "github.com/rgglez/go-storage/services/hdfs"
 )
 
 func setupTest(t *testing.T) types.Storager {

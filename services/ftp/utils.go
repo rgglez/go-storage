@@ -10,14 +10,27 @@ import (
 	"github.com/jlaffaye/ftp"
 	mime "github.com/qingstor/go-mime"
 
-	credential "go.beyondstorage.io/credential"
-	endpoint "go.beyondstorage.io/endpoint"
-	ps "go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/services"
-	"go.beyondstorage.io/v5/types"
+	credential "github.com/rgglez/go-storage/credential"
+	endpoint "github.com/rgglez/go-storage/endpoint"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
-// Storage is the example client.
+// Service is the ftp service (not used, but required by the generated code).
+type Service struct {
+	defaultPairs DefaultServicePairs
+	features     ServiceFeatures
+
+	types.UnimplementedServicer
+}
+
+// String implements Servicer.String
+func (s *Service) String() string {
+	return "Servicer ftp"
+}
+
+// Storage is the ftp client.
 type Storage struct {
 	connection *ftp.ServerConn
 	user       string
@@ -38,13 +51,23 @@ func (s *Storage) String() string {
 
 // NewStorager will create Storager only.
 func NewStorager(pairs ...types.Pair) (types.Storager, error) {
-	return newStorager(pairs...)
+	f := Factory{}
+	err := f.WithPairs(pairs...)
+	if err != nil {
+		return nil, err
+	}
+	return f.NewStorager()
 }
 
-func newStorager(pairs ...types.Pair) (store *Storage, err error) {
+func (f *Factory) newService() (srv *Service, err error) {
+	srv = &Service{}
+	return
+}
+
+func (f *Factory) newStorage() (store *Storage, err error) {
 	defer func() {
 		if err != nil {
-			err = services.InitError{Op: "new_storager", Type: Type, Err: formatError(err), Pairs: pairs}
+			err = services.InitError{Op: "new_storager", Type: Type, Err: formatError(err), Pairs: nil}
 		}
 	}()
 
@@ -56,13 +79,8 @@ func newStorager(pairs ...types.Pair) (store *Storage, err error) {
 		workDir:    "/",
 	}
 
-	opt, err := parsePairStorageNew(pairs)
-	if err != nil {
-		return
-	}
-
-	if opt.HasEndpoint {
-		ep, err := endpoint.Parse(opt.Endpoint)
+	if f.Endpoint != "" {
+		ep, err := endpoint.Parse(f.Endpoint)
 		if err != nil {
 			return nil, err
 		}
@@ -72,18 +90,18 @@ func newStorager(pairs ...types.Pair) (store *Storage, err error) {
 		case endpoint.ProtocolTCP:
 			_, host, port = ep.TCP()
 		default:
-			return nil, services.PairUnsupportedError{Pair: ps.WithEndpoint(opt.Endpoint)}
+			return nil, services.PairUnsupportedError{Pair: ps.WithEndpoint(f.Endpoint)}
 		}
 		url := fmt.Sprintf("%s:%d", host, port)
 		store.url = url
 	}
 
-	if opt.HasWorkDir {
-		store.workDir = filepath.ToSlash(opt.WorkDir)
+	if f.WorkDir != "" {
+		store.workDir = filepath.ToSlash(f.WorkDir)
 	}
 
-	if opt.HasCredential {
-		cp, err := credential.Parse(opt.Credential)
+	if f.Credential != "" {
+		cp, err := credential.Parse(f.Credential)
 		if err != nil {
 			return nil, err
 		}
@@ -93,7 +111,7 @@ func newStorager(pairs ...types.Pair) (store *Storage, err error) {
 			store.password = pass
 			store.user = user
 		default:
-			return nil, services.PairUnsupportedError{Pair: ps.WithCredential(opt.Credential)}
+			return nil, services.PairUnsupportedError{Pair: ps.WithCredential(f.Credential)}
 		}
 	}
 
@@ -139,7 +157,7 @@ func (s *Storage) getAbsPath(path string) string {
 	}
 	absPath := filepath.Join(s.workDir, path)
 
-	// Join will clean the trailng "/", we need to append it back.
+	// Join will clean the trailing "/", we need to append it back.
 	if strings.HasSuffix(path, string(filepath.Separator)) {
 		absPath += string(filepath.Separator)
 	}

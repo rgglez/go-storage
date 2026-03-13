@@ -16,10 +16,9 @@ import (
 	"github.com/qingstor/qingstor-sdk-go/v4/service"
 	"github.com/stretchr/testify/assert"
 
-	"go.beyondstorage.io/credential"
-	"go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/services"
-	"go.beyondstorage.io/v5/types"
+	"github.com/rgglez/go-storage/credential"
+	"github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/services"
 )
 
 func TestService_String(t *testing.T) {
@@ -350,7 +349,9 @@ func TestService_newStorage(t *testing.T) {
 	}
 	validWorkDir, invalidWorkDir := "/valid/dir/", "invalid/dir"
 	type args struct {
-		pairs []types.Pair
+		name     string
+		location string
+		workDir  string
 	}
 	tests := []struct {
 		name       string
@@ -363,11 +364,11 @@ func TestService_newStorage(t *testing.T) {
 		{
 			name: "normal case",
 			wd:   validWorkDir,
-			args: args{[]types.Pair{
-				{Key: "location", Value: uuid.New().String()},
-				{Key: "name", Value: uuid.New().String()},
-				{Key: "work_dir", Value: validWorkDir},
-			}},
+			args: args{
+				name:     uuid.New().String(),
+				location: uuid.New().String(),
+				workDir:  validWorkDir,
+			},
 			wantBucket: &blankBucket,
 			targetErr:  nil,
 			wantErr:    false,
@@ -375,11 +376,11 @@ func TestService_newStorage(t *testing.T) {
 		{
 			name: "invalid work dir",
 			wd:   invalidWorkDir,
-			args: args{[]types.Pair{
-				{Key: "location", Value: uuid.New().String()},
-				{Key: "name", Value: uuid.New().String()},
-				{Key: "work_dir", Value: invalidWorkDir},
-			}},
+			args: args{
+				name:     uuid.New().String(),
+				location: uuid.New().String(),
+				workDir:  invalidWorkDir,
+			},
 			wantBucket: nil,
 			targetErr:  ErrWorkDirInvalid,
 			wantErr:    true,
@@ -387,10 +388,10 @@ func TestService_newStorage(t *testing.T) {
 		{
 			name: "blank work dir",
 			wd:   "/",
-			args: args{[]types.Pair{
-				{Key: "location", Value: uuid.New().String()},
-				{Key: "name", Value: uuid.New().String()},
-			}},
+			args: args{
+				name:     uuid.New().String(),
+				location: uuid.New().String(),
+			},
 			wantBucket: &blankBucket,
 			targetErr:  nil,
 			wantErr:    false,
@@ -398,20 +399,20 @@ func TestService_newStorage(t *testing.T) {
 		{
 			name: "invalid bucket name",
 			wd:   validWorkDir,
-			args: args{[]types.Pair{
-				{Key: "location", Value: uuid.New().String()},
-				{Key: "name", Value: "invalid bucket name"},
-				{Key: "work_dir", Value: validWorkDir},
-			}},
+			args: args{
+				name:     "invalid bucket name",
+				location: uuid.New().String(),
+				workDir:  validWorkDir,
+			},
 			wantBucket: nil,
 			targetErr:  ErrBucketNameInvalid,
 			wantErr:    true,
 		},
 		{
-			name:       "no pairs, fail when parse",
+			name:       "no name, fail with invalid bucket name",
 			args:       args{},
 			wantBucket: nil,
-			targetErr:  services.ErrRestrictionDissatisfied,
+			targetErr:  ErrBucketNameInvalid,
 			wantErr:    true,
 		},
 	}
@@ -423,8 +424,17 @@ func TestService_newStorage(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := &Service{service: mockService}
-			gotStore, err := s.newStorage(tt.args.pairs...)
+			f := Factory{
+				Name:     tt.args.name,
+				Location: tt.args.location,
+				WorkDir:  tt.args.workDir,
+			}
+			s := &Service{
+				f:       f,
+				service: mockService,
+				config:  &config.Config{},
+			}
+			gotStore, err := s.newStorageFromFactory(f)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("newStorage() error = %v, wantErr %v", err, tt.wantErr)
 				return

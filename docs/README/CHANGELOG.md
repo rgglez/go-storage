@@ -5,14 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## 2026-03-13 Friday the 13th major revamp.
+## 2026-03-13: Friday the 13th Major Revamp
 
-- Go minimal version upped to 1.25.
-- Fixed unit tests and cross builds actions.
-- Improved documentation.
-- Fixed missing services.
+- Upgraded Go minimum version to 1.25.
+- Fixed unit tests and cross-build actions.
+- Improved documentation throughout.
+- Added missing services.
 - Fixed bugs in OSS service.
-- Started creation of per-service examples.
+- Started creating per-service examples.
 
 ## [v5.0.0] rgglez
 

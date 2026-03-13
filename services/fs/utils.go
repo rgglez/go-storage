@@ -17,6 +17,21 @@ const (
 	Stderr = "/dev/stderr"
 )
 
+// Service is not usable by fs, only required for code generation.
+type Service struct {
+	f Factory
+
+	defaultPairs typ.DefaultServicePairs
+	features     typ.ServiceFeatures
+
+	typ.UnimplementedServicer
+}
+
+// String implements Servicer.String
+func (s *Service) String() string {
+	return fmt.Sprintf("Servicer fs")
+}
+
 // Storage is the fs client.
 type Storage struct {
 	// options for this storager.
@@ -41,33 +56,35 @@ func (s *Storage) String() string {
 
 // NewStorager will create Storager only.
 func NewStorager(pairs ...typ.Pair) (typ.Storager, error) {
-	return newStorager(pairs...)
+	f := Factory{}
+	err := f.WithPairs(pairs...)
+	if err != nil {
+		return nil, err
+	}
+	return f.newStorage()
 }
 
-// newStorager will create a fs client.
-func newStorager(pairs ...typ.Pair) (store *Storage, err error) {
+// newService is not usable by fs, only required for code generation.
+func (f *Factory) newService() (srv *Service, err error) {
+	srv = &Service{}
+	return
+}
+
+// newStorage creates an fs Storage.
+func (f *Factory) newStorage() (store *Storage, err error) {
 	defer func() {
 		if err != nil {
-			err = services.InitError{Op: "new_storager", Type: Type, Err: formatError(err), Pairs: pairs}
+			err = services.InitError{Op: "new_storager", Type: Type, Err: formatError(err)}
 		}
 	}()
-	opt, err := parsePairStorageNew(pairs)
-	if err != nil {
-		return
-	}
 
 	store = &Storage{
-		workDir: "/",
+		workDir:  "/",
+		features: f.storageFeatures(),
 	}
 
-	if opt.HasDefaultStoragePairs {
-		store.defaultPairs = opt.DefaultStoragePairs
-	}
-	if opt.HasStorageFeatures {
-		store.features = opt.StorageFeatures
-	}
-	if opt.HasWorkDir {
-		workDir, err := evalSymlinks(opt.WorkDir)
+	if f.WorkDir != "" {
+		workDir, err := evalSymlinks(f.WorkDir)
 		if err != nil {
 			return nil, err
 		}

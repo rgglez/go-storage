@@ -5,15 +5,21 @@ import (
 
 	"github.com/qingstor/qingstor-sdk-go/v4/service"
 
-	ps "go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/types"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func (s *Service) create(ctx context.Context, name string, opt pairServiceCreate) (store types.Storager, err error) {
-	// ServicePairCreate requires location, so we don't need to add location into pairs
-	pairs := append(opt.pairs, ps.WithName(name))
+	if !opt.HasLocation {
+		err = services.ErrRestrictionDissatisfied
+		return
+	}
 
-	st, err := s.newStorage(pairs...)
+	f := s.f
+	f.Name = name
+	f.Location = opt.Location
+
+	st, err := s.newStorageFromFactory(f)
 	if err != nil {
 		return
 	}
@@ -26,9 +32,13 @@ func (s *Service) create(ctx context.Context, name string, opt pairServiceCreate
 }
 
 func (s *Service) delete(ctx context.Context, name string, opt pairServiceDelete) (err error) {
-	pairs := append(opt.pairs, ps.WithName(name))
+	f := s.f
+	f.Name = name
+	if opt.HasLocation {
+		f.Location = opt.Location
+	}
 
-	store, err := s.newStorage(pairs...)
+	store, err := s.newStorageFromFactory(f)
 	if err != nil {
 		return
 	}
@@ -40,9 +50,13 @@ func (s *Service) delete(ctx context.Context, name string, opt pairServiceDelete
 }
 
 func (s *Service) get(ctx context.Context, name string, opt pairServiceGet) (store types.Storager, err error) {
-	pairs := append(opt.pairs, ps.WithName(name))
+	f := s.f
+	f.Name = name
+	if opt.HasLocation {
+		f.Location = opt.Location
+	}
 
-	store, err = s.newStorage(pairs...)
+	store, err = s.newStorageFromFactory(f)
 	if err != nil {
 		return
 	}
@@ -76,7 +90,10 @@ func (s *Service) nextStoragePage(ctx context.Context, page *types.StoragerPage)
 	}
 
 	for _, v := range output.Buckets {
-		store, err := s.newStorage(ps.WithName(*v.Name), ps.WithLocation(*v.Location))
+		f := s.f
+		f.Name = *v.Name
+		f.Location = *v.Location
+		store, err := s.newStorageFromFactory(f)
 		if err != nil {
 			return err
 		}
@@ -90,3 +107,4 @@ func (s *Service) nextStoragePage(ctx context.Context, page *types.StoragerPage)
 
 	return nil
 }
+

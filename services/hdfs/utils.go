@@ -9,11 +9,26 @@ import (
 
 	"github.com/colinmarc/hdfs/v2"
 
-	"go.beyondstorage.io/endpoint"
-	ps "go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/services"
-	"go.beyondstorage.io/v5/types"
+	"github.com/rgglez/go-storage/endpoint"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
+
+// Service is not usable by hdfs, only required for code generation.
+type Service struct {
+	f Factory
+
+	defaultPairs types.DefaultServicePairs
+	features     types.ServiceFeatures
+
+	types.UnimplementedServicer
+}
+
+// String implements Servicer.String
+func (s *Service) String() string {
+	return fmt.Sprintf("Servicer hdfs")
+}
 
 // Storage is the example client.
 type Storage struct {
@@ -37,29 +52,37 @@ func (s *Storage) String() string {
 
 // NewStorager will create Storager only.
 func NewStorager(pairs ...types.Pair) (types.Storager, error) {
-	return newStorager(pairs...)
-}
-
-func newStorager(pairs ...types.Pair) (store *Storage, err error) {
-	defer func() {
-		if err != nil {
-			err = services.InitError{Op: "new_storager", Type: Type, Err: formatError(err), Pairs: pairs}
-		}
-	}()
-
-	opt, err := parsePairStorageNew(pairs)
+	f := Factory{}
+	err := f.WithPairs(pairs...)
 	if err != nil {
 		return nil, err
 	}
+	return f.newStorage()
+}
+
+// newService is not usable by hdfs, only required for code generation.
+func (f *Factory) newService() (srv *Service, err error) {
+	srv = &Service{}
+	return
+}
+
+// newStorage creates an hdfs Storage.
+func (f *Factory) newStorage() (store *Storage, err error) {
+	defer func() {
+		if err != nil {
+			err = services.InitError{Op: "new_storager", Type: Type, Err: formatError(err)}
+		}
+	}()
 
 	store = &Storage{
-		workDir: "/",
+		workDir:  "/",
+		features: f.storageFeatures(),
 	}
-	if opt.HasWorkDir {
-		store.workDir = opt.WorkDir
+	if f.WorkDir != "" {
+		store.workDir = f.WorkDir
 	}
 
-	ep, err := endpoint.Parse(opt.Endpoint)
+	ep, err := endpoint.Parse(f.Endpoint)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +93,7 @@ func newStorager(pairs ...types.Pair) (store *Storage, err error) {
 	case endpoint.ProtocolTCP:
 		addr, _, _ = ep.TCP()
 	default:
-		return nil, services.PairUnsupportedError{Pair: ps.WithEndpoint(opt.Endpoint)}
+		return nil, services.PairUnsupportedError{Pair: ps.WithEndpoint(f.Endpoint)}
 	}
 	store.hdfs, err = hdfs.New(addr)
 	if err != nil {

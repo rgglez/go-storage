@@ -13,15 +13,15 @@ jobs:
 
     steps:
       - name: Set up Go 1.x
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
-          go-version: "1.17"
+          go-version: "1.25"
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v2
+        uses: golangci/golangci-lint-action@v6
 
       - name: Format
         run: if [ "$(gofmt -l . | tee >&2 | wc -l)" -gt 0 ]; then exit 1; fi

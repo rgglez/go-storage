@@ -35,8 +35,13 @@ test:
 	go tool cover -html="coverage.txt" -o "coverage.html"
 
 test-all:
-	for f in $$(find . -name go.mod);     \
-		do make -C $$(dirname $$f) test;  \
+	for f in $$(find . -name go.mod); do  \
+		d=$$(dirname $$f);                \
+		if [ -f "$$d/Makefile" ]; then    \
+			$(MAKE) -C $$d test;          \
+		else                               \
+			echo "skip $$d (no Makefile)"; \
+		fi;                                \
 	done
 
 tidy:

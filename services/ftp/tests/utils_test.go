@@ -4,10 +4,10 @@ import (
 	"os"
 	"testing"
 
-	_ "go.beyondstorage.io/services/ftp"
-	ps "go.beyondstorage.io/v5/pairs"
-	"go.beyondstorage.io/v5/services"
-	"go.beyondstorage.io/v5/types"
+	_ "github.com/rgglez/go-storage/services/ftp"
+	ps "github.com/rgglez/go-storage/v5/pairs"
+	"github.com/rgglez/go-storage/v5/services"
+	"github.com/rgglez/go-storage/v5/types"
 )
 
 func initTest(t *testing.T) (store types.Storager) {
