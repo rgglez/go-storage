@@ -15,30 +15,24 @@
 // Example code for the zip (ZIP archive storage) service.
 //
 // NOTE: This service is NOT YET IMPLEMENTED. NewStorager will panic at runtime.
-// This file is compiled but not executed and serves as documentation for the
-// intended API once the implementation is complete.
 package zip_test
 
 import (
 	"fmt"
 
-	"github.com/rgglez/go-storage/v5/pairs"
-
 	"github.com/rgglez/go-storage/v5/zip"
 )
 
-// ExampleNewStorager shows the intended initialization API for ZIP archive storage.
+// ExampleNewStorager documents the intended initialization API for ZIP archive storage.
 //
 // WARNING: This service is not yet implemented. Calling NewStorager will panic.
 //
-//	export ZIP_FILE=file:/path/to/archive.zip
+// Intended usage once implemented:
+//
+//	_, _ = zip.NewStorager(
+//	    pairs.WithEndpoint("file:/path/to/archive.zip"),
+//	)
 func ExampleNewStorager() {
-	// TODO: remove this guard when the implementation is complete.
+	_ = zip.NewStorager // not yet implemented; see examples/basic/main.go
 	fmt.Println("zip: not yet implemented")
-	return
-
-	//nolint:govet // unreachable code is intentional — documents the intended API
-	_, _ = zip.NewStorager(
-		pairs.WithEndpoint("file:/path/to/archive.zip"),
-	)
 }

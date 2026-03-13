@@ -15,32 +15,25 @@
 // Example code for the ocios (Oracle Cloud Infrastructure Object Storage) service.
 //
 // NOTE: This service is NOT YET IMPLEMENTED. NewStorager will panic at runtime.
-// This file is compiled but not executed and serves as documentation for the
-// intended API once the implementation is complete.
 package ocios_test
 
 import (
 	"fmt"
 
-	"github.com/rgglez/go-storage/v5/pairs"
-
 	"github.com/rgglez/go-storage/services/ocios"
 )
 
-// ExampleNewStorager shows the intended initialization API for OCI Object Storage.
+// ExampleNewStorager documents the intended initialization API for OCI Object Storage.
 //
 // WARNING: This service is not yet implemented. Calling NewStorager will panic.
 //
-//	export OCIOS_CREDENTIAL=hmac:ACCESS_KEY:SECRET_KEY
-//	export OCIOS_ENDPOINT=https://objectstorage.us-phoenix-1.oraclecloud.com
+// Intended usage once implemented:
+//
+//	_, _ = ocios.NewStorager(
+//	    pairs.WithCredential("hmac:ACCESS_KEY:SECRET_KEY"),
+//	    pairs.WithEndpoint("https://objectstorage.us-phoenix-1.oraclecloud.com"),
+//	)
 func ExampleNewStorager() {
-	// TODO: remove this guard when the implementation is complete.
+	_ = ocios.NewStorager // not yet implemented; see examples/basic/main.go
 	fmt.Println("ocios: not yet implemented")
-	return
-
-	//nolint:govet // unreachable code is intentional — documents the intended API
-	_, _ = ocios.NewStorager(
-		pairs.WithCredential("hmac:ACCESS_KEY:SECRET_KEY"),
-		pairs.WithEndpoint("https://objectstorage.us-phoenix-1.oraclecloud.com"),
-	)
 }

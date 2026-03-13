@@ -15,32 +15,25 @@
 // Example code for the cephfs (Ceph Filesystem) service.
 //
 // NOTE: This service is NOT YET IMPLEMENTED. NewStorager will panic at runtime.
-// This file is compiled but not executed and serves as documentation for the
-// intended API once the implementation is complete.
 package cephfs_test
 
 import (
 	"fmt"
 
-	"github.com/rgglez/go-storage/v5/pairs"
-
 	"github.com/rgglez/go-storage/services/cephfs"
 )
 
-// ExampleNewStorager shows the intended initialization API for CephFS.
+// ExampleNewStorager documents the intended initialization API for CephFS.
 //
 // WARNING: This service is not yet implemented. Calling NewStorager will panic.
 //
-//	export CEPHFS_ENDPOINT=tcp+addr://ceph-mon.example.com:6789
-//	export CEPHFS_CREDENTIAL=hmac:ADMIN_ID:ADMIN_KEY
+// Intended usage once implemented:
+//
+//	_, _ = cephfs.NewStorager(
+//	    pairs.WithEndpoint("tcp+addr://ceph-mon.example.com:6789"),
+//	    pairs.WithCredential("hmac:ADMIN_ID:ADMIN_KEY"),
+//	)
 func ExampleNewStorager() {
-	// TODO: remove this guard when the implementation is complete.
+	_ = cephfs.NewStorager // not yet implemented; see examples/basic/main.go
 	fmt.Println("cephfs: not yet implemented")
-	return
-
-	//nolint:govet // unreachable code is intentional — documents the intended API
-	_, _ = cephfs.NewStorager(
-		pairs.WithEndpoint("tcp+addr://ceph-mon.example.com:6789"),
-		pairs.WithCredential("hmac:ADMIN_ID:ADMIN_KEY"),
-	)
 }

@@ -15,32 +15,25 @@
 // Example code for the webdav (WebDAV) service.
 //
 // NOTE: This service is NOT YET IMPLEMENTED. NewStorager will panic at runtime.
-// This file is compiled but not executed and serves as documentation for the
-// intended API once the implementation is complete.
 package webdav_test
 
 import (
 	"fmt"
 
-	"github.com/rgglez/go-storage/v5/pairs"
-
 	"github.com/rgglez/go-storage/services/webdav"
 )
 
-// ExampleNewStorager shows the intended initialization API for WebDAV.
+// ExampleNewStorager documents the intended initialization API for WebDAV.
 //
 // WARNING: This service is not yet implemented. Calling NewStorager will panic.
 //
-//	export WEBDAV_ENDPOINT=https://dav.example.com
-//	export WEBDAV_CREDENTIAL=basic:USERNAME:PASSWORD
+// Intended usage once implemented:
+//
+//	_, _ = webdav.NewStorager(
+//	    pairs.WithEndpoint("https://dav.example.com"),
+//	    pairs.WithCredential("basic:USERNAME:PASSWORD"),
+//	)
 func ExampleNewStorager() {
-	// TODO: remove this guard when the implementation is complete.
+	_ = webdav.NewStorager // not yet implemented; see examples/basic/main.go
 	fmt.Println("webdav: not yet implemented")
-	return
-
-	//nolint:govet // unreachable code is intentional — documents the intended API
-	_, _ = webdav.NewStorager(
-		pairs.WithEndpoint("https://dav.example.com"),
-		pairs.WithCredential("basic:USERNAME:PASSWORD"),
-	)
 }
