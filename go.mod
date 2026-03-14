@@ -1,6 +1,6 @@
 module github.com/rgglez/go-storage/v5
 
-go 1.25
+go 1.21
 
 require (
 	github.com/Xuanwo/gg v0.3.0

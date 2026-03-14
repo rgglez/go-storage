@@ -10,6 +10,8 @@ jobs:
   build_test:
     name: Build Test
     runs-on: ubuntu-latest
+    env:
+      GOTOOLCHAIN: github
 
     steps:
       - name: Set up Go 1.x
