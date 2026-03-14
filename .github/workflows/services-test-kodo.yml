@@ -32,7 +32,7 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Load secret
-        uses: 1password/load-secrets-action@v1
+        uses: 1password/load-secrets-action@v2
         env:
           STORAGE_KODO_CREDENTIAL: op://Engineering/Kodo/testing/credential
           STORAGE_KODO_NAME: op://Engineering/Kodo/testing/name
@@ -43,6 +43,6 @@ jobs:
 
       - name: Test
         env:
-          STORAGE_BOS_INTEGRATION_TEST: on
+          STORAGE_KODO_INTEGRATION_TEST: on
         working-directory: services/kodo
         run: make integration_test

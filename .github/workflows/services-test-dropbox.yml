@@ -35,7 +35,7 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Load secret
-        uses: 1password/load-secrets-action@v1
+        uses: 1password/load-secrets-action@v2
         env:
           STORAGE_DROPBOX_CREDENTIAL: op://Engineering/Dropbox/testing/credential
 

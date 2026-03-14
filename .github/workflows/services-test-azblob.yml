@@ -32,7 +32,7 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Load secret
-        uses: 1password/load-secrets-action@v1
+        uses: 1password/load-secrets-action@v2
         env:
           STORAGE_AZBLOB_CREDENTIAL: op://Engineering/Azblob/testing/credential
           STORAGE_AZBLOB_NAME: op://Engineering/Azblob/testing/name

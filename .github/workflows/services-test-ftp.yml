@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download ftpserver release
-        uses: robinraju/release-downloader@v1.2
+        uses: robinraju/release-downloader@v1.11
         with:
           repository: fclairamb/ftpserver
           tag: v0.10.0

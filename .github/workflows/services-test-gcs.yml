@@ -32,7 +32,7 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Load secret
-        uses: 1password/load-secrets-action@v1
+        uses: 1password/load-secrets-action@v2
         env:
           STORAGE_GCS_CREDENTIAL: op://Engineering/Gcs/testing/credential
           STORAGE_GCS_NAME: op://Engineering/Gcs/testing/name

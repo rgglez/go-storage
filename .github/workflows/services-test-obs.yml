@@ -32,7 +32,7 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Load secret
-        uses: 1password/load-secrets-action@v1
+        uses: 1password/load-secrets-action@v2
         env:
           STORAGE_OBS_CREDENTIAL: op://Engineering/Obs/testing/credential
           STORAGE_OBS_NAME: op://Engineering/Obs/testing/name
