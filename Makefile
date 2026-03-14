@@ -26,8 +26,13 @@ build: tidy generate format check
 	go build ./...
 
 build-all:
-	for f in $$(find . -name go.mod);     \
-		do make -C $$(dirname $$f) build;  \
+	for f in $$(find . -name go.mod); do  \
+		d=$$(dirname $$f);                \
+		if [ -f "$$d/Makefile" ]; then    \
+			$(MAKE) -C $$d build;         \
+		else                               \
+			echo "skip $$d (no Makefile)"; \
+		fi;                                \
 	done
 
 test:

@@ -4,14 +4,13 @@
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//     http://www.apache.org/licenses/LICENSE-2.0
+//	http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 package fs
 
 import (
@@ -62,11 +61,12 @@ func baseIsDotDot(path string) bool {
 
 // toNorm returns the normalized path that is guaranteed to be unique.
 // It should accept the following formats:
-//   * UNC paths                              (e.g \\server\share\foo\bar)
-//   * absolute paths                         (e.g C:\foo\bar)
-//   * relative paths begin with drive letter (e.g C:foo\bar, C:..\foo\bar, C:.., C:.)
-//   * relative paths begin with '\'          (e.g \foo\bar)
-//   * relative paths begin without '\'       (e.g foo\bar, ..\foo\bar, .., .)
+//   - UNC paths                              (e.g \\server\share\foo\bar)
+//   - absolute paths                         (e.g C:\foo\bar)
+//   - relative paths begin with drive letter (e.g C:foo\bar, C:..\foo\bar, C:.., C:.)
+//   - relative paths begin with '\'          (e.g \foo\bar)
+//   - relative paths begin without '\'       (e.g foo\bar, ..\foo\bar, .., .)
+//
 // The returned normalized path will be in the same form (of 5 listed above) as the input path.
 // If two paths A and B are indicating the same file with the same format, toNorm(A) should be equal to toNorm(B).
 // The normBase parameter should be equal to the normBase func, except for in tests.  See docs on the normBase func.

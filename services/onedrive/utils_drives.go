@@ -4,14 +4,13 @@
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//     http://www.apache.org/licenses/LICENSE-2.0
+//	http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 package onedrive
 
 // the refactor of github.com/goh-chunlin/go-onedrive/onedrive upper layer functions since its internal implementation does not meet our needs.
@@ -270,7 +269,8 @@ func (o *onedriveClient) Upload(ctx context.Context, absPath string, fileSize in
 
 // List list items based of the absPath, with skipToken opts.
 // ref: https://docs.microsoft.com/en-us/graph/api/driveitem-list-children
-//      https://docs.microsoft.com/en-us/graph/query-parameters
+//
+//	https://docs.microsoft.com/en-us/graph/query-parameters
 func (o *onedriveClient) List(ctx context.Context, absPath string, skipToken string, limit uint32) (items []*Item, nextSkipToken string, err error) {
 	if !path.IsAbs(absPath) {
 		err = errors.New("please provide the abspath")
