@@ -16,9 +16,6 @@ on:
     paths:
       - 'services/cos/**'
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   services_test_cos:
     name: "Services Test Cos"

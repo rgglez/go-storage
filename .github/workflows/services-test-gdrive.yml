@@ -16,9 +16,6 @@ on:
     paths:
       - 'services/gdrive/**'
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   services_test_gdrive:
     name: "Services Test Gdrive"

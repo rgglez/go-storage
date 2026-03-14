@@ -16,9 +16,6 @@ on:
     paths:
       - 'services/fs/**'
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   integration_test:
     name: "Integration Test"

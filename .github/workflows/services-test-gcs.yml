@@ -16,9 +16,6 @@ on:
     paths:
       - 'services/gcs/**'
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   services_test_gcs:
     name: "Services Test Gcs"

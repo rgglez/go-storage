@@ -16,9 +16,6 @@ on:
     paths:
       - 'services/memory/**'
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   unit_test:
     name: Unit Test
