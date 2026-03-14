@@ -16,6 +16,9 @@ on:
     paths:
       - 'services/ftp/**'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   integration_test_1:
     name: Service Test on fclairamb/ftpserver

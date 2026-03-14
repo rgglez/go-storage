@@ -16,6 +16,9 @@ on:
     paths:
       - 'services/bos/**'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   services_test_bos:
     name: "Services Test Bos"

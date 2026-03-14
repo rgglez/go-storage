@@ -16,6 +16,9 @@ on:
     paths:
       - 'services/minio/**'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   integration_test:
     name: "Integration Test"

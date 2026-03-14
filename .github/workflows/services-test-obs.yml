@@ -16,6 +16,9 @@ on:
     paths:
       - 'services/obs/**'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   services_test_obs:
     name: "Services Test Obs"
