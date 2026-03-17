@@ -1,3 +1,5 @@
+![go-storage](./logo.webp)
+
 # go-storage
 
 [![Go dev](https://pkg.go.dev/badge/github.com/rgglez/go-storage/v5)](https://pkg.go.dev/gitub.com/v5)
@@ -11,46 +13,46 @@
 
 A **vendor-neutral** storage library for Golang.
 
-## Table of Contents
+## 📚 Table of Contents
 
 - [go-storage](#go-storage)
-  - [Table of Contents](#table-of-contents)
-  - [About this fork](#about-this-fork)
-  - [Vision](#vision)
-  - [Goals](#goals)
-  - [Documentation](#documentation)
-    - [`docs/README/` — Project documents](#docsreadme--project-documents)
-    - [`docs/rfcs/` — Request for Comments](#docsrfcs--request-for-comments)
-    - [`docs/spec/` — Specifications](#docsspec--specifications)
-  - [Makefile](#makefile)
-    - [Root Makefile](#root-makefile)
-    - [Submodule Makefiles](#submodule-makefiles)
-  - [Features](#features)
-    - [Widely native services support](#widely-native-services-support)
-    - [Complete and easily extensible interface](#complete-and-easily-extensible-interface)
-    - [Comprehensive metadata](#comprehensive-metadata)
-    - [Strong Typing Everywhere](#strong-typing-everywhere)
-    - [Server-Side Encrypt](#server-side-encrypt)
-  - [License](#license)
+  - [📚 Table of Contents](#-table-of-contents)
+  - [🍴 About this fork](#-about-this-fork)
+  - [🎯 Vision](#-vision)
+  - [✅ Goals](#-goals)
+  - [📖 Documentation](#-documentation)
+    - [🗂️ `docs/README/` — Project documents](#️-docsreadme--project-documents)
+    - [🧠 `docs/rfcs/` — Request for Comments](#-docsrfcs--request-for-comments)
+    - [📐 `docs/spec/` — Specifications](#-docsspec--specifications)
+  - [🛠️ Makefile](#️-makefile)
+    - [🏠 Root Makefile](#-root-makefile)
+    - [🧩 Submodule Makefiles](#-submodule-makefiles)
+  - [✨ Features](#-features)
+    - [🌐 Widely native services support](#-widely-native-services-support)
+    - [🧱 Complete and easily extensible interface](#-complete-and-easily-extensible-interface)
+    - [🧾 Comprehensive metadata](#-comprehensive-metadata)
+    - [🔒 Strong Typing Everywhere](#-strong-typing-everywhere)
+    - [🔐 Server-Side Encrypt](#-server-side-encrypt)
+  - [⚖️ License](#️-license)
 
 
-## About this fork
+## 🍴 About this fork
 
 The [original project](https://github.com/beyondstorage/go-storage) seems to be [dead](https://github.com/beyondstorage/go-storage/issues/1382) and [broken](https://github.com/beyondstorage/go-storage/issues/1263). My changes are listed in the [CHANGELOG.md](docs/CHANGELOG.md) file.
 
-## Vision
+## 🎯 Vision
 
 Write once, run on every storage service.
 
-## Goals
+## ✅ Goals
 
 - Vendor agnostic
 - Production ready
 - High performance
 
-## Documentation
+## 📖 Documentation
 
-### `docs/README/` — Project documents
+### 🗂️ `docs/README/` — Project documents
 
 | File | Description |
 |------|-------------|
@@ -60,7 +62,7 @@ Write once, run on every storage service.
 | [CHANGELOG.md](docs/README/CHANGELOG.md) | History of changes and releases. |
 | [CODE_OF_CONDUCT.md](docs/README/CODE_OF_CONDUCT.md) | Community code of conduct. |
 
-### `docs/rfcs/` — Request for Comments
+### 🧠 `docs/rfcs/` — Request for Comments
 
 Design decision records covering the evolution of the library. Each RFC is numbered and describes the motivation, proposal, and rationale behind a change. Notable examples:
 
@@ -76,7 +78,7 @@ Design decision records covering the evolution of the library. Each RFC is numbe
 
 The full list of RFCs is in [`docs/rfcs/`](docs/rfcs/).
 
-### `docs/spec/` — Specifications
+### 📐 `docs/spec/` — Specifications
 
 Behavioral specifications that services must conform to:
 
@@ -85,9 +87,9 @@ Behavioral specifications that services must conform to:
 | [spec/1-error-handling.md](docs/spec/1-error-handling.md) | Error handling specification |
 | [spec/2-proposal.md](docs/spec/2-proposal.md) | Proposal process specification |
 
-## Makefile
+## 🛠️ Makefile
 
-### Root Makefile
+### 🏠 Root Makefile
 
 The root [Makefile](Makefile) provides the following targets:
 
@@ -107,7 +109,7 @@ The root [Makefile](Makefile) provides the following targets:
 | `make latest-tags` | Shows the highest git tag published for each Go module in the monorepo, or `(no tags)` if none exist yet. |
 | `make clean` | Deletes all `generated.go` files across the repository. |
 
-### Submodule Makefiles
+### 🧩 Submodule Makefiles
 
 Each sub-module under [`credential/`](credential/), [`endpoint/`](endpoint/), and [`services/`](services/) has its own `Makefile` with these targets:
 
@@ -125,9 +127,9 @@ Each sub-module under [`credential/`](credential/), [`endpoint/`](endpoint/), an
 | `make clean` | Deletes all `generated.go` files in the sub-module. |
 | `make release-next` | Increments the patch version of the sub-module's latest git tag and pushes it to `origin`. For example, if the current tag is `services/oss/v3.0.5`, it creates and pushes `services/oss/v3.0.6`. |
 
-## Features
+## ✨ Features
 
-### Widely native services support
+### 🌐 Widely native services support
 
 All services live in this monorepo under [`services/`](services/). Each service is an independent Go module so you only pay the dependency cost for the backends you actually use.
 
@@ -169,7 +171,7 @@ All services live in this monorepo under [`services/`](services/). Each service 
 
 More service ideas could be found at [Service Integration Tracking](https://github.com/rgglez/go-storage/issues/536).
 
-### Complete and easily extensible interface
+### 🧱 Complete and easily extensible interface
 
 Basic operations
 
@@ -277,7 +279,7 @@ o, err := ps.CreatePage("path")
 n, err := ps.WritePage(o, r, 1024, 2048)
 ```
 
-### Comprehensive metadata
+### 🧾 Comprehensive metadata
 
 Global object metadata
 
@@ -303,7 +305,7 @@ _ = om.StorageClass // this object's storage class
 _ = om.ServerSideEncryptionCustomerAlgorithm // this object's sse algorithm
 ```
 
-### Strong Typing Everywhere
+### 🔒 Strong Typing Everywhere
 
 Self maintained codegen ([`definitions/`](definitions/)) helps to generate all our APIs, pairs and metadata.
 
@@ -332,7 +334,7 @@ func (o *Object) GetContentMd5() (string, bool) {
 }
 ```
 
-### Server-Side Encrypt
+### 🔐 Server-Side Encrypt
 
 Server-Side Encrypt supports via system pair and system metadata, and we can use [Default Pairs](https://beyondstorage.io/docs/go-storage/pairs#default-pairs) to simplify the job.
 
@@ -358,7 +360,7 @@ func NewS3SseC(key []byte) (types.Storager, error) {
 }
 ```
 
-## License
+## ⚖️ License
 
 This project is licensed under the [Apache License 2.0](LICENSE).
 
