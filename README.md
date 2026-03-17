@@ -23,6 +23,8 @@ A **vendor-neutral** storage library for Golang.
     - [`docs/rfcs/` — Request for Comments](#docsrfcs--request-for-comments)
     - [`docs/spec/` — Specifications](#docsspec--specifications)
   - [Makefile](#makefile)
+    - [Root Makefile](#root-makefile)
+    - [Submodule Makefiles](#submodule-makefiles)
   - [Features](#features)
     - [Widely native services support](#widely-native-services-support)
     - [Complete and easily extensible interface](#complete-and-easily-extensible-interface)
@@ -85,6 +87,8 @@ Behavioral specifications that services must conform to:
 
 ## Makefile
 
+### Root Makefile
+
 The root [Makefile](Makefile) provides the following targets:
 
 | Target | Description |
@@ -102,6 +106,24 @@ The root [Makefile](Makefile) provides the following targets:
 | `make tidy-all` | Iterates over every `go.mod` in the monorepo and runs `make tidy` in each sub-module directory. |
 | `make latest-tags` | Shows the highest git tag published for each Go module in the monorepo, or `(no tags)` if none exist yet. |
 | `make clean` | Deletes all `generated.go` files across the repository. |
+
+### Submodule Makefiles
+
+Each sub-module under [`credential/`](credential/), [`endpoint/`](endpoint/), and [`services/`](services/) has its own `Makefile` with these targets:
+
+| Target | Description |
+|--------|-------------|
+| `make help` | Lists available targets with a short description. |
+| `make check` | Runs static analysis (alias for `vet`). |
+| `make vet` | Runs `go vet ./...` to report suspicious constructs. |
+| `make format` | Formats all Go source files in-place with `go fmt`. |
+| `make generate` | Runs `go generate ./...` and formats the result. |
+| `make build` | Runs `tidy`, `generate`, `check`, and `go build ./...`. |
+| `make test` | Runs the unit test suite with race detection and coverage reports. |
+| `make integration_test` | Runs integration tests under `./tests`. |
+| `make tidy` | Runs `go mod tidy` and `go mod verify`. |
+| `make clean` | Deletes all `generated.go` files in the sub-module. |
+| `make release-next` | Increments the patch version of the sub-module's latest git tag and pushes it to `origin`. For example, if the current tag is `services/oss/v3.0.5`, it creates and pushes `services/oss/v3.0.6`. |
 
 ## Features
 
