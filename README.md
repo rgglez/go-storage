@@ -5,7 +5,7 @@
 [![Build Test](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml)
 [![Cross Build](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml)
 [![Unit Test](https://github.com/rgglez/go-storage/actions/workflows/unit-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/unit-test.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/rgglez/go-storage)](https://goreportcard.com/report/github.com/rgglez/go-storage)
+[![Go Report Card](https://goreportcard.com/badge/github.com/rgglez/go-storage/v5)](https://goreportcard.com/report/github.com/rgglez/go-storage/v5)
 ![GitHub stars](https://img.shields.io/github/stars/rgglez/go-storage?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/rgglez/go-storage?style=social)
 
