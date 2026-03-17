@@ -13,26 +13,28 @@ A **vendor-neutral** storage library for Golang.
 
 ## Table of Contents
 
-- [About this fork](#about-this-fork)
-- [Vision](#vision)
-- [Goals](#goals)
-- [Documentation](#documentation)
-  - [`docs/README/` - Project documents](#docsreadme--project-documents)
-  - [`docs/rfcs/` - Request for Comments](#docsrfcs--request-for-comments)
-  - [`docs/spec/` - Specifications](#docsspec--specifications)
-- [Makefile](#makefile)
-- [Features](#features)
-  - [Widely native services support](#widely-native-services-support)
-  - [Complete and easily extensible interface](#complete-and-easily-extensible-interface)
-  - [Comprehensive metadata](#comprehensive-metadata)
-  - [Strong Typing Everywhere](#strong-typing-everywhere)
-  - [Server-Side Encrypt](#server-side-encrypt)
-- [License](#license)
+- [go-storage](#go-storage)
+  - [Table of Contents](#table-of-contents)
+  - [About this fork](#about-this-fork)
+  - [Vision](#vision)
+  - [Goals](#goals)
+  - [Documentation](#documentation)
+    - [`docs/README/` — Project documents](#docsreadme--project-documents)
+    - [`docs/rfcs/` — Request for Comments](#docsrfcs--request-for-comments)
+    - [`docs/spec/` — Specifications](#docsspec--specifications)
+  - [Makefile](#makefile)
+  - [Features](#features)
+    - [Widely native services support](#widely-native-services-support)
+    - [Complete and easily extensible interface](#complete-and-easily-extensible-interface)
+    - [Comprehensive metadata](#comprehensive-metadata)
+    - [Strong Typing Everywhere](#strong-typing-everywhere)
+    - [Server-Side Encrypt](#server-side-encrypt)
+  - [License](#license)
 
 
 ## About this fork
 
-The [original project](https://github.com/beyondstorage/go-storage) seems to be [dead](https://github.com/beyondstorage/go-storage/issues/1382) and [broken](https://github.com/beyondstorage/go-storage/issues/1263). My changes are listed in the [CHANGELOG.md](docs/CHANGELOG.md) file
+The [original project](https://github.com/beyondstorage/go-storage) seems to be [dead](https://github.com/beyondstorage/go-storage/issues/1382) and [broken](https://github.com/beyondstorage/go-storage/issues/1263). My changes are listed in the [CHANGELOG.md](docs/CHANGELOG.md) file.
 
 ## Vision
 
@@ -98,6 +100,7 @@ The root [Makefile](Makefile) provides the following targets:
 | `make test-all` | Iterates over every `go.mod` in the monorepo and runs `make test` in each sub-module directory. |
 | `make tidy` | Runs `go mod tidy` and `go mod verify` for the current module. |
 | `make tidy-all` | Iterates over every `go.mod` in the monorepo and runs `make tidy` in each sub-module directory. |
+| `make latest-tags` | Shows the highest git tag published for each Go module in the monorepo, or `(no tags)` if none exist yet. |
 | `make clean` | Deletes all `generated.go` files across the repository. |
 
 ## Features
