@@ -67,45 +67,40 @@ Write once, run on every storage service.
 
 Each storage backend has its own reference page covering installation, configuration pairs, supported interfaces, and usage examples.
 
-<table>
-<thead>
-<tr><th>Service</th><th>Description</th><th>Docs</th><th>Status</th></tr>
-</thead>
-<tbody>
-<tr><td><a href="services/azblob/">azblob</a></td><td><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/">Azure Blob Storage</a></td><td><a href="docs/README/services/azblob.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/azfile/">azfile</a></td><td><a href="https://azure.microsoft.com/en-us/products/storage/files/">Azure File Storage</a></td><td><a href="docs/README/services/azfile.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/bos/">bos</a></td><td><a href="https://cloud.baidu.com/product/bos.html">Baidu Object Storage</a></td><td><a href="docs/README/services/bos.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/cos/">cos</a></td><td><a href="https://cloud.tencent.com/product/cos">Tencent Cloud Object Storage</a></td><td><a href="docs/README/services/cos.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/dropbox/">dropbox</a></td><td><a href="https://www.dropbox.com">Dropbox</a></td><td><a href="docs/README/services/dropbox.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/fs/">fs</a></td><td>Local file system</td><td><a href="docs/README/services/fs.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/ftp/">ftp</a></td><td>FTP</td><td><a href="docs/README/services/ftp.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/gcs/">gcs</a></td><td><a href="https://cloud.google.com/storage/">Google Cloud Storage</a></td><td><a href="docs/README/services/gcs.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/gdrive/">gdrive</a></td><td><a href="https://www.google.com/drive/">Google Drive</a></td><td><a href="docs/README/services/gdrive.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/ipfs/">ipfs</a></td><td><a href="https://ipfs.io">InterPlanetary File System</a></td><td><a href="docs/README/services/ipfs.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/kodo/">kodo</a></td><td><a href="https://www.qiniu.com/products/kodo">Qiniu Kodo</a></td><td><a href="docs/README/services/kodo.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/memory/">memory</a></td><td>In-memory storage (testing / ephemeral data)</td><td><a href="docs/README/services/memory.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/minio/">minio</a></td><td><a href="https://min.io">MinIO</a></td><td><a href="docs/README/services/minio.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/obs/">obs</a></td><td><a href="https://www.huaweicloud.com/product/obs.html">Huawei Object Storage Service</a></td><td><a href="docs/README/services/obs.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/ocios/">ocios</a></td><td><a href="https://www.oracle.com/cloud/storage/object-storage/">Oracle Cloud Infrastructure Object Storage</a></td><td><a href="docs/README/services/ocios.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/oss/">oss</a></td><td><a href="https://www.aliyun.com/product/oss">Aliyun Object Storage Service</a></td><td><a href="docs/README/services/oss.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/qingstor/">qingstor</a></td><td><a href="https://www.qingcloud.com/products/qingstor/">QingStor Object Storage</a></td><td><a href="docs/README/services/qingstor.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/s3/">s3</a></td><td><a href="https://aws.amazon.com/s3/">Amazon S3</a> (and S3-compatible services)</td><td><a href="docs/README/services/s3.md">docs</a></td><td style="background:#d4edda">Stable</td></tr>
-<tr><td><a href="services/cephfs/">cephfs</a></td><td><a href="https://docs.ceph.com/en/latest/cephfs/">Ceph Filesystem</a></td><td><a href="docs/README/services/cephfs.md">docs</a></td><td style="background:#fff3cd">Beta</td></tr>
-<tr><td><a href="services/hdfs/">hdfs</a></td><td><a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html">Hadoop Distributed File System</a></td><td><a href="docs/README/services/hdfs.md">docs</a></td><td style="background:#fff3cd">Beta</td></tr>
-<tr><td><a href="services/tar/">tar</a></td><td>TAR archive files</td><td><a href="docs/README/services/tar.md">docs</a></td><td style="background:#fff3cd">Beta</td></tr>
-<tr><td><a href="services/us3/">us3</a></td><td><a href="https://www.ucloud.cn/site/product/ufile.html">UCloud Object Storage</a></td><td><a href="docs/README/services/us3.md">docs</a></td><td style="background:#fff3cd">Beta</td></tr>
-<tr><td><a href="services/uss/">uss</a></td><td><a href="https://www.upyun.com/products/file-storage">UPYUN Storage Service</a></td><td><a href="docs/README/services/uss.md">docs</a></td><td style="background:#fff3cd">Beta</td></tr>
-<tr><td><a href="services/onedrive/">onedrive</a></td><td><a href="https://www.microsoft.com/en-ww/microsoft-365/onedrive/online-cloud-storage">Microsoft OneDrive</a></td><td><a href="docs/README/services/onedrive.md">docs</a></td><td style="background:#ffe5b4">Alpha</td></tr>
-<tr><td><a href="services/storj/">storj</a></td><td><a href="https://www.storj.io/">Storj Decentralized Cloud Storage</a></td><td><a href="docs/README/services/storj.md">docs</a></td><td style="background:#ffe5b4">Alpha</td></tr>
-<tr><td><a href="services/webdav/">webdav</a></td><td><a href="http://www.webdav.org/">WebDAV</a></td><td><a href="docs/README/services/webdav.md">docs</a></td><td style="background:#ffe5b4">Alpha</td></tr>
-<tr><td><a href="services/zip/">zip</a></td><td>ZIP archive files</td><td><a href="docs/README/services/zip.md">docs</a></td><td style="background:#ffe5b4">Alpha</td></tr>
-</tbody>
-</table>
+| Service | Description | Docs | Status |
+|---------|-------------|------|--------|
+| [azblob](services/azblob/) | [Azure Blob Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/) | [docs](docs/README/services/azblob.md) | Stable |
+| [azfile](services/azfile/) | [Azure File Storage](https://azure.microsoft.com/en-us/products/storage/files/) | [docs](docs/README/services/azfile.md) | Stable |
+| [bos](services/bos/) | [Baidu Object Storage](https://cloud.baidu.com/product/bos.html) | [docs](docs/README/services/bos.md) | Stable |
+| [cos](services/cos/) | [Tencent Cloud Object Storage](https://cloud.tencent.com/product/cos) | [docs](docs/README/services/cos.md) | Stable |
+| [dropbox](services/dropbox/) | [Dropbox](https://www.dropbox.com) | [docs](docs/README/services/dropbox.md) | Stable |
+| [fs](services/fs/) | Local file system | [docs](docs/README/services/fs.md) | Stable |
+| [ftp](services/ftp/) | FTP | [docs](docs/README/services/ftp.md) | Stable |
+| [gcs](services/gcs/) | [Google Cloud Storage](https://cloud.google.com/storage/) | [docs](docs/README/services/gcs.md) | Stable |
+| [gdrive](services/gdrive/) | [Google Drive](https://www.google.com/drive/) | [docs](docs/README/services/gdrive.md) | Stable |
+| [ipfs](services/ipfs/) | [InterPlanetary File System](https://ipfs.io) | [docs](docs/README/services/ipfs.md) | Stable |
+| [kodo](services/kodo/) | [Qiniu Kodo](https://www.qiniu.com/products/kodo) | [docs](docs/README/services/kodo.md) | Stable |
+| [memory](services/memory/) | In-memory storage (testing / ephemeral data) | [docs](docs/README/services/memory.md) | Stable |
+| [minio](services/minio/) | [MinIO](https://min.io) | [docs](docs/README/services/minio.md) | Stable |
+| [obs](services/obs/) | [Huawei Object Storage Service](https://www.huaweicloud.com/product/obs.html) | [docs](docs/README/services/obs.md) | Stable |
+| [ocios](services/ocios/) | [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage/) | [docs](docs/README/services/ocios.md) | Stable |
+| [oss](services/oss/) | [Aliyun Object Storage Service](https://www.aliyun.com/product/oss) | [docs](docs/README/services/oss.md) | Stable |
+| [qingstor](services/qingstor/) | [QingStor Object Storage](https://www.qingcloud.com/products/qingstor/) | [docs](docs/README/services/qingstor.md) | Stable |
+| [s3](services/s3/) | [Amazon S3](https://aws.amazon.com/s3/) (and S3-compatible services) | [docs](docs/README/services/s3.md) | Stable |
+| [cephfs](services/cephfs/) | [Ceph Filesystem](https://docs.ceph.com/en/latest/cephfs/) | [docs](docs/README/services/cephfs.md) | Beta |
+| [hdfs](services/hdfs/) | [Hadoop Distributed File System](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) | [docs](docs/README/services/hdfs.md) | Beta |
+| [tar](services/tar/) | TAR archive files | [docs](docs/README/services/tar.md) | Beta |
+| [us3](services/us3/) | [UCloud Object Storage](https://www.ucloud.cn/site/product/ufile.html) | [docs](docs/README/services/us3.md) | Beta |
+| [uss](services/uss/) | [UPYUN Storage Service](https://www.upyun.com/products/file-storage) | [docs](docs/README/services/uss.md) | Beta |
+| [onedrive](services/onedrive/) | [Microsoft OneDrive](https://www.microsoft.com/en-ww/microsoft-365/onedrive/online-cloud-storage) | [docs](docs/README/services/onedrive.md) | Alpha |
+| [storj](services/storj/) | [Storj Decentralized Cloud Storage](https://www.storj.io/) | [docs](docs/README/services/storj.md) | Alpha |
+| [webdav](services/webdav/) | [WebDAV](http://www.webdav.org/) | [docs](docs/README/services/webdav.md) | Alpha |
+| [zip](services/zip/) | ZIP archive files | [docs](docs/README/services/zip.md) | Alpha |
 
-**Legend:**
-- <span style="background:#d4edda; padding:2px 8px;">Stable</span> — Production-ready and fully integration-tested.
-- <span style="background:#fff3cd; padding:2px 8px;">Beta</span> — Implemented but not fully integration-tested.
-- <span style="background:#ffe5b4; padding:2px 8px;">Alpha</span> — Still under active development.
+**Status legend:**
+- **Stable** — Production-ready and fully integration-tested.
+- **Beta** — Implemented but not fully integration-tested.
+- **Alpha** — Still under active development.
 
 ### 🧠 `docs/rfcs/` — Request for Comments
 
