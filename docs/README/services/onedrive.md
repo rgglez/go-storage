@@ -27,6 +27,25 @@ sto, err := onedrive.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/onedrive" // register onedrive factory
+)
+
+store, err := services.NewStoragerFromString(
+    "onedrive:///Documents/?credential=token:YOUR_ACCESS_TOKEN",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `onedrive` | |
+| work_dir | `/Documents/` | Optional folder path inside OneDrive |
+| `credential` | `token:ACCESS_TOKEN` | Microsoft Graph OAuth2 access token |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

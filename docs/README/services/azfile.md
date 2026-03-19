@@ -35,6 +35,27 @@ sto, err := azfile.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/azfile" // register azfile factory
+)
+
+store, err := services.NewStoragerFromString(
+    "azfile://my-share/docs/?credential=hmac:ACCOUNT_NAME:ACCOUNT_KEY&endpoint=https://ACCOUNT_NAME.file.core.windows.net",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `azfile` | |
+| name | `my-share` | File share name — placed right after `://` |
+| work_dir | `/docs/` | Optional directory path |
+| `credential` | `hmac:NAME:KEY` | Azure storage account name and key |
+| `endpoint` | `https://ACCOUNT.file.core.windows.net` | Azure File service URL |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

@@ -29,6 +29,27 @@ srv, sto, err := us3.New(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/us3" // register us3 factory
+)
+
+store, err := services.NewStoragerFromString(
+    "us3://my-bucket/data/?credential=hmac:PUBLIC_KEY:PRIVATE_KEY&endpoint=https://cn-bj.ufileos.com",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `us3` | |
+| name | `my-bucket` | Bucket name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `hmac:PK:SK` | UCloud public key and private key |
+| `endpoint` | `https://cn-bj.ufileos.com` | US3 regional endpoint URL |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

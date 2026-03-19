@@ -25,6 +25,28 @@ sto, err := fs.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/fs/v4" // register fs factory
+)
+
+// Root of the filesystem
+store, err := services.NewStoragerFromString("fs:///")
+
+// Specific working directory
+store, err := services.NewStoragerFromString("fs:///tmp/myapp")
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `fs` | |
+| work_dir | `/tmp/myapp` | Absolute path used as the root for all operations; defaults to `/` |
+
+No credential, endpoint, or name required.
+
 ## Configuration
 
 | Pair | Type | Required | Description |

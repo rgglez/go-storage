@@ -25,6 +25,27 @@ sto, err := memory.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/memory" // register memory factory
+)
+
+store, err := services.NewStoragerFromString("memory:///")
+
+// With a virtual working directory prefix
+store, err := services.NewStoragerFromString("memory:///cache/")
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `memory` | |
+| work_dir | `/cache/` | Optional virtual working directory prefix |
+
+No credential or endpoint required.
+
 ## Configuration
 
 | Pair | Type | Required | Description |

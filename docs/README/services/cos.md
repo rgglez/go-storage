@@ -35,6 +35,27 @@ sto, err := cos.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/cos/v3" // register cos factory
+)
+
+store, err := services.NewStoragerFromString(
+    "cos://my-bucket-1250000000/prefix/?credential=hmac:SECRET_ID:SECRET_KEY&location=ap-beijing",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `cos` | |
+| name | `my-bucket-1250000000` | Bucket name including appid suffix — placed right after `://` |
+| work_dir | `/prefix/` | Optional key prefix |
+| `credential` | `hmac:SECRET_ID:SECRET_KEY` | Tencent Cloud secret ID and key |
+| `location` | `ap-beijing` | Required region (e.g. `ap-shanghai`, `na-ashburn`) |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

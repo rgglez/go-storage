@@ -28,6 +28,26 @@ sto, err := webdav.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/webdav" // register webdav factory
+)
+
+store, err := services.NewStoragerFromString(
+    "webdav:///docs/?endpoint=https://dav.example.com/remote.php/dav/files/user/&credential=basic:myuser:mypassword",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `webdav` | |
+| work_dir | `/docs/` | Optional working directory path |
+| `endpoint` | `https://dav.example.com/...` | WebDAV server base URL |
+| `credential` | `basic:user:pass` | Basic authentication credentials |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

@@ -48,6 +48,38 @@ sto, err := gcs.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/gcs/v3" // register gcs factory
+)
+
+// Using a service account key file
+store, err := services.NewStoragerFromString(
+    "gcs://my-bucket/data/?credential=file:/path/to/service-account.json",
+)
+
+// Using Application Default Credentials
+store, err := services.NewStoragerFromString(
+    "gcs://my-bucket/?credential=env",
+)
+
+// Servicer (bucket management) — requires project_id
+store, err := services.NewStoragerFromString(
+    "gcs://my-bucket/?credential=env&project_id=my-gcp-project",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `gcs` | |
+| name | `my-bucket` | Bucket name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `file:/path/key.json`, `base64:...`, `env` | See [Credential formats](#credential-formats) |
+| `project_id` | `my-gcp-project` | Required only when using `NewServicerFromString` |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

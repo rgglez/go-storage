@@ -26,6 +26,31 @@ sto, err := ipfs.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/ipfs" // register ipfs factory
+)
+
+// Local IPFS daemon (default)
+store, err := services.NewStoragerFromString(
+    "ipfs:///",
+)
+
+// Remote IPFS node
+store, err := services.NewStoragerFromString(
+    "ipfs:///?endpoint=http:ipfs.example.com:5001",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `ipfs` | |
+| work_dir | `/` | Optional IPFS path prefix |
+| `endpoint` | `http:localhost:5001` | IPFS HTTP API address; defaults to `http://localhost:5001` |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

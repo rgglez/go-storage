@@ -27,6 +27,25 @@ sto, err := hdfs.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/hdfs" // register hdfs factory
+)
+
+store, err := services.NewStoragerFromString(
+    "hdfs:///user/myuser/?endpoint=tcp:namenode.example.com:9000",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `hdfs` | |
+| work_dir | `/user/myuser/` | Optional working directory in HDFS |
+| `endpoint` | `tcp:host:9000` | HDFS NameNode address |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

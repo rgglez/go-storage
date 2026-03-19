@@ -28,6 +28,26 @@ sto, err := cephfs.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/cephfs" // register cephfs factory
+)
+
+store, err := services.NewStoragerFromString(
+    "cephfs:///data/?endpoint=tcp:mon.example.com:6789&credential=hmac:client.admin:BASE64KEY",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `cephfs` | |
+| work_dir | `/data/` | Optional working directory in CephFS |
+| `endpoint` | `tcp:host:6789` | Ceph monitor address |
+| `credential` | `hmac:client.admin:key` | Client ID and keyring key |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

@@ -35,6 +35,27 @@ sto, err := azblob.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/azblob/v3" // register azblob factory
+)
+
+store, err := services.NewStoragerFromString(
+    "azblob://my-container/prefix/?credential=hmac:ACCOUNT_NAME:ACCOUNT_KEY&endpoint=https://ACCOUNT_NAME.blob.core.windows.net",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `azblob` | |
+| name | `my-container` | Container name — placed right after `://` |
+| work_dir | `/prefix/` | Optional key prefix |
+| `credential` | `hmac:NAME:KEY` | Azure storage account name and key |
+| `endpoint` | `https://ACCOUNT.blob.core.windows.net` | Azure Blob service URL |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

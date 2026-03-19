@@ -28,6 +28,27 @@ srv, sto, err := ocios.New(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/ocios" // register ocios factory
+)
+
+store, err := services.NewStoragerFromString(
+    "ocios://my-bucket/data/?credential=file:/home/user/.oci/config&location=us-ashburn-1",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `ocios` | |
+| name | `my-bucket` | Bucket name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `file:/home/user/.oci/config` | Path to OCI configuration file |
+| `location` | `us-ashburn-1` | Required OCI region identifier |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

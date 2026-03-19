@@ -35,6 +35,28 @@ sto, err := bos.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/bos/v2" // register bos factory
+)
+
+store, err := services.NewStoragerFromString(
+    "bos://my-bucket/data/?credential=hmac:ACCESS_KEY:SECRET_KEY&endpoint=https://bj.bcebos.com",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `bos` | |
+| name | `my-bucket` | Bucket name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `hmac:AK:SK` | Baidu Cloud access key and secret key |
+| `endpoint` | `https://bj.bcebos.com` | BOS regional endpoint |
+| `location` | `bj` | Optional region (`bj`, `gz`, `su`) |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

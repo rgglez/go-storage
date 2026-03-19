@@ -35,6 +35,27 @@ sto, err := obs.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/obs/v2" // register obs factory
+)
+
+store, err := services.NewStoragerFromString(
+    "obs://my-bucket/data/?credential=hmac:ACCESS_KEY:SECRET_KEY&endpoint=https://obs.cn-north-4.myhuaweicloud.com",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `obs` | |
+| name | `my-bucket` | Bucket name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `hmac:AK:SK` | Huawei Cloud access key and secret key |
+| `endpoint` | `https://obs.cn-north-4.myhuaweicloud.com` | OBS regional endpoint URL |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

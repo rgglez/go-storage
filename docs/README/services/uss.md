@@ -28,6 +28,26 @@ sto, err := uss.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/uss/v3" // register uss factory
+)
+
+store, err := services.NewStoragerFromString(
+    "uss://my-service/data/?credential=basic:operator:password",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `uss` | |
+| name | `my-service` | UPYUN service (bucket) name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `basic:operator:password` | UPYUN operator name and password |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

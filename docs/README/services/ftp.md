@@ -32,6 +32,32 @@ sto, err := ftp.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/ftp" // register ftp factory
+)
+
+// Anonymous access
+store, err := services.NewStoragerFromString(
+    "ftp:///pub/?endpoint=tcp:ftp.example.com:21",
+)
+
+// Authenticated access
+store, err := services.NewStoragerFromString(
+    "ftp:///upload/?endpoint=tcp:ftp.example.com:21&credential=basic:myuser:mypassword",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `ftp` | |
+| work_dir | `/upload/` | Optional working directory on the server |
+| `endpoint` | `tcp:host:21` | FTP server address; defaults to `localhost:21` |
+| `credential` | `basic:user:pass` | Optional; omit for anonymous access |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

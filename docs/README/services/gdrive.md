@@ -26,6 +26,25 @@ sto, err := gdrive.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/gdrive" // register gdrive factory
+)
+
+store, err := services.NewStoragerFromString(
+    "gdrive:///MyFolder/?credential=file:/path/to/credentials.json",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `gdrive` | |
+| work_dir | `/MyFolder/` | Optional folder path in Google Drive |
+| `credential` | `file:/path/credentials.json` | Path to OAuth2 credentials JSON file |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

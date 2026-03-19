@@ -37,6 +37,28 @@ sto, err := qingstor.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/qingstor/v4" // register qingstor factory
+)
+
+store, err := services.NewStoragerFromString(
+    "qingstor://my-bucket/data/?credential=hmac:ACCESS_KEY_ID:SECRET_ACCESS_KEY&endpoint=https://qingstor.com&location=pek3b",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `qingstor` | |
+| name | `my-bucket` | Bucket name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `hmac:AK:SK` | QingStor access key ID and secret access key |
+| `endpoint` | `https://qingstor.com` | QingStor API endpoint |
+| `location` | `pek3b` | Required zone (e.g. `pek3b`, `sh1b`) |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

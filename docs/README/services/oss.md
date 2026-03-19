@@ -35,6 +35,34 @@ sto, err := oss.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/oss/v3" // register oss factory
+)
+
+// Static credentials
+store, err := services.NewStoragerFromString(
+    "oss://my-bucket/data/?credential=hmac:ACCESS_KEY_ID:ACCESS_KEY_SECRET&endpoint=https://oss-cn-hangzhou.aliyuncs.com",
+)
+
+// STS temporary credentials (reads ALIBABA_CLOUD_ACCESS_KEY_ID,
+// ALIBABA_CLOUD_ACCESS_KEY_SECRET, ALIBABA_CLOUD_SECURITY_TOKEN from env)
+store, err := services.NewStoragerFromString(
+    "oss://my-bucket/?credential=env&endpoint=https://oss-cn-shanghai.aliyuncs.com",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `oss` | |
+| name | `my-bucket` | Bucket name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `hmac:ID:SECRET` or `env` | Static HMAC keys or STS env-var credentials |
+| `endpoint` | `https://oss-cn-hangzhou.aliyuncs.com` | OSS regional endpoint URL |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

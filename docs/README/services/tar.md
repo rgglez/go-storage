@@ -27,6 +27,27 @@ sto, err := tar.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/tar" // register tar factory
+)
+
+store, err := services.NewStoragerFromString(
+    "tar:///path/to/archive.tar/subdir/",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `tar` | |
+| name | `/path/to/archive.tar` | Absolute path to the `.tar` file — placed right after `://` |
+| work_dir | `/subdir/` | Optional path prefix inside the archive |
+
+No credential or endpoint required.
+
 ## Configuration
 
 | Pair | Type | Required | Description |

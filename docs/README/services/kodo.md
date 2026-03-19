@@ -35,6 +35,27 @@ sto, err := kodo.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/kodo/v3" // register kodo factory
+)
+
+store, err := services.NewStoragerFromString(
+    "kodo://my-bucket/data/?credential=hmac:ACCESS_KEY:SECRET_KEY&location=z0",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `kodo` | |
+| name | `my-bucket` | Bucket name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `hmac:AK:SK` | Qiniu access key and secret key |
+| `location` | `z0` | Required zone (`z0` East China, `z1` North China, `z2` South China, `na0` North America, `as0` Southeast Asia) |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

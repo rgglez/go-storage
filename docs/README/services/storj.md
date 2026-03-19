@@ -28,6 +28,26 @@ srv, sto, err := storj.New(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/storj" // register storj factory
+)
+
+store, err := services.NewStoragerFromString(
+    "storj://my-bucket/data/?credential=token:YOUR_ACCESS_GRANT",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `storj` | |
+| name | `my-bucket` | Bucket name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `token:ACCESS_GRANT` | Storj access grant (serialized macaroon) |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

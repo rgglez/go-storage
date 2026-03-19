@@ -35,6 +35,34 @@ sto, err := minio.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/minio" // register minio factory
+)
+
+// Local MinIO instance
+store, err := services.NewStoragerFromString(
+    "minio://my-bucket/data/?credential=hmac:ACCESS_KEY:SECRET_KEY&endpoint=http:localhost:9000",
+)
+
+// Remote MinIO with TLS
+store, err := services.NewStoragerFromString(
+    "minio://my-bucket/?credential=hmac:ACCESS_KEY:SECRET_KEY&endpoint=https:minio.example.com:9000&location=us-east-1",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `minio` | |
+| name | `my-bucket` | Bucket name — placed right after `://` |
+| work_dir | `/data/` | Optional key prefix |
+| `credential` | `hmac:AK:SK` | MinIO access key and secret key |
+| `endpoint` | `http:localhost:9000` | MinIO server address |
+| `location` | `us-east-1` | Optional region; defaults to `us-east-1` |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

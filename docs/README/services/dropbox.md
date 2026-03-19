@@ -26,6 +26,25 @@ sto, err := dropbox.NewStorager(
 )
 ```
 
+## Connection String
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/dropbox/v3" // register dropbox factory
+)
+
+store, err := services.NewStoragerFromString(
+    "dropbox:///photos/?credential=token:YOUR_ACCESS_TOKEN",
+)
+```
+
+| Component | Example | Notes |
+|-----------|---------|-------|
+| scheme | `dropbox` | |
+| work_dir | `/photos/` | Optional folder path inside Dropbox |
+| `credential` | `token:ACCESS_TOKEN` | Dropbox OAuth2 access token |
+
 ## Configuration
 
 | Pair | Type | Required | Description |

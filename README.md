@@ -22,6 +22,7 @@ A **vendor-neutral** storage library for Golang.
   - [✅ Goals](#-goals)
   - [📖 Documentation](#-documentation)
     - [🗂️ `docs/README/` — Project documents](#️-docsreadme--project-documents)
+    - [🔌 Connection strings](#-connection-strings)
     - [📦 `docs/README/services/` — Backend documentation](#-docsreadmeservices--backend-documentation)
     - [🧠 `docs/rfcs/` — Request for Comments](#-docsrfcs--request-for-comments)
     - [📐 `docs/spec/` — Specifications](#-docsspec--specifications)
@@ -31,6 +32,9 @@ A **vendor-neutral** storage library for Golang.
   - [✨ Features](#-features)
     - [🌐 Widely native services support](#-widely-native-services-support)
     - [🧱 Complete and easily extensible interface](#-complete-and-easily-extensible-interface)
+      - [Basic operations](#basic-operations)
+      - [Extended operations](#extended-operations)
+      - [Large file manipulation](#large-file-manipulation)
     - [🧾 Comprehensive metadata](#-comprehensive-metadata)
     - [🔒 Strong Typing Everywhere](#-strong-typing-everywhere)
     - [🔐 Server-Side Encrypt](#-server-side-encrypt)
@@ -58,10 +62,34 @@ Write once, run on every storage service.
 | File | Description |
 |------|-------------|
 | [ARCHITECTURE.md](docs/README/ARCHITECTURE.md) | Detailed architecture overview: package structure, interfaces, code generation pipeline, pair system, iterator pattern, and how to implement a new service. **Recommended reading before contributing.** |
+| [CONNECTION.md](docs/README/CONNECTION.md) | How to initialize any backend from a connection string using `NewStoragerFromString`. Includes the connection string format reference and ready-to-run examples for S3, local filesystem (`fs`), and Alibaba Cloud OSS. |
 | [CONTRIBUTING.md](docs/README/CONTRIBUTING.md) | Contribution guidelines: how to report bugs, submit patches, implement new services, or propose API changes. |
 | [TAGS_AND_SUBMODULES.md](docs/README/TAGS_AND_SUBMODULES.md) | How to create and push Go module tags for sub-modules in this monorepo. |
 | [CHANGELOG.md](docs/README/CHANGELOG.md) | History of changes and releases. |
 | [CODE_OF_CONDUCT.md](docs/README/CODE_OF_CONDUCT.md) | Community code of conduct. |
+
+### 🔌 Connection strings
+
+Any backend can be initialized from a single URL-like string, making it easy to configure storage at runtime from environment variables or configuration files:
+
+```go
+import (
+    "github.com/rgglez/go-storage/v5/services"
+    _ "github.com/rgglez/go-storage/services/s3/v3"  // blank-import registers the backend
+)
+
+store, err := services.NewStoragerFromString(
+    "s3://my-bucket/prefix/?credential=hmac:ACCESS:SECRET&location=us-east-1",
+)
+```
+
+The general format is:
+
+```
+<type>://<name><work_dir>[?key=value&...]
+```
+
+See [CONNECTION.md](docs/README/CONNECTION.md) for the full reference, including examples for **S3**, **local filesystem (`fs`)**, and **Alibaba Cloud OSS**.
 
 ### 📦 `docs/README/services/` — Backend documentation
 
@@ -175,7 +203,7 @@ All services live in this monorepo under [`services/`](services/). Each service 
 
 ### 🧱 Complete and easily extensible interface
 
-Basic operations
+#### Basic operations
 
 - Metadata: get `Storager` metadata
 ```go
@@ -217,7 +245,7 @@ for {
 }
 ```
 
-Extended operations
+#### Extended operations
 
 - Copy: copy a `Object` inside storager
 ```go
@@ -236,7 +264,7 @@ url, err := store.(Reacher).Reach("path") // Generate an url to the object.
 o, err := store.(Direr).CreateDir("path") // Create a dir object.
 ```
 
-Large file manipulation
+#### Large file manipulation
 
 - Multipart: allow doing multipart uploads
 ```go
@@ -372,7 +400,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    `http://www.apache.org/licenses/LICENSE-2.0`
+    http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
