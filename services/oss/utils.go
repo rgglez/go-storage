@@ -135,6 +135,8 @@ func (f *Factory) newService() (srv *Service, err error) {
 		if err != nil {
 			return nil, err
 		}
+	case credential.ProtocolSTS:
+		ak, sk, at = cp.STS()
 	default:
 		return nil, services.PairUnsupportedError{Pair: ps.WithCredential(f.Credential)}
 	}

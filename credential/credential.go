@@ -47,6 +47,11 @@ const (
 	//
 	// value = [user, password]
 	ProtocolBasic = "basic"
+	// ProtocolSTS will hold access key, secret key, and security token credential.
+	// Used for temporary credentials issued by STS (Security Token Service).
+	//
+	// value = [Access Key, Secret Key, Security Token]
+	ProtocolSTS = "sts"
 )
 
 // Credential will provide credential protocol and values.
@@ -150,6 +155,8 @@ func Parse(cfg string) (Credential, error) {
 		return NewBase64(s[1]), nil
 	case ProtocolBasic:
 		return NewBasic(s[1], s[2]), nil
+	case ProtocolSTS:
+		return NewSTS(s[1], s[2], s[3]), nil
 	default:
 		return Credential{}, &Error{"parse", ErrUnsupportedProtocol, s[0], nil}
 	}
@@ -183,4 +190,21 @@ func NewBase64(value string) Credential {
 // NewBasic create a basic provider.
 func NewBasic(user, password string) Credential {
 	return Credential{ProtocolBasic, []string{user, password}}
+}
+
+// NewSTS create a STS provider with temporary credentials.
+func NewSTS(accessKey, secretKey, securityToken string) Credential {
+	return Credential{ProtocolSTS, []string{accessKey, secretKey, securityToken}}
+}
+
+func (p Credential) STS() (accessKey, secretKey, securityToken string) {
+	if p.protocol != ProtocolSTS {
+		panic(Error{
+			Op:       "sts",
+			Err:      ErrInvalidValue,
+			Protocol: p.protocol,
+			Values:   p.args,
+		})
+	}
+	return p.args[0], p.args[1], p.args[2]
 }
