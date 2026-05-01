@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2026-05-01
+
+### Added
+
+- `definitions/pairs.go`, `pairs/generated.go`: new global pairs `cache_control`, `content_encoding`, `content_language`
+- `services/oss`: `Write` now supports `Cache-Control`, `Content-Disposition`, `Content-Encoding`, `Content-Language` headers on PutObject
+
+### Fixed
+
+- `services/oss`: `Content-Type` was declared as a supported `Write` pair but never passed to the OSS SDK `PutObject` call
+
 ## 2026-03-13: Friday the 13th Major Revamp
 
 - Upgraded Go minimum version to 1.25.

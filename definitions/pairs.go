@@ -34,7 +34,10 @@ func (p Pair) Global() bool {
 var PairMap = make(map[string]Pair)
 
 var PairArray = []Pair{
+	PairCacheControl,
 	PairContentDisposition,
+	PairContentEncoding,
+	PairContentLanguage,
 	PairContentMD5,
 	PairContentType,
 	PairContinuationToken,
@@ -58,8 +61,26 @@ func SortPairs(ps []Pair) []Pair {
 	return ps
 }
 
+var PairCacheControl = Pair{
+	Name:   "cache_control",
+	Type:   Type{Name: "string"},
+	global: true,
+}
+
 var PairContentDisposition = Pair{
 	Name:   "content_disposition",
+	Type:   Type{Name: "string"},
+	global: true,
+}
+
+var PairContentEncoding = Pair{
+	Name:   "content_encoding",
+	Type:   Type{Name: "string"},
+	global: true,
+}
+
+var PairContentLanguage = Pair{
+	Name:   "content_language",
 	Type:   Type{Name: "string"},
 	global: true,
 }

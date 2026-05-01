@@ -102,6 +102,10 @@ var Metadata = def.Metadata{
 			def.PairSize,
 		},
 		Write: []def.Pair{
+			def.PairCacheControl,
+			def.PairContentDisposition,
+			def.PairContentEncoding,
+			def.PairContentLanguage,
 			def.PairContentMD5,
 			def.PairContentType,
 			def.PairIoCallback,

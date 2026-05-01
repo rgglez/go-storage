@@ -623,10 +623,25 @@ func (s *Storage) write(ctx context.Context, path string, r io.Reader, size int6
 
 	rp := s.getAbsPath(path)
 
-	options := make([]oss.Option, 0, 3)
+	options := make([]oss.Option, 0, 9)
 	options = append(options, oss.ContentLength(size))
+	if opt.HasCacheControl {
+		options = append(options, oss.CacheControl(opt.CacheControl))
+	}
+	if opt.HasContentDisposition {
+		options = append(options, oss.ContentDisposition(opt.ContentDisposition))
+	}
+	if opt.HasContentEncoding {
+		options = append(options, oss.ContentEncoding(opt.ContentEncoding))
+	}
+	if opt.HasContentLanguage {
+		options = append(options, oss.ContentLanguage(opt.ContentLanguage))
+	}
 	if opt.HasContentMd5 {
 		options = append(options, oss.ContentMD5(opt.ContentMd5))
+	}
+	if opt.HasContentType {
+		options = append(options, oss.ContentType(opt.ContentType))
 	}
 	if opt.HasStorageClass {
 		options = append(options, oss.StorageClass(oss.StorageClassType(opt.StorageClass)))
