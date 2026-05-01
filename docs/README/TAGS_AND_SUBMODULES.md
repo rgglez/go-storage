@@ -6,7 +6,48 @@ The Go toolchain resolves a sub-module tag by its path prefix (e.g. `services/fs
 
 Note: remember to replace the example values with your real case.
 
-## 🧰 Preparation
+## ⚡ Quick path: Makefile targets
+
+The root `Makefile` provides targets that automatically compute and create the next PATCH version tag, so you don't have to look up the current version manually.
+
+### Create tags (local only)
+
+| Command | What it does | Example result |
+|---------|--------------|----------------|
+| `make tag-service SERVICE=<name>` | Next PATCH tag for `services/<name>` | `services/oss/v3.0.7` |
+| `make tag-credential` | Next PATCH tag for `credential` | `credential/v1.0.2` |
+| `make tag-endpoint` | Next PATCH tag for `endpoint` | `endpoint/v1.2.2` |
+| `make next-tag` | Next PATCH tag for the root module | `v5.0.1` |
+
+### Push tags to origin
+
+| Command | What it pushes |
+|---------|----------------|
+| `make push-tag-service SERVICE=<name>` | Latest `services/<name>/vX.Y.Z` tag |
+| `make push-tag-credential` | Latest `credential/vX.Y.Z` tag |
+| `make push-tag-endpoint` | Latest `endpoint/vX.Y.Z` tag |
+| `make push-next-tag` | Latest root `vX.Y.Z` tag |
+
+### Typical workflow
+
+```bash
+# 1. Verify what tags exist today
+make latest-tags
+
+# 2. Create the next patch tag locally
+make tag-service SERVICE=oss
+# Output: Creating tag: services/oss/v3.0.7
+
+# 3. Inspect and push
+git tag --sort=-v:refname | head -5
+make push-tag-service SERVICE=oss
+```
+
+> **Note:** The `push-*` targets always push the *latest* tag of that module, which is the one just created by the matching `tag-*` target.
+
+---
+
+## 🧰 Manual preparation
 
 1. Determine the directory (sub-module) which you want to release, for example `services/fs`.
 1. Determine the version number you'll use (in [semantic](https://semver.org/) notation). For instance `v5.1.4`.
