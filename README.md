@@ -175,11 +175,11 @@ The root [Makefile](Makefile) provides the following targets:
 | `make tidy` | Runs `go mod tidy` and `go mod verify` for the current module. |
 | `make tidy-all` | Iterates over every `go.mod` in the monorepo and runs `make tidy` in each sub-module directory. |
 | `make latest-tags` | Shows the highest git tag published for each Go module in the monorepo, or `(no tags)` if none exist yet. |
-| `make tag-service SERVICE=<name>` | Creates the next PATCH tag for `services/<name>` locally (e.g. `make tag-service SERVICE=oss` → `services/oss/v3.0.7`). |
+| `make next-tag-service SERVICE=<name>` | Creates the next PATCH tag for `services/<name>` locally (e.g. `make next-tag-service SERVICE=oss` → `services/oss/v3.0.7`). |
 | `make push-tag-service SERVICE=<name>` | Pushes the latest `services/<name>` tag to `origin`. |
-| `make tag-credential` | Creates the next PATCH tag for the `credential` module locally. |
+| `make next-tag-credential` | Creates the next PATCH tag for the `credential` module locally. |
 | `make push-tag-credential` | Pushes the latest `credential` tag to `origin`. |
-| `make tag-endpoint` | Creates the next PATCH tag for the `endpoint` module locally. |
+| `make next-tag-endpoint` | Creates the next PATCH tag for the `endpoint` module locally. |
 | `make push-tag-endpoint` | Pushes the latest `endpoint` tag to `origin`. |
 | `make next-tag` | Creates the next PATCH tag for the root module locally. |
 | `make push-next-tag` | Pushes the latest root tag to `origin`. |

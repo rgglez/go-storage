@@ -14,9 +14,9 @@ The root `Makefile` provides targets that automatically compute and create the n
 
 | Command | What it does | Example result |
 |---------|--------------|----------------|
-| `make tag-service SERVICE=<name>` | Next PATCH tag for `services/<name>` | `services/oss/v3.0.7` |
-| `make tag-credential` | Next PATCH tag for `credential` | `credential/v1.0.2` |
-| `make tag-endpoint` | Next PATCH tag for `endpoint` | `endpoint/v1.2.2` |
+| `make next-tag-service SERVICE=<name>` | Next PATCH tag for `services/<name>` | `services/oss/v3.0.7` |
+| `make next-tag-credential` | Next PATCH tag for `credential` | `credential/v1.0.2` |
+| `make next-tag-endpoint` | Next PATCH tag for `endpoint` | `endpoint/v1.2.2` |
 | `make next-tag` | Next PATCH tag for the root module | `v5.0.1` |
 
 ### Push tags to origin
@@ -35,7 +35,7 @@ The root `Makefile` provides targets that automatically compute and create the n
 make latest-tags
 
 # 2. Create the next patch tag locally
-make tag-service SERVICE=oss
+make next-tag-service SERVICE=oss
 # Output: Creating tag: services/oss/v3.0.7
 
 # 3. Inspect and push

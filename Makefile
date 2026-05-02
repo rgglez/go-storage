@@ -3,8 +3,8 @@ SHELL := /bin/bash
 SERVICE ?=
 
 .PHONY: all check format vet build test generate tidy integration_test build-all latest-tags \
-	tag-service push-tag-service tag-credential push-tag-credential \
-	tag-endpoint push-tag-endpoint next-tag push-next-tag
+	next-tag-service push-tag-service next-tag-credential push-tag-credential \
+	next-tag-endpoint push-tag-endpoint next-tag push-next-tag
 
 help:
 	@echo "Please use \`make <target>\` where <target> is one of"
@@ -14,11 +14,11 @@ help:
 	@echo "  test                to run test"
 	@echo "  build-all           to build all packages"
 	@echo "  latest-tags         to show the highest git tag for each Go module"
-	@echo "  tag-service         create next PATCH tag for services/SERVICE (e.g. make tag-service SERVICE=oss)"
+	@echo "  next-tag-service    create next PATCH tag for services/SERVICE (e.g. make next-tag-service SERVICE=oss)"
 	@echo "  push-tag-service    push latest services/SERVICE tag to origin"
-	@echo "  tag-credential      create next PATCH tag for credential"
+	@echo "  next-tag-credential create next PATCH tag for credential"
 	@echo "  push-tag-credential push latest credential tag to origin"
-	@echo "  tag-endpoint        create next PATCH tag for endpoint"
+	@echo "  next-tag-endpoint   create next PATCH tag for endpoint"
 	@echo "  push-tag-endpoint   push latest endpoint tag to origin"
 	@echo "  next-tag            create next PATCH tag for root module"
 	@echo "  push-next-tag       push latest root tag to origin"
@@ -89,8 +89,8 @@ latest-tags:
 		fi;                                                                    \
 	done
 
-tag-service:
-	@if [ -z "$(SERVICE)" ]; then echo "Usage: make tag-service SERVICE=<name>"; exit 1; fi
+next-tag-service:
+	@if [ -z "$(SERVICE)" ]; then echo "Usage: make next-tag-service SERVICE=<name>"; exit 1; fi
 	@latest=$$(git tag | grep -E "^services/$(SERVICE)/v[0-9]+\.[0-9]+\.[0-9]+$$" | sort -V | tail -1); \
 	if [ -z "$$latest" ]; then echo "No tags found for services/$(SERVICE)"; exit 1; fi; \
 	version=$$(echo "$$latest" | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+'); \
@@ -108,7 +108,7 @@ push-tag-service:
 	echo "Pushing tag: $$latest"; \
 	git push origin "$$latest"
 
-tag-credential:
+next-tag-credential:
 	@latest=$$(git tag | grep -E "^credential/v[0-9]+\.[0-9]+\.[0-9]+$$" | sort -V | tail -1); \
 	if [ -z "$$latest" ]; then echo "No credential tags found"; exit 1; fi; \
 	version=$$(echo "$$latest" | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+'); \
@@ -125,7 +125,7 @@ push-tag-credential:
 	echo "Pushing tag: $$latest"; \
 	git push origin "$$latest"
 
-tag-endpoint:
+next-tag-endpoint:
 	@latest=$$(git tag | grep -E "^endpoint/v[0-9]+\.[0-9]+\.[0-9]+$$" | sort -V | tail -1); \
 	if [ -z "$$latest" ]; then echo "No endpoint tags found"; exit 1; fi; \
 	version=$$(echo "$$latest" | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+'); \
