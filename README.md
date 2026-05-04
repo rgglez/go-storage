@@ -3,6 +3,7 @@
 # go-storage
 
 [![Go dev](https://pkg.go.dev/badge/github.com/rgglez/go-storage/v5)](https://pkg.go.dev/gitub.com/rgglez/go-storage/v5)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rgglez/go-storage)
 [![License](https://img.shields.io/badge/license-apache%20v2-blue.svg)](https://github.com/rgglez/go-storage/blob/master/LICENSE)
 [![Build Test](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/build-test.yml)
 [![Cross Build](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml/badge.svg)](https://github.com/rgglez/go-storage/actions/workflows/cross-build.yml)
